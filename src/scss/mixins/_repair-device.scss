@@ -1,0 +1,27 @@
+.repair-device {
+    &__slider {
+        height: 228px;
+        display: flex;
+        align-items: center;
+    }
+    &__item {
+        height: 160px;
+        width: 240px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        border: 1px solid $border;
+        padding: 16px;
+        border-radius: 6px;
+        &:first-child {
+            margin-left: 16px;
+        }
+        &:last-child {
+            margin-right: 16px;
+        }
+    }
+    &__item-button {
+        cursor: pointer;
+        align-self: flex-end;
+    }
+}

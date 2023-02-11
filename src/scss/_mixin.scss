@@ -1,0 +1,10 @@
+@mixin flexbleCenter($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin borderMenu($height, $width) {
+    height: $height;
+    width: $width;
+}

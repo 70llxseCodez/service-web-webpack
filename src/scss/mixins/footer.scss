@@ -1,0 +1,16 @@
+.footer {
+    padding: 16px;
+    border-top: 1px solid $titleBorder;
+    display: flex;
+    flex-direction: column;
+    & p {
+        color: $titleColor;
+        margin-bottom: 16px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @media screen and (width <=450px) {
+            text-align: center;
+        }
+    }
+}

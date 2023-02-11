@@ -1,4 +1,12 @@
 @import "./lib/normalize.css";
-@import "./styles/vars";
-@import "./styles/fonts";
-@import "./styles/style";
+@import "./scss/fonts";
+@import "./scss/vars";
+@import "./scss/mixin";
+@import "./scss/null.scss";
+@import "./scss/mixins/header";
+@import "./scss/mixins/navigation";
+@import "./scss/mixins/main";
+@import "./scss/mixins/brands";
+@import "./scss/mixins/repair-device";
+@import "./scss/mixins/prices";
+@import "./scss/mixins/footer";

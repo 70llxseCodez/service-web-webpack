@@ -1,0 +1,33 @@
+.header {
+    @include flexbleCenter(space-between, center);
+    padding: 0 16px;
+    height: 88px;
+    background-color: #fff;
+    border-bottom: 1px solid $titleBorder;
+    &__options {
+        @include flexbleCenter(space-between, center);
+    }
+    &__border {
+        @include borderMenu(32px, 2px);
+        border-radius: 1px;
+        background-color: $border;
+    }
+    &__option-item:first-child {
+        margin-right: 27px;
+    }
+    &__headline {
+        margin: 24px 0;
+        display: flex;
+        &::before {
+            content: " ";
+            background-color: $borderforMainText;
+            height: 40px;
+            width: 4px;
+            margin-right: 12px;
+            border-radius: 0 6px 6px 0;
+        }
+        & h2 {
+            font-size: 28px;
+        }
+    }
+}
