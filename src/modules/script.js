@@ -8,9 +8,11 @@ export const burgerMenu = () => {
   burger.addEventListener('click', () => {
     navbar.classList.add('navbar-active');
     transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('body').style.overflowY = 'hidden';
   });
   closeBtn.addEventListener('click', () => {
     navbar.classList.remove('navbar-active');
     transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('body').style.overflowY = 'visible';
   });
 };
