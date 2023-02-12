@@ -23,9 +23,11 @@
     }
     &__item:active {
         border: 2px solid #b8ffec;
+        background-color: #fff;
     }
     &__item:focus {
         outline: none;
         border: 2px solid #b8ffec;
+        background-color: #fff;
     }
 }
