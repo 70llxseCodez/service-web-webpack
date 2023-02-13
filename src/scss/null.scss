@@ -3,6 +3,11 @@ body {
     background-color: $bgbody;
     position: relative;
     width: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 * {
@@ -24,6 +29,10 @@ button {
 
 li {
     list-style: none;
+}
+
+textarea {
+    resize: none;
 }
 
 .title {

@@ -6,6 +6,12 @@
     align-items: center;
 }
 
+.swiper-wrapper {
+    @media screen and (width >=768px) {
+        display: none;
+    }
+}
+
 .brands {
     height: 200px;
     &__slider {

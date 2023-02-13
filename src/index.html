@@ -12,7 +12,6 @@
 <body>
     <aside class="navbar">
         <div class="navbar__header-nav">
-
             <header class="navbar__header">
                 <div class="navbar__header-left">
                     <button class="navbar__close-btn">
@@ -76,6 +75,43 @@
             </div>
         </footer>
     </aside>
+    <aside class="feedback">
+        <button class="feedback__close-btn">
+            <img class="feedback__close-btn-img" src="./image/across.png" alt="close">
+        </button>
+        <div class="feedback__title">
+            <h2 class="feedback__title-text">Обратная связь</h2>
+        </div>
+        <form class="feedback__form">
+            <input type="text" placeholder="Имя">
+            <input type="text" placeholder="Телефон">
+            <input type="text" placeholder="Электронная почта">
+            <textarea cols="30" rows="7" placeholder="Сообщение"></textarea>
+        </form>
+        <div class="feedback__descr">
+            <p class="feedback__descr-p">Нажимая “отправить”, вы даете согласие на <a class="feedback__descr-a" href="#">обработку персональных данных</a> и соглашаетесь с нашей <a class="feedback__descr-a" href="#">политикой конфиденциальности</a></p>
+        </div>
+        <div class="feedback__button">
+            <button class="feedback__button-btn"><span>ОТПРАВИТЬ</span><img src="./image/dropdown.png" alt="dropdown"></button>
+        </div>
+    </aside>
+    <aside class="repairbar">
+        <button class="repairbar__close-btn">
+            <img class="repairbar__close-btn-img" src="./image/across.png" alt="close">
+        </button>
+        <div class="repairbar__title">
+            <h2 class="repairbar__title-text">Заказать звонок</h2>
+        </div>
+        <div class="repairbar__form">
+            <input type="text" placeholder="Телефон">
+        </div>
+        <div class="repairbar__descr">
+            <p class="repairbar__descr-p">Нажимая “отправить”, вы даете согласие на <a class="repairbar__descr-a" href="#">обработку персональных данных</a> и соглашаетесь с нашей <a class="repairbar__descr-a" href="#">политикой конфиденциальности</a></p>
+        </div>
+        <div class="repairbar__button">
+            <button class="repairbar__button-btn"><span>ОТПРАВИТЬ</span><img src="./image/dropdown.png" alt="dropdown"></button>
+        </div>
+    </aside>
     <div class="navbar__background-translucent">
     </div>
     <section class="mobile right-side ">
@@ -88,10 +124,10 @@
             </div>
             <div class="header__border "></div>
             <div class="header__options ">
-                <button class="header__option-item ">
+                <button class="header__option-item open-feedback-btn">
             <img src="./image/setting.png " alt=" " />
           </button>
-                <button class="header__option-item ">
+                <button class="header__option-item open-repairbar-btn">
             <img src="./image/checkstatus.png " alt=" " />
           </button>
             </div>
@@ -133,7 +169,7 @@
             </div>
             <div class="brands__wrapper-right-side ">
             </div>
-            <div class="brands__slider ">
+            <div class="brands__slider">
                 <div class="brands-swiper swiper mySwiper ">
                     <div class=" brands__wrapper swiper-wrapper ">
                         <div class="swiper-slide brands__item ">
@@ -228,24 +264,7 @@
                                 <img src="./image/go.png " alt="to ">
                             </button>
                         </div>
-                        <div class="swiper-slide repair-device__item ">
-                            <p class="repair-device__item-text ">Ремонт ноутбуков </p>
-                            <button class="repair-device__item-button ">
-                                <img src="./image/go.png " alt="to ">
-                            </button>
-                        </div>
-                        <div class="swiper-slide repair-device__item ">
-                            <p class="repair-device__item-text ">Ремонт ноутбуков </p>
-                            <button class="repair-device__item-button ">
-                                <img src="./image/go.png " alt="to ">
-                            </button>
-                        </div>
-                        <div class="swiper-slide repair-device__item ">
-                            <p class="repair-device__item-text ">Ремонт ноутбуков </p>
-                            <button class="repair-device__item-button ">
-                                <img src="./image/go.png " alt="to ">
-                            </button>
-                        </div>
+
                     </div>
                     <div class="swiper-pagination "></div>
                 </div>
