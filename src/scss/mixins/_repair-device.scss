@@ -1,8 +1,28 @@
 .repair-device {
+    &__desktop {
+        display: none;
+    }
     &__slider {
         height: 228px;
         display: flex;
         align-items: center;
+        @media screen and (width >=768px) {
+            display: none;
+        }
+    }
+    @media screen and (width >=768px) {
+        &__desktop {
+            display: block;
+            padding: 16px;
+        }
+        &__desktop-cards {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+            gap: 20px;
+        }
+        &__item:first-child {
+            margin: 0 !important;
+        }
     }
     &__item {
         height: 160px;
@@ -23,5 +43,13 @@
     &__item-button {
         cursor: pointer;
         align-self: flex-end;
+    }
+    &__button-show-item {
+        display: flex;
+        align-items: center;
+        margin-top: 24px;
+    }
+    &__item-none {
+        display: none !important;
     }
 }

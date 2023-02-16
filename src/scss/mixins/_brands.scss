@@ -14,6 +14,40 @@
 
 .brands {
     height: 200px;
+    &__desktop-cards {
+        display: none;
+    }
+    &__button-show-item {
+        display: none;
+    }
+    @media screen and (width >=768px) {
+        &__button-show-item {
+            display: flex !important;
+            align-items: center;
+            margin-left: 24px;
+        }
+        height: auto;
+        &__none-item {
+            display: none !important;
+        }
+        &__wrapper-desktop-cards {
+            padding: 24px;
+        }
+        &__item:first-child {
+            margin-left: 0 !important;
+        }
+        &__item {
+            width: 100% !important;
+        }
+        &__desktop-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+            gap: 20px;
+        }
+        &__slider {
+            display: none !important;
+        }
+    }
     &__slider {
         position: relative;
         margin-top: 25px;
@@ -29,7 +63,6 @@
         width: 30px;
     }
     &__item {
-        width: 600px;
         height: 300px;
         text-align: center;
         font-size: 18px;

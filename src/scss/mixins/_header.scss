@@ -1,9 +1,19 @@
 .header {
     @include flexbleCenter(space-between, center);
+    justify-content: space-between;
+    @media screen and (width >=768px) {
+        display: grid;
+        grid-template-columns: 80px 2px 130px 1fr;
+        align-items: center;
+    }
     padding: 0 16px;
     height: 88px;
     background-color: #fff;
     border-bottom: 1px solid $titleBorder;
+    &__right {
+        display: flex;
+        align-items: center;
+    }
     &__options {
         @include flexbleCenter(space-between, center);
     }
@@ -14,6 +24,49 @@
     }
     &__option-item:first-child {
         margin-right: 27px;
+        @media screen and (width >=768px) {
+            margin: 0;
+        }
+    }
+    @media screen and (width <=350px) {
+        &__border {
+            margin-right: 13px !important;
+        }
+    }
+    &__none-mobile {
+        display: none;
+    }
+    &__border {
+        margin-right: 26px;
+    }
+    &__desktop-border {
+        display: none;
+    }
+    @media screen and (width >=768px) {
+        &__desktop-border {
+            display: block;
+        }
+        &__right {
+            justify-self: end;
+        }
+        &__border {
+            margin-right: 0;
+        }
+        &__none-mobile {
+            display: block;
+        }
+        &__burger {
+            justify-self: center;
+        }
+        &__logo {
+            justify-self: center;
+        }
+        &__option-item {
+            margin-left: 26px;
+        }
+        &__options {
+            margin-left: 26px;
+        }
     }
     &__headline {
         margin: 24px 0;
