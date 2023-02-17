@@ -10,6 +10,73 @@
 </head>
 
 <body>
+    <!-- left side  -->
+    <aside class="navbar-desktop">
+        <div class="navbar-desktop__header-nav">
+            <header class="navbar-desktop__header">
+                <div class="navbar-desktop__header-left">
+                    <button class="navbar-desktop__close-btn">
+                        <img src="./image/across.png" alt="close-navbar">
+                    </button>
+                    <img class="navbar-desktop__logo" src="./image/Group.png" alt="logotype">
+                </div>
+                <div class="navbar-desktop__header-right">
+                    <button class="navbar-desktop__search-btn">
+                        <img src="./image/searcher.png" alt="search">
+                    </button>
+                </div>
+            </header>
+            <nav class="navbar-desktop__nav">
+                <ul class="navbar-desktop__nav-items">
+                    <li class="navbar-desktop__item navbar-desktop__active-item">
+                        <a class="navbar-desktop__link" href="#">Ремонт техники</a>
+                    </li>
+                    <li class="navbar-desktop__item">
+                        <a class="navbar-desktop__link" href="#">Услуги и сервисы</a>
+                    </li>
+                    <li class="navbar-desktop__item">
+                        <a class="navbar-desktop__link" href="#">Корпоративным клиентам</a>
+                    </li>
+                    <li class="navbar-desktop__item">
+                        <a class="navbar-desktop__link" href="#">Продавцам техники</a>
+                    </li>
+                    <li class="navbar-desktop__item">
+                        <a class="navbar-desktop__link" href="#">Производителям</a>
+                    </li>
+                    <li class="navbar-desktop__item">
+                        <a class="navbar-desktop__link" href="#">Наши сервисные центры</a>
+                    </li>
+                    <li class="navbar-desktop__item">
+                        <a class="navbar-desktop__link" href="#">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <footer>
+            <div class="navbar__rows">
+                <div class="navbar__rows-item">
+                    <img src="./image/call.png" alt="">
+                </div>
+                <div class="navbar__rows-item">
+                    <img src="./image/chat.png" alt="">
+                </div>
+                <div class="navbar__rows-item">
+                    <img src="./image/profile.png" alt="">
+                </div>
+            </div>
+            <div class="navbar__contacts">
+                <a class="navbar__contacts-mailto" href="mainto:mail@cps.com">mail@cps.com</a>
+                <h3><a href="tel:8 800 890 8900">8 800 890 8900</a></h3>
+            </div>
+            <div class="navbar__languages">
+                <p class="navbar__languages-item navbar__languages-item-selected">RU</p>
+                <p class="navbar__languages-item">EN</p>
+                <p class="navbar__languages-item">CH</p>
+            </div>
+        </footer>
+    </aside>
+    <!-- left side  -->
     <aside class="navbar">
         <div class="navbar__header-nav">
             <header class="navbar__header">
@@ -115,7 +182,7 @@
     <div class="navbar__background-translucent">
     </div>
     <section class="mobile right-side ">
-        <header class="header moblie__header ">
+        <header class="header mobile__header ">
             <button class="header__burger">
                 <img src="./image/burger.png " alt="burger " />
             </button>
@@ -145,8 +212,40 @@
             </div>
 
         </header>
-        <div class="main-tex header__headline ">
+        <div class="main-tex header__headline title-mobile">
             <h2>Услуги и сервисы</h2>
+        </div>
+        <div class="desktop-header">
+            <div class="main-tex header__headline ">
+                <h2>Услуги и сервисы</h2>
+            </div>
+            <div class="header__options ">
+                <button class="header__option-item open-feedback-btn">
+                    <img src="./image/setting.png " alt=" " />
+                </button>
+                <button class="header__option-item open-repairbar-btn">
+                    <img src="./image/checkstatus.png " alt=" " />
+                </button>
+            </div>
+        </div>
+        <div class="nav-desktop">
+            <div class="nav-desktop__links">
+                <li class="nav-desktop__item">
+                    <a class="nav-desktop__link" href="# ">Ремонтируемые бренды</a>
+                </li>
+                <li class="nav-desktop__item">
+                    <a class="nav-desktop__link" href="# ">Ремонтируемые бренды</a>
+                </li>
+                <li class="nav-desktop__item">
+                    <a class="nav-desktop__link" href="# ">Ремонтируемые бренды</a>
+                </li>
+                <li class="nav-desktop__item">
+                    <a class="nav-desktop__link" href="# ">Ремонтируемые бренды</a>
+                </li>
+                <li class="nav-desktop__item">
+                    <a class="nav-desktop__link" href="# ">Ремонтируемые бренды</a>
+                </li>
+            </div>
         </div>
         <nav class="navigation ">
             <ul class="navigation__wrapper ">
@@ -378,6 +477,11 @@
                 <p>Цены на услуги</p>
             </div>
             <div class="prices-desktop">
+                <div class="title-price prices-desktop__column-item-title ">
+                    <p>Ремонтные услуги</p>
+                    <p>Цена</p>
+                    <p>Срок</p>
+                </div>
                 <div class="prices-desktop__column-items">
                     <div class="prices-desktop__column-item">
                         <p>Диагностика</p>

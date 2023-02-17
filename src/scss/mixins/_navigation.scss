@@ -1,11 +1,14 @@
 .navigation {
+    @media screen and (width >=1120px) {
+        display: none;
+    }
     position: relative;
     width: 100%;
     overflow-x: scroll;
-    height: 55px;
+    height: 60px;
     @include flexbleCenter(0, center);
     &__wrapper {
-        @include flexbleCenter(space-between, center);
+        @include flexbleCenter(space-evenly, center);
         width: 1700px;
         margin-bottom: 10px;
     }

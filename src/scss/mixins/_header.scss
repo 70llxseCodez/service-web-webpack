@@ -1,4 +1,7 @@
 .header {
+    @media screen and (width >=1120px) {
+        display: none !important;
+    }
     @include flexbleCenter(space-between, center);
     justify-content: space-between;
     @media screen and (width >=768px) {
@@ -70,6 +73,9 @@
     }
     &__headline {
         margin: 24px 0;
+        @media screen and (width <=1120px) {
+            margin: 24px 0 12px 0;
+        }
         display: flex;
         &::before {
             content: " ";
@@ -82,5 +88,45 @@
         & h2 {
             font-size: 28px;
         }
+    }
+}
+
+.desktop-header {
+    display: none;
+}
+
+@media screen and (width >=1120px) {
+    .desktop-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .open-feedback-btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        &::before {
+            content: "Оставить заявку";
+            margin-right: 8px;
+        }
+    }
+    .open-repairbar-btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-right: 24px;
+        &::before {
+            content: "Статус ремонта";
+            margin-right: 8px;
+        }
+    }
+}
+
+.title-mobile {
+    display: none;
+}
+
+@media screen and (width <=1120px) {
+    .title-mobile {
+        display: flex;
     }
 }

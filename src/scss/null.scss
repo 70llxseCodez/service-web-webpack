@@ -2,8 +2,11 @@ body {
     font-family: "TT Lakes";
     background-color: $bgbody;
     position: relative;
-    width: 100%;
     overflow-x: hidden;
+    @media screen and (width >=1120px) {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+    }
 }
 
 // }
@@ -49,4 +52,8 @@ textarea {
         padding-left: 16px;
         line-height: 24px;
     }
+}
+
+.right-side {
+    width: 100%;
 }

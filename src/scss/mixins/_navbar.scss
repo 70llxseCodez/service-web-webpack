@@ -99,6 +99,7 @@
         background-color: #fff;
         transition: 0.8s ease;
         opacity: 0.1;
+        display: none;
     }
     &__background-translucent-active {
         overflow-y: hidden;
@@ -110,5 +111,102 @@
         width: 100%;
         z-index: 12;
         transition: 0.8s ease;
+        display: block !important;
+    }
+}
+
+//desktop
+.navbar-desktop {
+    display: none;
+}
+
+@media screen and (width >=1120px) {
+    .navbar-desktop {
+        width: 320px;
+        background: #fff;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-active {
+            left: 0;
+            transition: 0.7s ease;
+        }
+        &__header {
+            justify-self: flex-start;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        &__header-left {
+            display: flex;
+        }
+        &__close-btn {
+            display: none !important;
+        }
+        &__nav-items {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 34px;
+        }
+        &__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            &::before {
+                margin-right: 16px;
+                content: "";
+                background-color: transparent;
+                height: 32px;
+                width: 4px;
+            }
+        }
+        &__active-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            & a {
+                color: $titleColor;
+            }
+            &::before {
+                border-radius: 0 50px 50px 0;
+                margin-right: 20px;
+                content: "";
+                background-color: $borderforMainText;
+                height: 32px;
+                width: 4px;
+            }
+        }
+        &__rows {
+            display: flex;
+            margin-left: 24px;
+            &-item {
+                margin-right: 10px;
+                cursor: pointer;
+            }
+            margin-bottom: 16px;
+        }
+        &__contacts {
+            margin-left: 24px;
+            & h3 {
+                font-size: 24px;
+                margin-bottom: 8px;
+                margin-top: 12px;
+            }
+        }
+        &__languages {
+            margin-left: 24px;
+            display: flex;
+            &-item {
+                margin-bottom: 12px;
+                margin-right: 7px;
+                color: $colorText;
+            }
+            &-item-selected {
+                color: $titleColor;
+            }
+        }
     }
 }

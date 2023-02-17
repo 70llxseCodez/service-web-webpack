@@ -22,11 +22,22 @@ export const burgerMenu = () => {
 //feedback
 
 export const feedback = () => {
-  const btnFeedback = document.querySelector('.open-feedback-btn');
+  const btnFeedback = document.querySelectorAll('.open-feedback-btn');
   const feedbackBlock = document.querySelector('.feedback');
   const btnCloseFeedback = document.querySelector('.feedback__close-btn-img');
 
-  btnFeedback.addEventListener('click', () => {
+  btnFeedback[0].addEventListener('click', () => {
+    feedbackBlock.classList.add('open-feedback');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+
+  btnCloseFeedback.addEventListener('click', () => {
+    feedbackBlock.classList.remove('open-feedback');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+  btnFeedback[1].addEventListener('click', () => {
     feedbackBlock.classList.add('open-feedback');
     transparentWrapp.classList.add('navbar__background-translucent-active');
     document.querySelector('html').style.overflowY = 'hidden';
@@ -40,11 +51,22 @@ export const feedback = () => {
 };
 
 export const repairbar = () => {
-  const btnFeedback = document.querySelector('.open-repairbar-btn');
+  const btnFeedback = document.querySelectorAll('.open-repairbar-btn');
   const repairbackBlock = document.querySelector('.repairbar');
   const btnCloseFeedback = document.querySelector('.repairbar__close-btn-img');
 
-  btnFeedback.addEventListener('click', () => {
+  btnFeedback[0].addEventListener('click', () => {
+    repairbackBlock.classList.add('open-repairbar');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+
+  btnCloseFeedback.addEventListener('click', () => {
+    repairbackBlock.classList.remove('open-repairbar');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+  btnFeedback[1].addEventListener('click', () => {
     repairbackBlock.classList.add('open-repairbar');
     transparentWrapp.classList.add('navbar__background-translucent-active');
     document.querySelector('html').style.overflowY = 'hidden';
