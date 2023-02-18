@@ -40,6 +40,201 @@ __webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerat
 
 /***/ }),
 
+/***/ "./src/modules/brands.js":
+/*!*******************************!*\
+  !*** ./src/modules/brands.js ***!
+  \*******************************/
+/***/ (() => {
+
+const showCardBtn = document.querySelector('.brands__button-show-item');
+const nonedCards = document.querySelectorAll('.brands__none-item');
+const btnShowCardsBtnImg = document.querySelector('.brands__button-show-item-img');
+const btnShowCardsBtnText = document.querySelector('.brands__button-show-item-text');
+
+// eslint-disable-next-line no-unused-vars
+let clicked = true;
+showCardBtn.addEventListener('click', () => {
+  if (clicked) {
+    clicked = !clicked;
+    btnShowCardsBtnImg.style = 'transform: rotate(180deg)';
+    btnShowCardsBtnText.textContent = 'скрыть';
+    for (let i = 0; i < nonedCards.length; i++) {
+      nonedCards[i].style = `display:flex !important`;
+    }
+  } else {
+    for (let i = 0; i < nonedCards.length; i++) {
+      nonedCards[i].style = `display:none !important`;
+    }
+    clicked = !clicked;
+    btnShowCardsBtnImg.style = 'transform: rotate(0deg)';
+    btnShowCardsBtnText.textContent = 'Показать все';
+  }
+});
+
+/***/ }),
+
+/***/ "./src/modules/descriptionShower.js":
+/*!******************************************!*\
+  !*** ./src/modules/descriptionShower.js ***!
+  \******************************************/
+/***/ (() => {
+
+const descrption = document.querySelector('.main__description-text');
+const descrMore = document.querySelector('.main__decription-text-more');
+const mainBtnMore = document.querySelector('.main__button');
+const mainBtnMoreText = document.querySelector('.main__button-text');
+const mainBtnMoreImg = document.querySelector('.main__button-img');
+function desc() {
+  if (window.innerWidth >= 1220) {
+    return descrption.textContent = 'Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя. по ремонту техники Dell. Только у нас вы можете отремонтировать свой. Только у нас вы можете ';
+  } else return descrption.textContent = 'Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя.';
+}
+window.addEventListener('resize', desc);
+let clicked = true;
+mainBtnMore.addEventListener('click', () => {
+  if (clicked) {
+    descrMore.style = `display:block`;
+    clicked = !clicked;
+    mainBtnMoreText.textContent = 'скрыть';
+    mainBtnMoreImg.style.transform = 'rotate(180deg)';
+  } else {
+    clicked = !clicked;
+    descrMore.style = 'display:none';
+    mainBtnMoreText.textContent = 'Показать все';
+    mainBtnMoreImg.style.transform = 'rotate(0deg)';
+  }
+});
+
+/***/ }),
+
+/***/ "./src/modules/repairCards.js":
+/*!************************************!*\
+  !*** ./src/modules/repairCards.js ***!
+  \************************************/
+/***/ (() => {
+
+const repairNonedCards = document.querySelectorAll('.repair-device__item-none');
+const showNoneCardsBtn = document.querySelector('.repair-device__button-show-item');
+const repairBtnImg = document.querySelector('.repair-device__button-show-item-img');
+const repairBtnText = document.querySelector('.repair-device__button-show-item-text');
+let clicked = true;
+showNoneCardsBtn.addEventListener('click', () => {
+  if (clicked) {
+    clicked = !clicked;
+    for (let i = 0; i < repairNonedCards.length; i++) {
+      repairNonedCards[i].style = 'display:flex !important';
+    }
+    repairBtnImg.style.transform = 'rotate(180deg)';
+    repairBtnText.textContent = 'скрыть';
+  } else {
+    for (let i = 0; i < repairNonedCards.length; i++) {
+      repairNonedCards[i].style = 'display:none !important';
+    }
+    clicked = !clicked;
+    repairBtnText.textContent = 'Показать все';
+    repairBtnImg.style.transform = 'rotate(0deg)';
+  }
+});
+
+/***/ }),
+
+/***/ "./src/modules/script.js":
+/*!*******************************!*\
+  !*** ./src/modules/script.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "burgerMenu": () => (/* binding */ burgerMenu),
+/* harmony export */   "closeAllBar": () => (/* binding */ closeAllBar),
+/* harmony export */   "feedback": () => (/* binding */ feedback),
+/* harmony export */   "repairbar": () => (/* binding */ repairbar)
+/* harmony export */ });
+const transparentWrapp = document.querySelector('.navbar__background-translucent');
+const burgerMenu = () => {
+  const burger = document.querySelector('.header__burger');
+  const navbar = document.querySelector('.navbar');
+  const closeBtn = document.querySelector('.navbar__close-btn');
+  burger.addEventListener('click', () => {
+    navbar.classList.add('navbar-active');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+  closeBtn.addEventListener('click', () => {
+    navbar.classList.remove('navbar-active');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+};
+
+//feedback
+
+const feedback = () => {
+  const btnFeedback = document.querySelectorAll('.open-feedback-btn');
+  const feedbackBlock = document.querySelector('.feedback');
+  const btnCloseFeedback = document.querySelector('.feedback__close-btn-img');
+  btnFeedback[0].addEventListener('click', () => {
+    feedbackBlock.classList.add('open-feedback');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+  btnCloseFeedback.addEventListener('click', () => {
+    feedbackBlock.classList.remove('open-feedback');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+  btnFeedback[1].addEventListener('click', () => {
+    feedbackBlock.classList.add('open-feedback');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+  btnCloseFeedback.addEventListener('click', () => {
+    feedbackBlock.classList.remove('open-feedback');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+};
+const repairbar = () => {
+  const btnFeedback = document.querySelectorAll('.open-repairbar-btn');
+  const repairbackBlock = document.querySelector('.repairbar');
+  const btnCloseFeedback = document.querySelector('.repairbar__close-btn-img');
+  btnFeedback[0].addEventListener('click', () => {
+    repairbackBlock.classList.add('open-repairbar');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+  btnCloseFeedback.addEventListener('click', () => {
+    repairbackBlock.classList.remove('open-repairbar');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+  btnFeedback[1].addEventListener('click', () => {
+    repairbackBlock.classList.add('open-repairbar');
+    transparentWrapp.classList.add('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'hidden';
+  });
+  btnCloseFeedback.addEventListener('click', () => {
+    repairbackBlock.classList.remove('open-repairbar');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+    document.querySelector('html').style.overflowY = 'visible';
+  });
+};
+const closeAllBar = () => {
+  const repairbackBlock = document.querySelector('.repairbar');
+  const feedbackBlock = document.querySelector('.feedback');
+  const navbar = document.querySelector('.navbar');
+  transparentWrapp.addEventListener('click', () => {
+    repairbackBlock.classList.remove('open-repairbar');
+    feedbackBlock.classList.remove('open-feedback');
+    navbar.classList.remove('navbar-active');
+    transparentWrapp.classList.remove('navbar__background-translucent-active');
+  });
+};
+
+/***/ }),
+
 /***/ "./src/modules/slider.js":
 /*!*******************************!*\
   !*** ./src/modules/slider.js ***!
@@ -9121,9 +9316,595 @@ module.exports = __webpack_require__(/*! ../modules/_core */ "./node_modules/cor
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \***************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n  ╷\n2 │ @import \"./scss/fonts\";\n  │         ^^^^^^^^^^^^^^\n  ╵\n  src/index.scss 2:9  root stylesheet");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_lib_normalize_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../node_modules/css-loader/dist/cjs.js!./lib/normalize.css */ "./node_modules/css-loader/dist/cjs.js!./src/lib/normalize.css");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3__);
+// Imports
+
+
+
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Italic.eot */ "./src/fonts/TTLakes-Italic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Italic.woff */ "./src/fonts/TTLakes-Italic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Italic.ttf */ "./src/fonts/TTLakes-Italic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraLight.eot */ "./src/fonts/TTLakesCondensed-ExtraLight.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_4___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraLight.woff */ "./src/fonts/TTLakesCondensed-ExtraLight.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_5___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraLight.ttf */ "./src/fonts/TTLakesCondensed-ExtraLight.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_6___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Regular.eot */ "./src/fonts/TTLakesCompressed-Regular.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_7___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Regular.woff */ "./src/fonts/TTLakesCompressed-Regular.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_8___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Regular.ttf */ "./src/fonts/TTLakesCompressed-Regular.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_9___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ThinItalic.eot */ "./src/fonts/TTLakesCompressed-ThinItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_10___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ThinItalic.woff */ "./src/fonts/TTLakesCompressed-ThinItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_11___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ThinItalic.ttf */ "./src/fonts/TTLakesCompressed-ThinItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_12___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Medium.eot */ "./src/fonts/TTLakesCondensed-Medium.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_13___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Medium.woff */ "./src/fonts/TTLakesCondensed-Medium.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_14___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Medium.ttf */ "./src/fonts/TTLakesCondensed-Medium.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_15___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraBoldItalic.eot */ "./src/fonts/TTLakesCompressed-ExtraBoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_16___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraBoldItalic.woff */ "./src/fonts/TTLakesCompressed-ExtraBoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_17___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraBoldItalic.ttf */ "./src/fonts/TTLakesCompressed-ExtraBoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_18___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraLightItalic.eot */ "./src/fonts/TTLakes-ExtraLightItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_19___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraLightItalic.woff */ "./src/fonts/TTLakes-ExtraLightItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_20___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraLightItalic.ttf */ "./src/fonts/TTLakes-ExtraLightItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_21___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-LightItalic.eot */ "./src/fonts/TTLakes-LightItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_22___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-LightItalic.woff */ "./src/fonts/TTLakes-LightItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_23___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-LightItalic.ttf */ "./src/fonts/TTLakes-LightItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_24___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Thin.eot */ "./src/fonts/TTLakes-Thin.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_25___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Thin.woff */ "./src/fonts/TTLakes-Thin.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_26___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Thin.ttf */ "./src/fonts/TTLakes-Thin.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_27___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-DemiBoldItalic.eot */ "./src/fonts/TTLakes-DemiBoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_28___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-DemiBoldItalic.woff */ "./src/fonts/TTLakes-DemiBoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_29___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-DemiBoldItalic.ttf */ "./src/fonts/TTLakes-DemiBoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_30___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Black.eot */ "./src/fonts/TTLakesCondensed-Black.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_31___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Black.woff */ "./src/fonts/TTLakesCondensed-Black.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_32___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Black.ttf */ "./src/fonts/TTLakesCondensed-Black.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_33___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-LightItalic.eot */ "./src/fonts/TTLakesCondensed-LightItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_34___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-LightItalic.woff */ "./src/fonts/TTLakesCondensed-LightItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_35___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-LightItalic.ttf */ "./src/fonts/TTLakesCondensed-LightItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_36___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-DemiBold.eot */ "./src/fonts/TTLakesCondensed-DemiBold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_37___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-DemiBold.woff */ "./src/fonts/TTLakesCondensed-DemiBold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_38___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-DemiBold.ttf */ "./src/fonts/TTLakesCondensed-DemiBold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_39___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraBold.eot */ "./src/fonts/TTLakesCompressed-ExtraBold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_40___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraBold.woff */ "./src/fonts/TTLakesCompressed-ExtraBold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_41___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraBold.ttf */ "./src/fonts/TTLakesCompressed-ExtraBold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_42___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraBoldItalic.eot */ "./src/fonts/TTLakes-ExtraBoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_43___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraBoldItalic.woff */ "./src/fonts/TTLakes-ExtraBoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_44___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraBoldItalic.ttf */ "./src/fonts/TTLakes-ExtraBoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_45___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraLight.eot */ "./src/fonts/TTLakes-ExtraLight.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_46___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraLight.woff */ "./src/fonts/TTLakes-ExtraLight.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_47___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraLight.ttf */ "./src/fonts/TTLakes-ExtraLight.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_48___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Bold.eot */ "./src/fonts/TTLakesCondensed-Bold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_49___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Bold.woff */ "./src/fonts/TTLakesCondensed-Bold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_50___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Bold.ttf */ "./src/fonts/TTLakesCondensed-Bold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_51___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ThinItalic.eot */ "./src/fonts/TTLakesCondensed-ThinItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_52___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ThinItalic.woff */ "./src/fonts/TTLakesCondensed-ThinItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_53___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ThinItalic.ttf */ "./src/fonts/TTLakesCondensed-ThinItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_54___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraBoldItalic.eot */ "./src/fonts/TTLakesCondensed-ExtraBoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_55___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraBoldItalic.woff */ "./src/fonts/TTLakesCondensed-ExtraBoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_56___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraBoldItalic.ttf */ "./src/fonts/TTLakesCondensed-ExtraBoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_57___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Medium.eot */ "./src/fonts/TTLakesCompressed-Medium.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_58___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Medium.woff */ "./src/fonts/TTLakesCompressed-Medium.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_59___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Medium.ttf */ "./src/fonts/TTLakesCompressed-Medium.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_60___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Thin.eot */ "./src/fonts/TTLakesCondensed-Thin.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_61___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Thin.woff */ "./src/fonts/TTLakesCondensed-Thin.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_62___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Thin.ttf */ "./src/fonts/TTLakesCondensed-Thin.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_63___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Italic.eot */ "./src/fonts/TTLakesCompressed-Italic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_64___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Italic.woff */ "./src/fonts/TTLakesCompressed-Italic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_65___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Italic.ttf */ "./src/fonts/TTLakesCompressed-Italic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_66___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Light.eot */ "./src/fonts/TTLakesCompressed-Light.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_67___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Light.woff */ "./src/fonts/TTLakesCompressed-Light.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_68___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Light.ttf */ "./src/fonts/TTLakesCompressed-Light.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_69___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-LightItalic.eot */ "./src/fonts/TTLakesCompressed-LightItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_70___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-LightItalic.woff */ "./src/fonts/TTLakesCompressed-LightItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_71___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-LightItalic.ttf */ "./src/fonts/TTLakesCompressed-LightItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_72___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Regular.eot */ "./src/fonts/TTLakesCondensed-Regular.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_73___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Regular.woff */ "./src/fonts/TTLakesCondensed-Regular.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_74___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Regular.ttf */ "./src/fonts/TTLakesCondensed-Regular.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_75___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Light.eot */ "./src/fonts/TTLakesCondensed-Light.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_76___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Light.woff */ "./src/fonts/TTLakesCondensed-Light.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_77___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Light.ttf */ "./src/fonts/TTLakesCondensed-Light.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_78___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Bold.eot */ "./src/fonts/TTLakes-Bold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_79___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Bold.woff */ "./src/fonts/TTLakes-Bold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_80___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Bold.ttf */ "./src/fonts/TTLakes-Bold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_81___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-DemiBold.eot */ "./src/fonts/TTLakes-DemiBold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_82___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-DemiBold.woff */ "./src/fonts/TTLakes-DemiBold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_83___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-DemiBold.ttf */ "./src/fonts/TTLakes-DemiBold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_84___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Thin.eot */ "./src/fonts/TTLakesCompressed-Thin.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_85___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Thin.woff */ "./src/fonts/TTLakesCompressed-Thin.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_86___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Thin.ttf */ "./src/fonts/TTLakesCompressed-Thin.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_87___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Black.eot */ "./src/fonts/TTLakes-Black.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_88___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Black.woff */ "./src/fonts/TTLakes-Black.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_89___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Black.ttf */ "./src/fonts/TTLakes-Black.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_90___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-MediumItalic.eot */ "./src/fonts/TTLakes-MediumItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_91___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-MediumItalic.woff */ "./src/fonts/TTLakes-MediumItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_92___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-MediumItalic.ttf */ "./src/fonts/TTLakes-MediumItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_93___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraBold.eot */ "./src/fonts/TTLakesCondensed-ExtraBold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_94___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraBold.woff */ "./src/fonts/TTLakesCondensed-ExtraBold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_95___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraBold.ttf */ "./src/fonts/TTLakesCondensed-ExtraBold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_96___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraLightItalic.eot */ "./src/fonts/TTLakesCondensed-ExtraLightItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_97___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraLightItalic.woff */ "./src/fonts/TTLakesCondensed-ExtraLightItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_98___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-ExtraLightItalic.ttf */ "./src/fonts/TTLakesCondensed-ExtraLightItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_99___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Medium.eot */ "./src/fonts/TTLakes-Medium.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_100___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Medium.woff */ "./src/fonts/TTLakes-Medium.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_101___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Medium.ttf */ "./src/fonts/TTLakes-Medium.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_102___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-DemiBoldItalic.eot */ "./src/fonts/TTLakesCondensed-DemiBoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_103___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-DemiBoldItalic.woff */ "./src/fonts/TTLakesCondensed-DemiBoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_104___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-DemiBoldItalic.ttf */ "./src/fonts/TTLakesCondensed-DemiBoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_105___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-BoldItalic.eot */ "./src/fonts/TTLakesCompressed-BoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_106___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-BoldItalic.woff */ "./src/fonts/TTLakesCompressed-BoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_107___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-BoldItalic.ttf */ "./src/fonts/TTLakesCompressed-BoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_108___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraLightItalic.eot */ "./src/fonts/TTLakesCompressed-ExtraLightItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_109___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraLightItalic.woff */ "./src/fonts/TTLakesCompressed-ExtraLightItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_110___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraLightItalic.ttf */ "./src/fonts/TTLakesCompressed-ExtraLightItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_111___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Regular.eot */ "./src/fonts/TTLakes-Regular.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_112___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Regular.woff */ "./src/fonts/TTLakes-Regular.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_113___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Regular.ttf */ "./src/fonts/TTLakes-Regular.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_114___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-BoldItalic.eot */ "./src/fonts/TTLakes-BoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_115___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-BoldItalic.woff */ "./src/fonts/TTLakes-BoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_116___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-BoldItalic.ttf */ "./src/fonts/TTLakes-BoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_117___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-MediumItalic.eot */ "./src/fonts/TTLakesCondensed-MediumItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_118___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-MediumItalic.woff */ "./src/fonts/TTLakesCondensed-MediumItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_119___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-MediumItalic.ttf */ "./src/fonts/TTLakesCondensed-MediumItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_120___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Italic.eot */ "./src/fonts/TTLakesCondensed-Italic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_121___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Italic.woff */ "./src/fonts/TTLakesCondensed-Italic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_122___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-Italic.ttf */ "./src/fonts/TTLakesCondensed-Italic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_123___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ThinItalic.eot */ "./src/fonts/TTLakes-ThinItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_124___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ThinItalic.woff */ "./src/fonts/TTLakes-ThinItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_125___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ThinItalic.ttf */ "./src/fonts/TTLakes-ThinItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_126___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-DemiBold.eot */ "./src/fonts/TTLakesCompressed-DemiBold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_127___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-DemiBold.woff */ "./src/fonts/TTLakesCompressed-DemiBold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_128___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-DemiBold.ttf */ "./src/fonts/TTLakesCompressed-DemiBold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_129___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-BlackItalic.eot */ "./src/fonts/TTLakes-BlackItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_130___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-BlackItalic.woff */ "./src/fonts/TTLakes-BlackItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_131___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-BlackItalic.ttf */ "./src/fonts/TTLakes-BlackItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_132___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Bold.eot */ "./src/fonts/TTLakesCompressed-Bold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_133___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Bold.woff */ "./src/fonts/TTLakesCompressed-Bold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_134___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Bold.ttf */ "./src/fonts/TTLakesCompressed-Bold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_135___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-BlackItalic.eot */ "./src/fonts/TTLakesCondensed-BlackItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_136___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-BlackItalic.woff */ "./src/fonts/TTLakesCondensed-BlackItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_137___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-BlackItalic.ttf */ "./src/fonts/TTLakesCondensed-BlackItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_138___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-MediumItalic.eot */ "./src/fonts/TTLakesCompressed-MediumItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_139___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-MediumItalic.woff */ "./src/fonts/TTLakesCompressed-MediumItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_140___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-MediumItalic.ttf */ "./src/fonts/TTLakesCompressed-MediumItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_141___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-BoldItalic.eot */ "./src/fonts/TTLakesCondensed-BoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_142___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-BoldItalic.woff */ "./src/fonts/TTLakesCondensed-BoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_143___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCondensed-BoldItalic.ttf */ "./src/fonts/TTLakesCondensed-BoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_144___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraLight.eot */ "./src/fonts/TTLakesCompressed-ExtraLight.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_145___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraLight.woff */ "./src/fonts/TTLakesCompressed-ExtraLight.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_146___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-ExtraLight.ttf */ "./src/fonts/TTLakesCompressed-ExtraLight.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_147___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraBold.eot */ "./src/fonts/TTLakes-ExtraBold.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_148___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraBold.woff */ "./src/fonts/TTLakes-ExtraBold.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_149___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-ExtraBold.ttf */ "./src/fonts/TTLakes-ExtraBold.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_150___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-DemiBoldItalic.eot */ "./src/fonts/TTLakesCompressed-DemiBoldItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_151___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-DemiBoldItalic.woff */ "./src/fonts/TTLakesCompressed-DemiBoldItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_152___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-DemiBoldItalic.ttf */ "./src/fonts/TTLakesCompressed-DemiBoldItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_153___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-BlackItalic.eot */ "./src/fonts/TTLakesCompressed-BlackItalic.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_154___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-BlackItalic.woff */ "./src/fonts/TTLakesCompressed-BlackItalic.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_155___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-BlackItalic.ttf */ "./src/fonts/TTLakesCompressed-BlackItalic.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_156___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Light.eot */ "./src/fonts/TTLakes-Light.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_157___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Light.woff */ "./src/fonts/TTLakes-Light.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_158___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakes-Light.ttf */ "./src/fonts/TTLakes-Light.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_159___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Black.eot */ "./src/fonts/TTLakesCompressed-Black.eot"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_160___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Black.woff */ "./src/fonts/TTLakesCompressed-Black.woff"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_161___ = new URL(/* asset import */ __webpack_require__(/*! fonts/TTLakesCompressed-Black.ttf */ "./src/fonts/TTLakesCompressed-Black.ttf"), __webpack_require__.b);
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_lib_normalize_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css);"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_0___);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_0___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_1___);
+var ___CSS_LOADER_URL_REPLACEMENT_3___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_2___);
+var ___CSS_LOADER_URL_REPLACEMENT_4___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_3___);
+var ___CSS_LOADER_URL_REPLACEMENT_5___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_3___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_6___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_4___);
+var ___CSS_LOADER_URL_REPLACEMENT_7___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_5___);
+var ___CSS_LOADER_URL_REPLACEMENT_8___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_6___);
+var ___CSS_LOADER_URL_REPLACEMENT_9___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_6___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_10___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_7___);
+var ___CSS_LOADER_URL_REPLACEMENT_11___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_8___);
+var ___CSS_LOADER_URL_REPLACEMENT_12___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_9___);
+var ___CSS_LOADER_URL_REPLACEMENT_13___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_9___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_14___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_10___);
+var ___CSS_LOADER_URL_REPLACEMENT_15___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_11___);
+var ___CSS_LOADER_URL_REPLACEMENT_16___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_12___);
+var ___CSS_LOADER_URL_REPLACEMENT_17___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_12___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_18___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_13___);
+var ___CSS_LOADER_URL_REPLACEMENT_19___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_14___);
+var ___CSS_LOADER_URL_REPLACEMENT_20___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_15___);
+var ___CSS_LOADER_URL_REPLACEMENT_21___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_15___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_22___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_16___);
+var ___CSS_LOADER_URL_REPLACEMENT_23___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_17___);
+var ___CSS_LOADER_URL_REPLACEMENT_24___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_18___);
+var ___CSS_LOADER_URL_REPLACEMENT_25___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_18___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_26___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_19___);
+var ___CSS_LOADER_URL_REPLACEMENT_27___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_20___);
+var ___CSS_LOADER_URL_REPLACEMENT_28___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_21___);
+var ___CSS_LOADER_URL_REPLACEMENT_29___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_21___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_30___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_22___);
+var ___CSS_LOADER_URL_REPLACEMENT_31___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_23___);
+var ___CSS_LOADER_URL_REPLACEMENT_32___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_24___);
+var ___CSS_LOADER_URL_REPLACEMENT_33___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_24___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_34___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_25___);
+var ___CSS_LOADER_URL_REPLACEMENT_35___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_26___);
+var ___CSS_LOADER_URL_REPLACEMENT_36___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_27___);
+var ___CSS_LOADER_URL_REPLACEMENT_37___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_27___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_38___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_28___);
+var ___CSS_LOADER_URL_REPLACEMENT_39___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_29___);
+var ___CSS_LOADER_URL_REPLACEMENT_40___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_30___);
+var ___CSS_LOADER_URL_REPLACEMENT_41___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_30___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_42___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_31___);
+var ___CSS_LOADER_URL_REPLACEMENT_43___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_32___);
+var ___CSS_LOADER_URL_REPLACEMENT_44___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_33___);
+var ___CSS_LOADER_URL_REPLACEMENT_45___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_33___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_46___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_34___);
+var ___CSS_LOADER_URL_REPLACEMENT_47___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_35___);
+var ___CSS_LOADER_URL_REPLACEMENT_48___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_36___);
+var ___CSS_LOADER_URL_REPLACEMENT_49___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_36___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_50___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_37___);
+var ___CSS_LOADER_URL_REPLACEMENT_51___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_38___);
+var ___CSS_LOADER_URL_REPLACEMENT_52___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_39___);
+var ___CSS_LOADER_URL_REPLACEMENT_53___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_39___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_54___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_40___);
+var ___CSS_LOADER_URL_REPLACEMENT_55___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_41___);
+var ___CSS_LOADER_URL_REPLACEMENT_56___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_42___);
+var ___CSS_LOADER_URL_REPLACEMENT_57___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_42___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_58___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_43___);
+var ___CSS_LOADER_URL_REPLACEMENT_59___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_44___);
+var ___CSS_LOADER_URL_REPLACEMENT_60___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_45___);
+var ___CSS_LOADER_URL_REPLACEMENT_61___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_45___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_62___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_46___);
+var ___CSS_LOADER_URL_REPLACEMENT_63___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_47___);
+var ___CSS_LOADER_URL_REPLACEMENT_64___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_48___);
+var ___CSS_LOADER_URL_REPLACEMENT_65___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_48___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_66___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_49___);
+var ___CSS_LOADER_URL_REPLACEMENT_67___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_50___);
+var ___CSS_LOADER_URL_REPLACEMENT_68___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_51___);
+var ___CSS_LOADER_URL_REPLACEMENT_69___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_51___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_70___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_52___);
+var ___CSS_LOADER_URL_REPLACEMENT_71___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_53___);
+var ___CSS_LOADER_URL_REPLACEMENT_72___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_54___);
+var ___CSS_LOADER_URL_REPLACEMENT_73___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_54___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_74___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_55___);
+var ___CSS_LOADER_URL_REPLACEMENT_75___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_56___);
+var ___CSS_LOADER_URL_REPLACEMENT_76___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_57___);
+var ___CSS_LOADER_URL_REPLACEMENT_77___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_57___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_78___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_58___);
+var ___CSS_LOADER_URL_REPLACEMENT_79___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_59___);
+var ___CSS_LOADER_URL_REPLACEMENT_80___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_60___);
+var ___CSS_LOADER_URL_REPLACEMENT_81___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_60___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_82___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_61___);
+var ___CSS_LOADER_URL_REPLACEMENT_83___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_62___);
+var ___CSS_LOADER_URL_REPLACEMENT_84___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_63___);
+var ___CSS_LOADER_URL_REPLACEMENT_85___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_63___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_86___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_64___);
+var ___CSS_LOADER_URL_REPLACEMENT_87___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_65___);
+var ___CSS_LOADER_URL_REPLACEMENT_88___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_66___);
+var ___CSS_LOADER_URL_REPLACEMENT_89___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_66___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_90___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_67___);
+var ___CSS_LOADER_URL_REPLACEMENT_91___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_68___);
+var ___CSS_LOADER_URL_REPLACEMENT_92___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_69___);
+var ___CSS_LOADER_URL_REPLACEMENT_93___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_69___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_94___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_70___);
+var ___CSS_LOADER_URL_REPLACEMENT_95___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_71___);
+var ___CSS_LOADER_URL_REPLACEMENT_96___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_72___);
+var ___CSS_LOADER_URL_REPLACEMENT_97___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_72___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_98___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_73___);
+var ___CSS_LOADER_URL_REPLACEMENT_99___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_74___);
+var ___CSS_LOADER_URL_REPLACEMENT_100___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_75___);
+var ___CSS_LOADER_URL_REPLACEMENT_101___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_75___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_102___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_76___);
+var ___CSS_LOADER_URL_REPLACEMENT_103___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_77___);
+var ___CSS_LOADER_URL_REPLACEMENT_104___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_78___);
+var ___CSS_LOADER_URL_REPLACEMENT_105___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_78___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_106___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_79___);
+var ___CSS_LOADER_URL_REPLACEMENT_107___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_80___);
+var ___CSS_LOADER_URL_REPLACEMENT_108___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_81___);
+var ___CSS_LOADER_URL_REPLACEMENT_109___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_81___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_110___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_82___);
+var ___CSS_LOADER_URL_REPLACEMENT_111___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_83___);
+var ___CSS_LOADER_URL_REPLACEMENT_112___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_84___);
+var ___CSS_LOADER_URL_REPLACEMENT_113___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_84___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_114___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_85___);
+var ___CSS_LOADER_URL_REPLACEMENT_115___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_86___);
+var ___CSS_LOADER_URL_REPLACEMENT_116___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_87___);
+var ___CSS_LOADER_URL_REPLACEMENT_117___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_87___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_118___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_88___);
+var ___CSS_LOADER_URL_REPLACEMENT_119___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_89___);
+var ___CSS_LOADER_URL_REPLACEMENT_120___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_90___);
+var ___CSS_LOADER_URL_REPLACEMENT_121___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_90___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_122___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_91___);
+var ___CSS_LOADER_URL_REPLACEMENT_123___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_92___);
+var ___CSS_LOADER_URL_REPLACEMENT_124___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_93___);
+var ___CSS_LOADER_URL_REPLACEMENT_125___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_93___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_126___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_94___);
+var ___CSS_LOADER_URL_REPLACEMENT_127___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_95___);
+var ___CSS_LOADER_URL_REPLACEMENT_128___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_96___);
+var ___CSS_LOADER_URL_REPLACEMENT_129___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_96___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_130___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_97___);
+var ___CSS_LOADER_URL_REPLACEMENT_131___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_98___);
+var ___CSS_LOADER_URL_REPLACEMENT_132___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_99___);
+var ___CSS_LOADER_URL_REPLACEMENT_133___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_99___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_134___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_100___);
+var ___CSS_LOADER_URL_REPLACEMENT_135___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_101___);
+var ___CSS_LOADER_URL_REPLACEMENT_136___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_102___);
+var ___CSS_LOADER_URL_REPLACEMENT_137___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_102___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_138___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_103___);
+var ___CSS_LOADER_URL_REPLACEMENT_139___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_104___);
+var ___CSS_LOADER_URL_REPLACEMENT_140___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_105___);
+var ___CSS_LOADER_URL_REPLACEMENT_141___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_105___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_142___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_106___);
+var ___CSS_LOADER_URL_REPLACEMENT_143___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_107___);
+var ___CSS_LOADER_URL_REPLACEMENT_144___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_108___);
+var ___CSS_LOADER_URL_REPLACEMENT_145___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_108___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_146___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_109___);
+var ___CSS_LOADER_URL_REPLACEMENT_147___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_110___);
+var ___CSS_LOADER_URL_REPLACEMENT_148___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_111___);
+var ___CSS_LOADER_URL_REPLACEMENT_149___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_111___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_150___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_112___);
+var ___CSS_LOADER_URL_REPLACEMENT_151___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_113___);
+var ___CSS_LOADER_URL_REPLACEMENT_152___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_114___);
+var ___CSS_LOADER_URL_REPLACEMENT_153___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_114___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_154___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_115___);
+var ___CSS_LOADER_URL_REPLACEMENT_155___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_116___);
+var ___CSS_LOADER_URL_REPLACEMENT_156___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_117___);
+var ___CSS_LOADER_URL_REPLACEMENT_157___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_117___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_158___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_118___);
+var ___CSS_LOADER_URL_REPLACEMENT_159___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_119___);
+var ___CSS_LOADER_URL_REPLACEMENT_160___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_120___);
+var ___CSS_LOADER_URL_REPLACEMENT_161___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_120___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_162___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_121___);
+var ___CSS_LOADER_URL_REPLACEMENT_163___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_122___);
+var ___CSS_LOADER_URL_REPLACEMENT_164___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_123___);
+var ___CSS_LOADER_URL_REPLACEMENT_165___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_123___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_166___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_124___);
+var ___CSS_LOADER_URL_REPLACEMENT_167___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_125___);
+var ___CSS_LOADER_URL_REPLACEMENT_168___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_126___);
+var ___CSS_LOADER_URL_REPLACEMENT_169___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_126___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_170___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_127___);
+var ___CSS_LOADER_URL_REPLACEMENT_171___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_128___);
+var ___CSS_LOADER_URL_REPLACEMENT_172___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_129___);
+var ___CSS_LOADER_URL_REPLACEMENT_173___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_129___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_174___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_130___);
+var ___CSS_LOADER_URL_REPLACEMENT_175___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_131___);
+var ___CSS_LOADER_URL_REPLACEMENT_176___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_132___);
+var ___CSS_LOADER_URL_REPLACEMENT_177___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_132___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_178___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_133___);
+var ___CSS_LOADER_URL_REPLACEMENT_179___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_134___);
+var ___CSS_LOADER_URL_REPLACEMENT_180___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_135___);
+var ___CSS_LOADER_URL_REPLACEMENT_181___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_135___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_182___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_136___);
+var ___CSS_LOADER_URL_REPLACEMENT_183___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_137___);
+var ___CSS_LOADER_URL_REPLACEMENT_184___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_138___);
+var ___CSS_LOADER_URL_REPLACEMENT_185___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_138___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_186___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_139___);
+var ___CSS_LOADER_URL_REPLACEMENT_187___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_140___);
+var ___CSS_LOADER_URL_REPLACEMENT_188___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_141___);
+var ___CSS_LOADER_URL_REPLACEMENT_189___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_141___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_190___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_142___);
+var ___CSS_LOADER_URL_REPLACEMENT_191___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_143___);
+var ___CSS_LOADER_URL_REPLACEMENT_192___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_144___);
+var ___CSS_LOADER_URL_REPLACEMENT_193___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_144___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_194___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_145___);
+var ___CSS_LOADER_URL_REPLACEMENT_195___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_146___);
+var ___CSS_LOADER_URL_REPLACEMENT_196___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_147___);
+var ___CSS_LOADER_URL_REPLACEMENT_197___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_147___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_198___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_148___);
+var ___CSS_LOADER_URL_REPLACEMENT_199___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_149___);
+var ___CSS_LOADER_URL_REPLACEMENT_200___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_150___);
+var ___CSS_LOADER_URL_REPLACEMENT_201___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_150___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_202___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_151___);
+var ___CSS_LOADER_URL_REPLACEMENT_203___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_152___);
+var ___CSS_LOADER_URL_REPLACEMENT_204___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_153___);
+var ___CSS_LOADER_URL_REPLACEMENT_205___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_153___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_206___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_154___);
+var ___CSS_LOADER_URL_REPLACEMENT_207___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_155___);
+var ___CSS_LOADER_URL_REPLACEMENT_208___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_156___);
+var ___CSS_LOADER_URL_REPLACEMENT_209___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_156___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_210___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_157___);
+var ___CSS_LOADER_URL_REPLACEMENT_211___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_158___);
+var ___CSS_LOADER_URL_REPLACEMENT_212___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_159___);
+var ___CSS_LOADER_URL_REPLACEMENT_213___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_159___, { hash: "?#iefix" });
+var ___CSS_LOADER_URL_REPLACEMENT_214___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_160___);
+var ___CSS_LOADER_URL_REPLACEMENT_215___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_3___default()(___CSS_LOADER_URL_IMPORT_161___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  src: local(\"TT Lakes Italic\"), local(\"TTLakes-Italic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n  src: local(\"TT Lakes Condensed ExtraLight\"), local(\"TTLakesCondensed-ExtraLight\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_7___ + ") format(\"truetype\");\n  font-weight: 200;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_8___ + ");\n  src: local(\"TT Lakes Compressed Regular\"), local(\"TTLakesCompressed-Regular\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_9___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_10___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_11___ + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_12___ + ");\n  src: local(\"TT Lakes Compressed Thin Italic\"), local(\"TTLakesCompressed-ThinItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_13___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_14___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_15___ + ") format(\"truetype\");\n  font-weight: 100;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_16___ + ");\n  src: local(\"TT Lakes Condensed Medium\"), local(\"TTLakesCondensed-Medium\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_17___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_18___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_19___ + ") format(\"truetype\");\n  font-weight: 500;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_20___ + ");\n  src: local(\"TT Lakes Compressed ExtraBold Italic\"), local(\"TTLakesCompressed-ExtraBoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_21___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_22___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_23___ + ") format(\"truetype\");\n  font-weight: 800;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_24___ + ");\n  src: local(\"TT Lakes ExtraLight Italic\"), local(\"TTLakes-ExtraLightItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_25___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_26___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_27___ + ") format(\"truetype\");\n  font-weight: 200;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_28___ + ");\n  src: local(\"TT Lakes Light Italic\"), local(\"TTLakes-LightItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_29___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_30___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_31___ + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_32___ + ");\n  src: local(\"TT Lakes Thin\"), local(\"TTLakes-Thin\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_33___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_34___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_35___ + ") format(\"truetype\");\n  font-weight: 100;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_36___ + ");\n  src: local(\"TT Lakes DemiBold Italic\"), local(\"TTLakes-DemiBoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_37___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_38___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_39___ + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_40___ + ");\n  src: local(\"TT Lakes Condensed Black\"), local(\"TTLakesCondensed-Black\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_41___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_42___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_43___ + ") format(\"truetype\");\n  font-weight: 900;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_44___ + ");\n  src: local(\"TT Lakes Condensed Light Italic\"), local(\"TTLakesCondensed-LightItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_45___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_46___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_47___ + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_48___ + ");\n  src: local(\"TT Lakes Condensed DemiBold\"), local(\"TTLakesCondensed-DemiBold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_49___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_50___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_51___ + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_52___ + ");\n  src: local(\"TT Lakes Compressed ExtraBold\"), local(\"TTLakesCompressed-ExtraBold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_53___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_54___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_55___ + ") format(\"truetype\");\n  font-weight: 800;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_56___ + ");\n  src: local(\"TT Lakes ExtraBold Italic\"), local(\"TTLakes-ExtraBoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_57___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_58___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_59___ + ") format(\"truetype\");\n  font-weight: 800;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_60___ + ");\n  src: local(\"TT Lakes ExtraLight\"), local(\"TTLakes-ExtraLight\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_61___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_62___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_63___ + ") format(\"truetype\");\n  font-weight: 200;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_64___ + ");\n  src: local(\"TT Lakes Condensed Bold\"), local(\"TTLakesCondensed-Bold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_65___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_66___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_67___ + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_68___ + ");\n  src: local(\"TT Lakes Condensed Thin Italic\"), local(\"TTLakesCondensed-ThinItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_69___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_70___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_71___ + ") format(\"truetype\");\n  font-weight: 100;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_72___ + ");\n  src: local(\"TT Lakes Condensed ExtraBold Italic\"), local(\"TTLakesCondensed-ExtraBoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_73___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_74___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_75___ + ") format(\"truetype\");\n  font-weight: 800;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_76___ + ");\n  src: local(\"TT Lakes Compressed Medium\"), local(\"TTLakesCompressed-Medium\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_77___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_78___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_79___ + ") format(\"truetype\");\n  font-weight: 500;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_80___ + ");\n  src: local(\"TT Lakes Condensed Thin\"), local(\"TTLakesCondensed-Thin\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_81___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_82___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_83___ + ") format(\"truetype\");\n  font-weight: 100;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_84___ + ");\n  src: local(\"TT Lakes Compressed Italic\"), local(\"TTLakesCompressed-Italic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_85___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_86___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_87___ + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_88___ + ");\n  src: local(\"TT Lakes Compressed Light\"), local(\"TTLakesCompressed-Light\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_89___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_90___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_91___ + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_92___ + ");\n  src: local(\"TT Lakes Compressed Light Italic\"), local(\"TTLakesCompressed-LightItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_93___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_94___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_95___ + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_96___ + ");\n  src: local(\"TT Lakes Condensed Regular\"), local(\"TTLakesCondensed-Regular\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_97___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_98___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_99___ + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_100___ + ");\n  src: local(\"TT Lakes Condensed Light\"), local(\"TTLakesCondensed-Light\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_101___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_102___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_103___ + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_104___ + ");\n  src: local(\"TT Lakes Bold\"), local(\"TTLakes-Bold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_105___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_106___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_107___ + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_108___ + ");\n  src: local(\"TT Lakes DemiBold\"), local(\"TTLakes-DemiBold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_109___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_110___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_111___ + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_112___ + ");\n  src: local(\"TT Lakes Compressed Thin\"), local(\"TTLakesCompressed-Thin\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_113___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_114___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_115___ + ") format(\"truetype\");\n  font-weight: 100;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_116___ + ");\n  src: local(\"TT Lakes Black\"), local(\"TTLakes-Black\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_117___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_118___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_119___ + ") format(\"truetype\");\n  font-weight: 900;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_120___ + ");\n  src: local(\"TT Lakes Medium Italic\"), local(\"TTLakes-MediumItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_121___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_122___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_123___ + ") format(\"truetype\");\n  font-weight: 500;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_124___ + ");\n  src: local(\"TT Lakes Condensed ExtraBold\"), local(\"TTLakesCondensed-ExtraBold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_125___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_126___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_127___ + ") format(\"truetype\");\n  font-weight: 800;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_128___ + ");\n  src: local(\"TT Lakes Condensed ExtraLight Italic\"), local(\"TTLakesCondensed-ExtraLightItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_129___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_130___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_131___ + ") format(\"truetype\");\n  font-weight: 200;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_132___ + ");\n  src: local(\"TT Lakes Medium\"), local(\"TTLakes-Medium\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_133___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_134___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_135___ + ") format(\"truetype\");\n  font-weight: 500;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_136___ + ");\n  src: local(\"TT Lakes Condensed DemiBold Italic\"), local(\"TTLakesCondensed-DemiBoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_137___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_138___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_139___ + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_140___ + ");\n  src: local(\"TT Lakes Compressed Bold Italic\"), local(\"TTLakesCompressed-BoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_141___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_142___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_143___ + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_144___ + ");\n  src: local(\"TT Lakes Compressed ExtraLight Italic\"), local(\"TTLakesCompressed-ExtraLightItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_145___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_146___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_147___ + ") format(\"truetype\");\n  font-weight: 200;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_148___ + ");\n  src: local(\"TT Lakes Regular\"), local(\"TTLakes-Regular\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_149___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_150___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_151___ + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_152___ + ");\n  src: local(\"TT Lakes Bold Italic\"), local(\"TTLakes-BoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_153___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_154___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_155___ + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_156___ + ");\n  src: local(\"TT Lakes Condensed Medium Italic\"), local(\"TTLakesCondensed-MediumItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_157___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_158___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_159___ + ") format(\"truetype\");\n  font-weight: 500;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_160___ + ");\n  src: local(\"TT Lakes Condensed Italic\"), local(\"TTLakesCondensed-Italic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_161___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_162___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_163___ + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_164___ + ");\n  src: local(\"TT Lakes Thin Italic\"), local(\"TTLakes-ThinItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_165___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_166___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_167___ + ") format(\"truetype\");\n  font-weight: 100;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_168___ + ");\n  src: local(\"TT Lakes Compressed DemiBold\"), local(\"TTLakesCompressed-DemiBold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_169___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_170___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_171___ + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_172___ + ");\n  src: local(\"TT Lakes Black Italic\"), local(\"TTLakes-BlackItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_173___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_174___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_175___ + ") format(\"truetype\");\n  font-weight: 900;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_176___ + ");\n  src: local(\"TT Lakes Compressed Bold\"), local(\"TTLakesCompressed-Bold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_177___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_178___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_179___ + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_180___ + ");\n  src: local(\"TT Lakes Condensed Black Italic\"), local(\"TTLakesCondensed-BlackItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_181___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_182___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_183___ + ") format(\"truetype\");\n  font-weight: 900;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_184___ + ");\n  src: local(\"TT Lakes Compressed Medium Italic\"), local(\"TTLakesCompressed-MediumItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_185___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_186___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_187___ + ") format(\"truetype\");\n  font-weight: 500;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Condensed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_188___ + ");\n  src: local(\"TT Lakes Condensed Bold Italic\"), local(\"TTLakesCondensed-BoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_189___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_190___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_191___ + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_192___ + ");\n  src: local(\"TT Lakes Compressed ExtraLight\"), local(\"TTLakesCompressed-ExtraLight\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_193___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_194___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_195___ + ") format(\"truetype\");\n  font-weight: 200;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_196___ + ");\n  src: local(\"TT Lakes ExtraBold\"), local(\"TTLakes-ExtraBold\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_197___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_198___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_199___ + ") format(\"truetype\");\n  font-weight: 800;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_200___ + ");\n  src: local(\"TT Lakes Compressed DemiBold Italic\"), local(\"TTLakesCompressed-DemiBoldItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_201___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_202___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_203___ + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_204___ + ");\n  src: local(\"TT Lakes Compressed Black Italic\"), local(\"TTLakesCompressed-BlackItalic\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_205___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_206___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_207___ + ") format(\"truetype\");\n  font-weight: 900;\n  font-style: italic;\n}\n@font-face {\n  font-family: \"TT Lakes\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_208___ + ");\n  src: local(\"TT Lakes Light\"), local(\"TTLakes-Light\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_209___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_210___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_211___ + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"TT Lakes Compressed\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_212___ + ");\n  src: local(\"TT Lakes Compressed Black\"), local(\"TTLakesCompressed-Black\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_213___ + ") format(\"embedded-opentype\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_214___ + ") format(\"woff\"), url(" + ___CSS_LOADER_URL_REPLACEMENT_215___ + ") format(\"truetype\");\n  font-weight: 900;\n  font-style: normal;\n}\nbody {\n  background-color: #f8f8f8;\n  position: relative;\n  overflow-x: hidden;\n}\n@media screen and (min-width: 1120px) {\n  body {\n    display: grid;\n    grid-template-columns: 320px 1fr;\n  }\n}\n\nhtml {\n  overflow-x: hidden;\n}\n\n* {\n  font-family: \"TT Lakes\";\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\na {\n  -webkit-text-decoration: none;\n  text-decoration: none;\n  color: #000;\n}\n\nbutton {\n  display: block;\n  border: none;\n  background-color: transparent;\n}\n\nli {\n  list-style: none;\n}\n\ntextarea {\n  resize: none;\n}\n\n.title {\n  margin-top: 15px;\n  border-top: 1px solid #d9fff5;\n  height: 56px;\n  display: flex;\n  justify-content: 0;\n  align-items: center;\n  background: linear-gradient(-270deg, #f8f8f8 0%, #ffffff 98.61%);\n}\n.title p {\n  text-transform: uppercase;\n  font-size: 16px;\n  color: #7e7e82;\n  padding-left: 16px;\n  line-height: 24px;\n}\n\n.header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 16px;\n  height: 88px;\n  background-color: #fff;\n  border-bottom: 1px solid #d9fff5;\n}\n@media screen and (min-width: 1120px) {\n  .header {\n    display: none !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .header {\n    display: grid;\n    grid-template-columns: 80px 2px 130px 1fr;\n    align-items: center;\n  }\n}\n.header__right {\n  display: flex;\n  align-items: center;\n}\n.header__options {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.header__border {\n  height: 32px;\n  width: 2px;\n  border-radius: 1px;\n  background-color: #eaeaea;\n}\n.header__option-item:first-child {\n  margin-right: 27px;\n}\n@media screen and (min-width: 768px) {\n  .header__option-item:first-child {\n    margin: 0;\n  }\n}\n@media screen and (max-width: 350px) {\n  .header__border {\n    margin-right: 13px !important;\n  }\n}\n.header__none-mobile {\n  display: none;\n}\n.header__border {\n  margin-right: 26px;\n}\n.header__desktop-border {\n  display: none;\n}\n@media screen and (min-width: 768px) {\n  .header__desktop-border {\n    display: block;\n  }\n  .header__right {\n    justify-self: end;\n  }\n  .header__border {\n    margin-right: 0;\n  }\n  .header__none-mobile {\n    display: block;\n  }\n  .header__burger {\n    justify-self: center;\n  }\n  .header__logo {\n    justify-self: center;\n  }\n  .header__option-item {\n    margin-left: 26px;\n  }\n  .header__options {\n    margin-left: 26px;\n  }\n}\n.header__headline {\n  margin: 24px 0;\n  display: flex;\n}\n@media screen and (max-width: 1120px) {\n  .header__headline {\n    margin: 24px 0 12px 0;\n  }\n}\n.header__headline::before {\n  content: \" \";\n  background-color: #41f6d7;\n  height: 40px;\n  width: 4px;\n  margin-right: 12px;\n  border-radius: 0 6px 6px 0;\n}\n.header__headline h2 {\n  font-size: 28px;\n}\n\n.desktop-header {\n  display: none;\n}\n\n@media screen and (min-width: 1120px) {\n  .desktop-header {\n    display: flex;\n    justify-content: space-between;\n  }\n  .open-feedback-btn {\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n  }\n  .open-feedback-btn::before {\n    content: \"Оставить заявку\";\n    margin-right: 8px;\n  }\n  .open-repairbar-btn {\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    margin-right: 24px;\n  }\n  .open-repairbar-btn::before {\n    content: \"Статус ремонта\";\n    margin-right: 8px;\n  }\n}\n.title-mobile {\n  display: none;\n}\n\n@media screen and (max-width: 1120px) {\n  .title-mobile {\n    display: flex;\n  }\n}\n.navigation {\n  position: relative;\n  width: 100%;\n  overflow-x: scroll;\n  height: 60px;\n  display: flex;\n  justify-content: 0;\n  align-items: center;\n}\n@media screen and (min-width: 1120px) {\n  .navigation {\n    display: none;\n  }\n}\n.navigation__wrapper {\n  display: flex;\n  justify-content: space-evenly;\n  align-items: center;\n  width: 1700px;\n  margin-bottom: 10px;\n}\n.navigation__item {\n  display: block;\n  text-align: center;\n  margin-left: 16px;\n  color: #7e7e82;\n  border-radius: 6px;\n  padding: 10px;\n  width: 230px;\n}\n.navigation__item:last-child {\n  margin-right: 10px;\n}\n.navigation__item:active {\n  border: 2px solid #b8ffec;\n  background-color: #fff;\n}\n.navigation__item:focus {\n  outline: none;\n  border: 2px solid #b8ffec;\n  background-color: #fff;\n}\n\n.main {\n  display: flex;\n  flex-direction: column;\n}\n.main__description {\n  width: 50%;\n}\n.main__description p {\n  line-height: 18px;\n  padding: 16px;\n  color: #1b1c21;\n}\n.main__decription-text-more {\n  display: none;\n}\n.main__button {\n  margin-left: 10px;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 15px;\n}\n.main__service-img {\n  width: 100%;\n  height: auto;\n}\n@media screen and (min-width: 768px) {\n  .main {\n    flex-direction: row;\n    justify-content: space-between;\n  }\n}\n@media screen and (max-width: 768px) {\n  .main {\n    flex-direction: column;\n    justify-content: space-between;\n  }\n  .main__description {\n    width: 100%;\n  }\n  .main__description p {\n    line-height: 18px;\n    padding: 16px;\n    color: #1b1c21;\n  }\n}\n\n.brands-swiper {\n  width: 100%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n}\n\n@media screen and (min-width: 768px) {\n  .swiper-wrapper {\n    display: none;\n  }\n}\n\n.brands {\n  height: 200px;\n}\n.brands__desktop-cards {\n  display: none;\n}\n.brands__button-show-item {\n  display: none;\n}\n@media screen and (min-width: 768px) {\n  .brands {\n    height: auto;\n  }\n  .brands__button-show-item {\n    display: flex !important;\n  }\n  .brands__button-show-item {\n    align-items: center;\n    margin-left: 24px;\n  }\n  .brands__none-item {\n    display: none !important;\n  }\n  .brands__wrapper-desktop-cards {\n    padding: 24px;\n  }\n  .brands__item:first-child {\n    margin-left: 0 !important;\n  }\n  .brands__item {\n    width: 100% !important;\n  }\n  .brands__desktop-cards {\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));\n    grid-gap: 20px;\n    gap: 20px;\n  }\n  .brands__slider {\n    display: none !important;\n  }\n}\n.brands__slider {\n  position: relative;\n  margin-top: 25px;\n  height: 100px;\n  display: flex;\n}\n.brands__wrapper-right-side {\n  position: absolute;\n  z-index: 11;\n  background: linear-gradient(270deg, #f8f8f8 16.84%, rgba(248, 248, 248, 0.0001) 100%);\n  height: 81px;\n  right: 0;\n  width: 30px;\n}\n.brands__item {\n  height: 300px;\n  text-align: center;\n  font-size: 18px;\n  background: #fff;\n  padding: 0 16px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 6px;\n  width: 240px;\n  border: 1px solid #eaeaea;\n  height: 71px;\n}\n.brands__item:first-child {\n  margin-left: 16px;\n}\n\n.repair-device__desktop {\n  display: none;\n}\n.repair-device__slider {\n  height: 228px;\n  display: flex;\n  align-items: center;\n}\n@media screen and (min-width: 768px) {\n  .repair-device__slider {\n    display: none;\n  }\n}\n@media screen and (min-width: 768px) {\n  .repair-device__desktop {\n    display: block;\n    padding: 16px;\n  }\n  .repair-device__desktop-cards {\n    display: grid !important;\n  }\n  .repair-device__desktop-cards {\n    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));\n    grid-gap: 20px;\n    gap: 20px;\n  }\n  .repair-device__item:first-child {\n    margin: 0 !important;\n  }\n}\n.repair-device__item {\n  height: 160px;\n  width: 240px;\n  display: flex;\n  justify-content: space-between;\n  background-color: #fff;\n  border: 1px solid #eaeaea;\n  padding: 16px;\n  border-radius: 6px;\n}\n.repair-device__item:first-child {\n  margin-left: 16px;\n}\n.repair-device__item:last-child {\n  margin-right: 16px;\n}\n.repair-device__item-button {\n  cursor: pointer;\n  align-self: flex-end;\n}\n.repair-device__button-show-item {\n  display: flex;\n  align-items: center;\n  margin-top: 24px;\n}\n.repair-device__item-none {\n  display: none !important;\n}\n@media screen and (min-width: 1050px) {\n  .repair-device__none-item-other {\n    display: flex !important;\n  }\n}\n@media screen and (min-width: 1120px) {\n  .repair-device__none-item-other {\n    display: none !important;\n  }\n}\n@media screen and (min-width: 1320px) {\n  .repair-device__none-item-other {\n    display: flex !important;\n  }\n}\n\n.prices__item {\n  margin-top: 16px;\n  width: 260px;\n  font-size: 14px;\n  background: #fff;\n  display: flex;\n  flex-direction: column;\n  padding: 16px;\n  border-radius: 6px;\n}\n.prices__item:first-child {\n  margin-left: 16px;\n}\n.prices__conditions {\n  margin-bottom: 16px;\n}\n.prices__conditions-title {\n  color: #7e7e82;\n  margin-bottom: 6px;\n}\n.prices__order {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.prices__order-button {\n  display: flex;\n  align-items: center;\n  background-color: #ff3e79;\n  color: #fff;\n  padding: 8px 12px;\n  border-radius: 16px;\n  cursor: pointer;\n}\n.prices__order-title {\n  margin-right: 17px;\n}\n.prices__descriptions {\n  padding: 16px;\n  margin-bottom: 16px;\n}\n.prices__descriptions-button {\n  text-align: left;\n}\n.prices__descriptions-text {\n  margin-bottom: 20px;\n  color: #1b1c21;\n  font-size: 14px;\n}\n.prices__descriptions-button-img {\n  margin-left: 5px;\n}\n\n.prices-desktop {\n  padding: 24px;\n}\n@media screen and (max-width: 768px) {\n  .prices-desktop {\n    display: none !important;\n  }\n}\n.prices-desktop__column-items {\n  background: #fff;\n  border-radius: 6px;\n  padding: 0 10px;\n}\n.prices-desktop__column-item {\n  border-bottom: 1px solid #eaeaea;\n  padding: 0 20px;\n  display: grid;\n  grid-template-columns: 1fr 150px 150px 150px;\n  grid-column-gap: 5px;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  height: 60px;\n  align-items: center;\n}\n.prices-desktop__column-item:last-child {\n  border-bottom: none;\n}\n.prices-desktop__column-item-title {\n  padding: 0 20px;\n  display: grid;\n  grid-template-columns: 1fr 150px 150px 150px;\n  grid-column-gap: 5px;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  height: 60px;\n  align-items: center;\n}\n.prices-desktop__column-item-title p {\n  color: #7e7e82;\n}\n.prices-desktop__button-order {\n  background-color: #ff3e79;\n  padding: 8px 12px;\n  border-radius: 16px;\n}\n.prices-desktop__button-order span {\n  margin-right: 10px;\n  color: #fff;\n  font-weight: 600;\n}\n\n.footer {\n  padding: 16px;\n  border-top: 1px solid #d9fff5;\n  display: flex;\n  flex-direction: column;\n}\n.footer p {\n  color: #7e7e82;\n  margin-bottom: 16px;\n}\n.footer p:last-child {\n  margin-bottom: 0;\n}\n@media screen and (max-width: 450px) {\n  .footer p {\n    text-align: center;\n  }\n}\n@media screen and (min-width: 768px) {\n  .footer {\n    flex-direction: row;\n    justify-content: space-between;\n    gap: 30px;\n  }\n}\n\n.navbar {\n  z-index: 13;\n  overflow-y: auto;\n  width: 100%;\n  background: #fff;\n  height: 100vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  position: absolute;\n  top: 0;\n  left: -105%;\n  transition: 0.9s ease;\n  box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.2);\n}\n@media screen and (min-width: 400px) {\n  .navbar {\n    width: 350px;\n  }\n}\n.navbar-active {\n  left: 0;\n  transition: 0.7s ease;\n}\n.navbar__header {\n  justify-self: flex-start;\n  padding: 24px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  margin-bottom: 30px;\n}\n.navbar__header-left {\n  display: flex;\n}\n.navbar__close-btn {\n  margin-right: 16px;\n}\n.navbar__nav-items {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 34px;\n}\n.navbar__item {\n  display: flex;\n  align-items: center;\n  margin-bottom: 10px;\n}\n.navbar__item::before {\n  margin-right: 16px;\n  content: \"\";\n  background-color: transparent;\n  height: 32px;\n  width: 4px;\n}\n.navbar__active-item {\n  display: flex;\n  align-items: center;\n  margin-bottom: 20px;\n}\n.navbar__active-item a {\n  color: #7e7e82;\n}\n.navbar__active-item::before {\n  border-radius: 0 50px 50px 0;\n  margin-right: 20px;\n  content: \"\";\n  background-color: #41f6d7;\n  height: 32px;\n  width: 4px;\n}\n.navbar__rows {\n  display: flex;\n  margin-left: 24px;\n  margin-bottom: 16px;\n}\n.navbar__rows-item {\n  margin-right: 10px;\n  cursor: pointer;\n}\n.navbar__contacts {\n  margin-left: 24px;\n}\n.navbar__contacts h3 {\n  font-size: 24px;\n  margin-bottom: 8px;\n  margin-top: 12px;\n}\n.navbar__languages {\n  margin-left: 24px;\n  display: flex;\n}\n.navbar__languages-item {\n  margin-bottom: 12px;\n  margin-right: 7px;\n  color: #1b1c21;\n}\n.navbar__languages-item-selected {\n  color: #7e7e82;\n}\n.navbar__background-translucent {\n  background-color: #fff;\n  transition: 0.8s ease;\n  opacity: 0.1;\n  display: none;\n}\n.navbar__background-translucent-active {\n  display: block !important;\n}\n.navbar__background-translucent-active {\n  overflow-y: hidden;\n  opacity: 0.8;\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  z-index: 12;\n  transition: 0.8s ease;\n}\n\n.navbar-desktop {\n  display: none;\n}\n\n@media screen and (min-width: 1120px) {\n  .navbar-desktop {\n    width: 320px;\n    background: #fff;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n  }\n  .navbar-desktop-active {\n    left: 0;\n    transition: 0.7s ease;\n  }\n  .navbar-desktop__header {\n    justify-self: flex-start;\n    padding: 24px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    margin-bottom: 30px;\n  }\n  .navbar-desktop__header-left {\n    display: flex;\n  }\n  .navbar-desktop__close-btn {\n    display: none !important;\n  }\n  .navbar-desktop__nav-items {\n    display: flex;\n    flex-direction: column;\n    margin-bottom: 34px;\n  }\n  .navbar-desktop__item {\n    display: flex;\n    align-items: center;\n    margin-bottom: 10px;\n  }\n  .navbar-desktop__item::before {\n    margin-right: 16px;\n    content: \"\";\n    background-color: transparent;\n    height: 32px;\n    width: 4px;\n  }\n  .navbar-desktop__active-item {\n    display: flex;\n    align-items: center;\n    margin-bottom: 20px;\n  }\n  .navbar-desktop__active-item a {\n    color: #7e7e82;\n  }\n  .navbar-desktop__active-item::before {\n    border-radius: 0 50px 50px 0;\n    margin-right: 20px;\n    content: \"\";\n    background-color: #41f6d7;\n    height: 32px;\n    width: 4px;\n  }\n  .navbar-desktop__rows {\n    display: flex;\n    margin-left: 24px;\n    margin-bottom: 16px;\n  }\n  .navbar-desktop__rows-item {\n    margin-right: 10px;\n    cursor: pointer;\n  }\n  .navbar-desktop__contacts {\n    margin-left: 24px;\n  }\n  .navbar-desktop__contacts h3 {\n    font-size: 24px;\n    margin-bottom: 8px;\n    margin-top: 12px;\n  }\n  .navbar-desktop__languages {\n    margin-left: 24px;\n    display: flex;\n  }\n  .navbar-desktop__languages-item {\n    margin-bottom: 12px;\n    margin-right: 7px;\n    color: #1b1c21;\n  }\n  .navbar-desktop__languages-item-selected {\n    color: #7e7e82;\n  }\n}\n.feedback {\n  z-index: 13;\n  overflow-y: auto;\n  position: absolute;\n  padding-bottom: 79px;\n  right: -105%;\n  transition: 0.7s ease;\n  background-color: #fff;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  top: 0;\n  box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);\n}\n@media screen and (min-width: 450px) {\n  .feedback {\n    width: 450px;\n  }\n}\n.feedback__close-btn {\n  display: flex;\n}\n.feedback__close-btn img {\n  margin: 24px 16px;\n  justify-self: flex-start;\n}\n.feedback__title {\n  display: flex;\n  align-items: center;\n  margin-bottom: 25px;\n}\n.feedback__title::before {\n  content: \"\";\n  display: block;\n  height: 40px;\n  width: 3px;\n  border-radius: 0 10px 10px 0;\n  background: #41f6d7;\n  margin-right: 12px;\n}\n.feedback__form {\n  margin: 0 16px;\n  display: flex;\n  flex-direction: column;\n}\n.feedback__form input,\n.feedback__form textarea {\n  border: 1px solid #eaeaea;\n  padding: 12px 16px;\n  border-radius: 8px;\n  margin-bottom: 16px;\n}\n.feedback__form input::-moz-placeholder, .feedback__form textarea::-moz-placeholder {\n  color: #b5b6bc;\n}\n.feedback__form input:-ms-input-placeholder, .feedback__form textarea:-ms-input-placeholder {\n  color: #b5b6bc;\n}\n.feedback__form input::placeholder,\n.feedback__form textarea::placeholder {\n  color: #b5b6bc;\n}\n.feedback__descr {\n  margin: 0 16px;\n}\n.feedback__descr-p {\n  color: #7e7e82;\n}\n.feedback__descr-a {\n  color: #ff3e79;\n}\n.feedback__button {\n  margin: 0 16px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n}\n.feedback__button span {\n  color: #fff;\n  margin-right: 12px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.feedback__button-btn {\n  padding: 6px 16px;\n  justify-self: flex-end;\n  border-radius: 16px;\n  background-color: #ff3e79;\n  margin-top: 27px;\n}\n\n.open-feedback {\n  right: 0;\n  transition: 0.7s ease;\n}\n\n.repairbar {\n  overflow-y: auto;\n  z-index: 13;\n  position: absolute;\n  padding-bottom: 79px;\n  right: -105%;\n  height: 100vh;\n  transition: 0.7s ease;\n  background-color: #fff;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);\n}\n@media screen and (min-width: 450px) {\n  .repairbar {\n    width: 450px;\n  }\n}\n.repairbar__close-btn {\n  display: flex;\n}\n.repairbar__close-btn img {\n  margin: 24px 16px;\n  justify-self: flex-start;\n}\n.repairbar__title {\n  display: flex;\n  align-items: center;\n  margin-bottom: 25px;\n}\n.repairbar__title::before {\n  content: \"\";\n  display: block;\n  height: 40px;\n  width: 3px;\n  border-radius: 0 10px 10px 0;\n  background: #41f6d7;\n  margin-right: 12px;\n}\n.repairbar__form {\n  margin: 0 16px;\n}\n.repairbar__form input {\n  width: 100%;\n  border: 1px solid #eaeaea;\n  padding: 12px 16px;\n  border-radius: 8px;\n  margin-bottom: 16px;\n}\n.repairbar__form input::-moz-placeholder {\n  color: #b5b6bc;\n}\n.repairbar__form input:-ms-input-placeholder {\n  color: #b5b6bc;\n}\n.repairbar__form input::placeholder {\n  color: #b5b6bc;\n}\n.repairbar__descr {\n  margin: 0 16px;\n}\n.repairbar__descr-p {\n  color: #7e7e82;\n}\n.repairbar__descr-a {\n  color: #ff3e79;\n}\n.repairbar__button {\n  margin: 0 16px;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n}\n.repairbar__button span {\n  color: #fff;\n  margin-right: 12px;\n  font-size: 12px;\n  font-weight: 600;\n}\n.repairbar__button-btn {\n  padding: 6px 16px;\n  justify-self: flex-end;\n  border-radius: 16px;\n  background-color: #ff3e79;\n  margin-top: 27px;\n}\n\n.open-repairbar {\n  right: 0;\n  transition: 0.7s ease;\n}\n\n.nav-desktop {\n  overflow-x: auto !important;\n}\n\n.nav-desktop {\n  margin: 10px;\n  display: flex;\n  align-items: center;\n  position: relative;\n  height: 70px;\n}\n@media screen and (max-width: 1120px) {\n  .nav-desktop {\n    display: none;\n  }\n}\n.nav-desktop__links {\n  position: absolute;\n  top: 20px;\n  width: 1250px;\n  margin: 0 auto;\n  display: flex;\n  justify-content: space-evenly;\n  align-items: center;\n}\n.nav-desktop__link {\n  color: #7e7e82;\n  padding: 8px 26px;\n  font-size: 16px;\n  border-radius: 6px;\n}\n.nav-desktop__link:focus {\n  background-color: #fff;\n  color: #7e7e82;\n  margin-bottom: 20px;\n  padding: 8px 24px;\n  outline: none;\n  border: 2px solid #b8ffec;\n}\n.nav-desktop__link:active {\n  background-color: #fff;\n  color: #7e7e82;\n  margin-bottom: 20px;\n  padding: 8px 24px;\n  outline: none;\n  border: 2px solid #b8ffec;\n}", "",{"version":3,"sources":["webpack://./src/index.scss","webpack://./src/scss/_fonts.scss","webpack://./src/scss/null.scss","webpack://./src/scss/_mixin.scss","webpack://./src/scss/_vars.scss","webpack://./src/scss/mixins/_header.scss","webpack://./src/scss/mixins/_navigation.scss","webpack://./src/scss/mixins/_main.scss","webpack://./src/scss/mixins/_brands.scss","webpack://./src/scss/mixins/_repair-device.scss","webpack://./src/scss/mixins/_prices.scss","webpack://./src/scss/mixins/_footer.scss","webpack://./src/scss/mixins/_navbar.scss","webpack://./src/scss/mixins/_feetback.scss","webpack://./src/scss/mixins/_repairbar.scss","webpack://./src/scss/mixins/_navigation-desktop.scss"],"names":[],"mappings":"AAAA,gBAAgB;ACAhB;EACI,uBAAA;EACA,4CAAA;EACA,+OAAA;EAGA,mBAAA;EACA,kBAAA;ADEJ;ACCA;EACI,iCAAA;EACA,4CAAA;EACA,0QAAA;EAIA,gBAAA;EACA,kBAAA;ADFJ;ACKA;EACI,kCAAA;EACA,4CAAA;EACA,wQAAA;EAIA,mBAAA;EACA,kBAAA;ADNJ;ACSA;EACI,kCAAA;EACA,6CAAA;EACA,gRAAA;EAIA,gBAAA;EACA,kBAAA;ADVJ;ACaA;EACI,iCAAA;EACA,6CAAA;EACA,qQAAA;EAIA,gBAAA;EACA,kBAAA;ADdJ;ACiBA;EACI,kCAAA;EACA,6CAAA;EACA,0RAAA;EAIA,gBAAA;EACA,kBAAA;ADlBJ;ACqBA;EACI,uBAAA;EACA,6CAAA;EACA,uQAAA;EAIA,gBAAA;EACA,kBAAA;ADtBJ;ACyBA;EACI,uBAAA;EACA,6CAAA;EACA,6PAAA;EAGA,gBAAA;EACA,kBAAA;ADzBJ;AC4BA;EACI,uBAAA;EACA,6CAAA;EACA,8OAAA;EAEA,gBAAA;EACA,kBAAA;AD3BJ;AC8BA;EACI,uBAAA;EACA,6CAAA;EACA,mQAAA;EAIA,gBAAA;EACA,kBAAA;AD/BJ;ACkCA;EACI,iCAAA;EACA,6CAAA;EACA,mQAAA;EAIA,gBAAA;EACA,kBAAA;ADnCJ;ACsCA;EACI,iCAAA;EACA,6CAAA;EACA,gRAAA;EAIA,gBAAA;EACA,kBAAA;ADvCJ;AC0CA;EACI,iCAAA;EACA,6CAAA;EACA,yQAAA;EAIA,gBAAA;EACA,kBAAA;AD3CJ;AC8CA;EACI,kCAAA;EACA,6CAAA;EACA,6QAAA;EAIA,gBAAA;EACA,kBAAA;AD/CJ;ACkDA;EACI,uBAAA;EACA,6CAAA;EACA,qQAAA;EAIA,gBAAA;EACA,kBAAA;ADnDJ;ACsDA;EACI,uBAAA;EACA,6CAAA;EACA,0PAAA;EAGA,gBAAA;EACA,kBAAA;ADtDJ;ACyDA;EACI,iCAAA;EACA,6CAAA;EACA,iQAAA;EAIA,iBAAA;EACA,kBAAA;AD1DJ;AC6DA;EACI,iCAAA;EACA,6CAAA;EACA,8QAAA;EAIA,gBAAA;EACA,kBAAA;AD9DJ;ACiEA;EACI,iCAAA;EACA,6CAAA;EACA,wRAAA;EAIA,gBAAA;EACA,kBAAA;ADlEJ;ACqEA;EACI,kCAAA;EACA,6CAAA;EACA,uQAAA;EAIA,gBAAA;EACA,kBAAA;ADtEJ;ACyEA;EACI,iCAAA;EACA,6CAAA;EACA,iQAAA;EAIA,gBAAA;EACA,kBAAA;AD1EJ;AC6EA;EACI,kCAAA;EACA,6CAAA;EACA,uQAAA;EAIA,mBAAA;EACA,kBAAA;AD9EJ;ACiFA;EACI,kCAAA;EACA,6CAAA;EACA,qQAAA;EAIA,gBAAA;EACA,kBAAA;ADlFJ;ACqFA;EACI,kCAAA;EACA,6CAAA;EACA,kRAAA;EAIA,gBAAA;EACA,kBAAA;ADtFJ;ACyFA;EACI,iCAAA;EACA,6CAAA;EACA,uQAAA;EAIA,mBAAA;EACA,kBAAA;AD1FJ;AC6FA;EACI,iCAAA;EACA,8CAAA;EACA,sQAAA;EAIA,gBAAA;EACA,kBAAA;AD9FJ;ACiGA;EACI,uBAAA;EACA,8CAAA;EACA,iPAAA;EAEA,iBAAA;EACA,kBAAA;ADhGJ;ACmGA;EACI,uBAAA;EACA,8CAAA;EACA,yPAAA;EAGA,gBAAA;EACA,kBAAA;ADnGJ;ACsGA;EACI,kCAAA;EACA,8CAAA;EACA,sQAAA;EAIA,gBAAA;EACA,kBAAA;ADvGJ;AC0GA;EACI,uBAAA;EACA,8CAAA;EACA,mPAAA;EAGA,gBAAA;EACA,kBAAA;AD1GJ;AC6GA;EACI,uBAAA;EACA,8CAAA;EACA,kQAAA;EAGA,gBAAA;EACA,kBAAA;AD7GJ;ACgHA;EACI,iCAAA;EACA,8CAAA;EACA,8QAAA;EAIA,gBAAA;EACA,kBAAA;ADjHJ;ACoHA;EACI,iCAAA;EACA,8CAAA;EACA,6RAAA;EAIA,gBAAA;EACA,kBAAA;ADrHJ;ACwHA;EACI,uBAAA;EACA,8CAAA;EACA,qPAAA;EAGA,gBAAA;EACA,kBAAA;ADxHJ;AC2HA;EACI,iCAAA;EACA,8CAAA;EACA,yRAAA;EAIA,gBAAA;EACA,kBAAA;AD5HJ;AC+HA;EACI,kCAAA;EACA,8CAAA;EACA,mRAAA;EAIA,iBAAA;EACA,kBAAA;ADhIJ;ACmIA;EACI,kCAAA;EACA,8CAAA;EACA,+RAAA;EAIA,gBAAA;EACA,kBAAA;ADpIJ;ACuIA;EACI,uBAAA;EACA,8CAAA;EACA,uPAAA;EAGA,mBAAA;EACA,kBAAA;ADvIJ;AC0IA;EACI,uBAAA;EACA,8CAAA;EACA,8PAAA;EAGA,iBAAA;EACA,kBAAA;AD1IJ;AC6IA;EACI,iCAAA;EACA,8CAAA;EACA,qRAAA;EAIA,gBAAA;EACA,kBAAA;AD9IJ;ACiJA;EACI,iCAAA;EACA,8CAAA;EACA,wQAAA;EAIA,mBAAA;EACA,kBAAA;ADlJJ;ACqJA;EACI,uBAAA;EACA,8CAAA;EACA,8PAAA;EAGA,gBAAA;EACA,kBAAA;ADrJJ;ACwJA;EACI,kCAAA;EACA,8CAAA;EACA,8QAAA;EAIA,gBAAA;EACA,kBAAA;ADzJJ;AC4JA;EACI,uBAAA;EACA,8CAAA;EACA,gQAAA;EAGA,gBAAA;EACA,kBAAA;AD5JJ;AC+JA;EACI,kCAAA;EACA,8CAAA;EACA,sQAAA;EAIA,iBAAA;EACA,kBAAA;ADhKJ;ACmKA;EACI,iCAAA;EACA,8CAAA;EACA,mRAAA;EAIA,gBAAA;EACA,kBAAA;ADpKJ;ACuKA;EACI,kCAAA;EACA,8CAAA;EACA,uRAAA;EAIA,gBAAA;EACA,kBAAA;ADxKJ;AC2KA;EACI,iCAAA;EACA,8CAAA;EACA,iRAAA;EAIA,iBAAA;EACA,kBAAA;AD5KJ;AC+KA;EACI,kCAAA;EACA,8CAAA;EACA,kRAAA;EAIA,gBAAA;EACA,kBAAA;ADhLJ;ACmLA;EACI,uBAAA;EACA,8CAAA;EACA,2PAAA;EAGA,gBAAA;EACA,kBAAA;ADnLJ;ACsLA;EACI,kCAAA;EACA,8CAAA;EACA,2RAAA;EAIA,gBAAA;EACA,kBAAA;ADvLJ;AC0LA;EACI,kCAAA;EACA,8CAAA;EACA,qRAAA;EAIA,gBAAA;EACA,kBAAA;AD3LJ;AC8LA;EACI,uBAAA;EACA,8CAAA;EACA,mPAAA;EAGA,gBAAA;EACA,kBAAA;AD9LJ;ACiMA;EACI,kCAAA;EACA,8CAAA;EACA,wQAAA;EAIA,gBAAA;EACA,kBAAA;ADlMJ;AE5XA;EACI,yBAAA;EACA,kBAAA;EACA,kBAAA;AF8XJ;AE7XI;EAJJ;IAKQ,aAAA;IACA,gCAAA;EFgYN;AACF;;AE7XA;EACI,kBAAA;AFgYJ;;AE7XA;EACI,uBAAA;EACA,sBAAA;EACA,UAAA;EACA,SAAA;AFgYJ;;AE7XA;EACI,6BAAA;EAAA,qBAAA;EACA,WAAA;AFgYJ;;AE7XA;EACI,cAAA;EACA,YAAA;EACA,6BAAA;AFgYJ;;AE7XA;EACI,gBAAA;AFgYJ;;AE7XA;EACI,YAAA;AFgYJ;;AE7XA;EACI,gBAAA;EACA,6BAAA;EACA,YAAA;EC1CA,aAAA;EACA,kBD0CuB;ECzCvB,mBDyC0B;EAC1B,gEAAA;AFkYJ;AEjYI;EACI,yBAAA;EACA,eAAA;EACA,cE5CK;EF6CL,kBAAA;EACA,iBAAA;AFmYR;;AKtbA;EFCI,aAAA;EACA,8BEEuB;EFDvB,mBECsC;EACtC,8BAAA;EAMA,eAAA;EACA,YAAA;EACA,sBAAA;EACA,gCAAA;ALmbJ;AKhcI;EADJ;IAEQ,wBAAA;ELmcN;AACF;AKhcI;EANJ;IAOQ,aAAA;IACA,yCAAA;IACA,mBAAA;ELmcN;AACF;AK9bI;EACI,aAAA;EACA,mBAAA;ALgcR;AK9bI;EFlBA,aAAA;EACA,8BEkB2B;EFjB3B,mBEiB0C;ALkc9C;AKhcI;EFfA,YEgBwB;EFfxB,UEe8B;EAC1B,kBAAA;EACA,yBDtBC;AJydT;AKjcI;EACI,kBAAA;ALmcR;AKlcQ;EAFJ;IAGQ,SAAA;ELqcV;AACF;AKncI;EACI;IACI,6BAAA;ELqcV;AACF;AKncI;EACI,aAAA;ALqcR;AKncI;EACI,kBAAA;ALqcR;AKncI;EACI,aAAA;ALqcR;AKncI;EACI;IACI,cAAA;ELqcV;EKncM;IACI,iBAAA;ELqcV;EKncM;IACI,eAAA;ELqcV;EKncM;IACI,cAAA;ELqcV;EKncM;IACI,oBAAA;ELqcV;EKncM;IACI,oBAAA;ELqcV;EKncM;IACI,iBAAA;ELqcV;EKncM;IACI,iBAAA;ELqcV;AACF;AKncI;EACI,cAAA;EAIA,aAAA;ALkcR;AKrcQ;EAFJ;IAGQ,qBAAA;ELwcV;AACF;AKtcQ;EACI,YAAA;EACA,yBD3EQ;EC4ER,YAAA;EACA,UAAA;EACA,kBAAA;EACA,0BAAA;ALwcZ;AKtcQ;EACI,eAAA;ALwcZ;;AKncA;EACI,aAAA;ALscJ;;AKncA;EACI;IACI,aAAA;IACA,8BAAA;ELscN;EKpcE;IACI,eAAA;IACA,aAAA;IACA,mBAAA;ELscN;EKrcM;IACI,0BAAA;IACA,iBAAA;ELucV;EKpcE;IACI,eAAA;IACA,aAAA;IACA,mBAAA;IACA,kBAAA;ELscN;EKrcM;IACI,yBAAA;IACA,iBAAA;ELucV;AACF;AKncA;EACI,aAAA;ALqcJ;;AKlcA;EACI;IACI,aAAA;ELqcN;AACF;AMvkBA;EAII,kBAAA;EACA,WAAA;EACA,kBAAA;EACA,YAAA;EHNA,aAAA;EACA,kBGMuB;EHLvB,mBGK0B;ANwkB9B;AM/kBI;EADJ;IAEQ,aAAA;ENklBN;AACF;AM5kBI;EHRA,aAAA;EACA,6BGQ2B;EHP3B,mBGOyC;EACrC,aAAA;EACA,mBAAA;ANglBR;AM9kBI;EACI,cAAA;EACA,kBAAA;EACA,iBAAA;EACA,cFbK;EEcL,kBAAA;EACA,aAAA;EACA,YAAA;ANglBR;AM/kBQ;EACI,kBAAA;ANilBZ;AM9kBI;EACI,yBAAA;EACA,sBAAA;ANglBR;AM9kBI;EACI,aAAA;EACA,yBAAA;EACA,sBAAA;ANglBR;;AOjnBA;EACI,aAAA;EACA,sBAAA;APonBJ;AOnnBI;EACI,UAAA;APqnBR;AOpnBQ;EACI,iBAAA;EACA,aAAA;EACA,cHNA;AJ4nBZ;AOnnBI;EACI,aAAA;APqnBR;AOnnBI;EACI,iBAAA;EACA,eAAA;EJfJ,aAAA;EACA,uBIe2B;EJd3B,mBIcmC;EAC/B,mBAAA;APunBR;AOrnBI;EACI,WAAA;EACA,YAAA;APunBR;AOrnBI;EAxBJ;IAyBQ,mBAAA;IACA,8BAAA;EPwnBN;AACF;AOvnBI;EA5BJ;IA6BQ,sBAAA;IACA,8BAAA;EP0nBN;EOznBM;IACI,WAAA;EP2nBV;EO1nBU;IACI,iBAAA;IACA,aAAA;IACA,cHlCJ;EJ8pBV;AACF;;AQhqBA;EACI,WAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;ARmqBJ;;AQ/pBI;EADJ;IAEQ,aAAA;ERmqBN;AACF;;AQhqBA;EACI,aAAA;ARmqBJ;AQlqBI;EACI,aAAA;ARoqBR;AQlqBI;EACI,aAAA;ARoqBR;AQlqBI;EARJ;IAcQ,YAAA;ERgqBN;EQrqBM;IACI,wBAAA;ERyqBV;EQ1qBM;IAEI,mBAAA;IACA,iBAAA;ERuqBV;EQpqBM;IACI,wBAAA;ERsqBV;EQpqBM;IACI,aAAA;ERsqBV;EQpqBM;IACI,yBAAA;ERsqBV;EQpqBM;IACI,sBAAA;ERsqBV;EQpqBM;IACI,aAAA;IACA,2DAAA;IACA,cAAA;IAAA,SAAA;ERsqBV;EQpqBM;IACI,wBAAA;ERsqBV;AACF;AQpqBI;EACI,kBAAA;EACA,gBAAA;EACA,aAAA;EACA,aAAA;ARsqBR;AQpqBI;EACI,kBAAA;EACA,WAAA;EACA,qFAAA;EACA,YAAA;EACA,QAAA;EACA,WAAA;ARsqBR;AQpqBI;EACI,aAAA;EACA,kBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;ELpEJ,aAAA;EACA,8BKoE2B;ELnE3B,mBKmE0C;EACtC,kBAAA;EACA,YAAA;EACA,yBAAA;EACA,YAAA;ARwqBR;AQvqBQ;EACI,iBAAA;ARyqBZ;;ASpvBI;EACI,aAAA;ATuvBR;ASrvBI;EACI,aAAA;EACA,aAAA;EACA,mBAAA;ATuvBR;AStvBQ;EAJJ;IAKQ,aAAA;ETyvBV;AACF;ASvvBI;EACI;IACI,cAAA;IACA,aAAA;ETyvBV;ESvvBM;IACI,wBAAA;ET2vBV;ES5vBM;IAEI,2DAAA;IACA,cAAA;IAAA,SAAA;ETyvBV;ESvvBM;IACI,oBAAA;ETyvBV;AACF;ASvvBI;EACI,aAAA;EACA,YAAA;EACA,aAAA;EACA,8BAAA;EACA,sBAAA;EACA,yBAAA;EACA,aAAA;EACA,kBAAA;ATyvBR;ASxvBQ;EACI,iBAAA;AT0vBZ;ASxvBQ;EACI,kBAAA;AT0vBZ;ASvvBI;EACI,eAAA;EACA,oBAAA;ATyvBR;ASvvBI;EACI,aAAA;EACA,mBAAA;EACA,gBAAA;ATyvBR;ASvvBI;EACI,wBAAA;ATyvBR;ASvvBI;EACI;IACI,wBAAA;ETyvBV;AACF;ASvvBI;EACI;IACI,wBAAA;ETyvBV;AACF;ASvvBI;EACI;IACI,wBAAA;ETyvBV;AACF;;AU3zBI;EACI,gBAAA;EACA,YAAA;EACA,eAAA;EACA,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,aAAA;EACA,kBAAA;AV8zBR;AU7zBQ;EACI,iBAAA;AV+zBZ;AU5zBI;EACI,mBAAA;AV8zBR;AU5zBI;EACI,cNbK;EMcL,kBAAA;AV8zBR;AU5zBI;EACI,aAAA;EACA,8BAAA;EACA,mBAAA;AV8zBR;AU5zBI;EACI,aAAA;EACA,mBAAA;EACA,yBAAA;EACA,WAAA;EACA,iBAAA;EACA,mBAAA;EACA,eAAA;AV8zBR;AU5zBI;EACI,kBAAA;AV8zBR;AU5zBI;EACI,aAAA;EACA,mBAAA;AV8zBR;AU5zBI;EACI,gBAAA;AV8zBR;AU5zBI;EACI,mBAAA;EACA,cN7CI;EM8CJ,eAAA;AV8zBR;AU5zBI;EACI,gBAAA;AV8zBR;;AU1zBA;EACI,aAAA;AV6zBJ;AU5zBI;EAFJ;IAGQ,wBAAA;EV+zBN;AACF;AU9zBI;EACI,gBAAA;EACA,kBAAA;EACA,eAAA;AVg0BR;AU9zBI;EACI,gCAAA;EACA,eAAA;EACA,aAAA;EACA,4CAAA;EACA,oBAAA;EAAA,oBAAA;OAAA,eAAA;EACA,YAAA;EACA,mBAAA;AVg0BR;AU/zBQ;EACI,mBAAA;AVi0BZ;AU9zBI;EACI,eAAA;EACA,aAAA;EACA,4CAAA;EACA,oBAAA;EAAA,oBAAA;OAAA,eAAA;EACA,YAAA;EACA,mBAAA;AVg0BR;AU/zBQ;EACI,cNhFC;AJi5Bb;AU9zBI;EACI,yBAAA;EACA,iBAAA;EACA,mBAAA;AVg0BR;AU/zBQ;EACI,kBAAA;EACA,WAAA;EACA,gBAAA;AVi0BZ;;AWh6BA;EACI,aAAA;EACA,6BAAA;EACA,aAAA;EACA,sBAAA;AXm6BJ;AWl6BI;EACI,cPDK;EOEL,mBAAA;AXo6BR;AWn6BQ;EACI,gBAAA;AXq6BZ;AWn6BQ;EANJ;IAOQ,kBAAA;EXs6BV;AACF;AWp6BI;EAfJ;IAgBQ,mBAAA;IACA,8BAAA;IACA,SAAA;EXu6BN;AACF;;AY17BA;EACI,WAAA;EACA,gBAAA;EACA,WAAA;EACA,gBAAA;EACA,aAAA;EACA,aAAA;EACA,sBAAA;EACA,8BAAA;EACA,kBAAA;EACA,MAAA;EACA,WAAA;EACA,qBAAA;EACA,+CAAA;AZ67BJ;AY57BI;EAdJ;IAeQ,YAAA;EZ+7BN;AACF;AY97BI;EACI,OAAA;EACA,qBAAA;AZg8BR;AY97BI;EACI,wBAAA;EACA,aAAA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,mBAAA;AZg8BR;AY97BI;EACI,aAAA;AZg8BR;AY97BI;EACI,kBAAA;AZg8BR;AY97BI;EACI,aAAA;EACA,sBAAA;EACA,mBAAA;AZg8BR;AY97BI;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;AZg8BR;AY/7BQ;EACI,kBAAA;EACA,WAAA;EACA,6BAAA;EACA,YAAA;EACA,UAAA;AZi8BZ;AY97BI;EACI,aAAA;EACA,mBAAA;EACA,mBAAA;AZg8BR;AY/7BQ;EACI,cRpDC;AJq/Bb;AY/7BQ;EACI,4BAAA;EACA,kBAAA;EACA,WAAA;EACA,yBRzDQ;EQ0DR,YAAA;EACA,UAAA;AZi8BZ;AY97BI;EACI,aAAA;EACA,iBAAA;EAKA,mBAAA;AZ47BR;AYh8BQ;EACI,kBAAA;EACA,eAAA;AZk8BZ;AY97BI;EACI,iBAAA;AZg8BR;AY/7BQ;EACI,eAAA;EACA,kBAAA;EACA,gBAAA;AZi8BZ;AY97BI;EACI,iBAAA;EACA,aAAA;AZg8BR;AY/7BQ;EACI,mBAAA;EACA,iBAAA;EACA,cRzFA;AJ0hCZ;AY/7BQ;EACI,cRzFC;AJ0hCb;AY97BI;EACI,sBAAA;EACA,qBAAA;EACA,YAAA;EACA,aAAA;AZg8BR;AY97BI;EAUI,yBAAA;AZg8BR;AY18BI;EACI,kBAAA;EACA,YAAA;EACA,kBAAA;EACA,MAAA;EACA,OAAA;EACA,YAAA;EACA,WAAA;EACA,WAAA;EACA,qBAAA;AZi8BR;;AY37BA;EACI,aAAA;AZ87BJ;;AY37BA;EACI;IACI,YAAA;IACA,gBAAA;IACA,YAAA;IACA,aAAA;IACA,sBAAA;IACA,8BAAA;EZ87BN;EY77BM;IACI,OAAA;IACA,qBAAA;EZ+7BV;EY77BM;IACI,wBAAA;IACA,aAAA;IACA,aAAA;IACA,mBAAA;IACA,8BAAA;IACA,mBAAA;EZ+7BV;EY77BM;IACI,aAAA;EZ+7BV;EY77BM;IACI,wBAAA;EZ+7BV;EY77BM;IACI,aAAA;IACA,sBAAA;IACA,mBAAA;EZ+7BV;EY77BM;IACI,aAAA;IACA,mBAAA;IACA,mBAAA;EZ+7BV;EY97BU;IACI,kBAAA;IACA,WAAA;IACA,6BAAA;IACA,YAAA;IACA,UAAA;EZg8Bd;EY77BM;IACI,aAAA;IACA,mBAAA;IACA,mBAAA;EZ+7BV;EY97BU;IACI,cRrKH;EJqmCX;EY97BU;IACI,4BAAA;IACA,kBAAA;IACA,WAAA;IACA,yBR1KI;IQ2KJ,YAAA;IACA,UAAA;EZg8Bd;EY77BM;IACI,aAAA;IACA,iBAAA;IAKA,mBAAA;EZ27BV;EY/7BU;IACI,kBAAA;IACA,eAAA;EZi8Bd;EY77BM;IACI,iBAAA;EZ+7BV;EY97BU;IACI,eAAA;IACA,kBAAA;IACA,gBAAA;EZg8Bd;EY77BM;IACI,iBAAA;IACA,aAAA;EZ+7BV;EY97BU;IACI,mBAAA;IACA,iBAAA;IACA,cR1MJ;EJ0oCV;EY97BU;IACI,cR1MH;EJ0oCX;AACF;AahpCA;EACI,WAAA;EACA,gBAAA;EACA,kBAAA;EACA,oBAAA;EACA,YAAA;EACA,qBAAA;EACA,sBAAA;EACA,WAAA;EACA,aAAA;EACA,sBAAA;EACA,aAAA;EACA,MAAA;EACA,qFAAA;AbkpCJ;AajpCI;EAdJ;IAeQ,YAAA;EbopCN;AACF;AanpCI;EACI,aAAA;AbqpCR;AappCQ;EACI,iBAAA;EACA,wBAAA;AbspCZ;AanpCI;EACI,aAAA;EACA,mBAAA;EAUA,mBAAA;Ab4oCR;AarpCQ;EACI,WAAA;EACA,cAAA;EACA,YAAA;EACA,UAAA;EACA,4BAAA;EACA,mBT3BQ;ES4BR,kBAAA;AbupCZ;AanpCI;EACI,cAAA;EACA,aAAA;EACA,sBAAA;AbqpCR;AappCQ;;EAEI,yBAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;AbspCZ;AarpCY;EACI,cAAA;AbwpChB;AazpCY;EACI,cAAA;AbwpChB;AazpCY;;EACI,cAAA;AbwpChB;AappCI;EACI,cAAA;AbspCR;AarpCQ;EACI,cTnDC;AJ0sCb;AarpCQ;EACI,cAAA;AbupCZ;AappCI;EACI,cAAA;EACA,aAAA;EACA,mBAAA;EACA,yBAAA;AbspCR;AarpCQ;EACI,WAAA;EACA,kBAAA;EACA,eAAA;EACA,gBAAA;AbupCZ;AarpCQ;EACI,iBAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,gBAAA;AbupCZ;;AalpCA;EACI,QAAA;EACA,qBAAA;AbqpCJ;;Ac1uCA;EACI,gBAAA;EACA,WAAA;EACA,kBAAA;EACA,oBAAA;EACA,YAAA;EACA,aAAA;EACA,qBAAA;EACA,sBAAA;EACA,WAAA;EACA,aAAA;EACA,sBAAA;EACA,qFAAA;Ad6uCJ;Ac5uCI;EAbJ;IAcQ,YAAA;Ed+uCN;AACF;Ac9uCI;EACI,aAAA;AdgvCR;Ac/uCQ;EACI,iBAAA;EACA,wBAAA;AdivCZ;Ac9uCI;EACI,aAAA;EACA,mBAAA;EAUA,mBAAA;AduuCR;AchvCQ;EACI,WAAA;EACA,cAAA;EACA,YAAA;EACA,UAAA;EACA,4BAAA;EACA,mBV1BQ;EU2BR,kBAAA;AdkvCZ;Ac9uCI;EACI,cAAA;AdgvCR;Ac/uCQ;EACI,WAAA;EACA,yBAAA;EACA,kBAAA;EACA,kBAAA;EACA,mBAAA;AdivCZ;AchvCY;EACI,cAAA;AdkvChB;AcnvCY;EACI,cAAA;AdkvChB;AcnvCY;EACI,cAAA;AdkvChB;Ac9uCI;EACI,cAAA;AdgvCR;Ac/uCQ;EACI,cVhDC;AJiyCb;Ac/uCQ;EACI,cAAA;AdivCZ;Ac9uCI;EACI,cAAA;EACA,aAAA;EACA,mBAAA;EACA,yBAAA;AdgvCR;Ac/uCQ;EACI,WAAA;EACA,kBAAA;EACA,eAAA;EACA,gBAAA;AdivCZ;Ac/uCQ;EACI,iBAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,gBAAA;AdivCZ;;Ac5uCA;EACI,QAAA;EACA,qBAAA;Ad+uCJ;;Aej0CA;EAII,2BAAA;Afs0CJ;;Ae10CA;EAKI,YAAA;EACA,aAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;Afi0CJ;Aez0CI;EADJ;IAEQ,aAAA;Ef40CN;AACF;Aer0CI;EACI,kBAAA;EACA,SAAA;EACA,aAAA;EACA,cAAA;EACA,aAAA;EACA,6BAAA;EACA,mBAAA;Afu0CR;Aer0CI;EACI,cAAA;EACA,iBAAA;EACA,eAAA;EACA,kBAAA;Afu0CR;Aer0CI;EACI,sBAAA;EACA,cAAA;EACA,mBAAA;EACA,iBAAA;EACA,aAAA;EACA,yBAAA;Afu0CR;Aer0CI;EACI,sBAAA;EACA,cAAA;EACA,mBAAA;EACA,iBAAA;EACA,aAAA;EACA,yBAAA;Afu0CR","sourcesContent":["@import \"./lib/normalize.css\";\n@import \"./scss/fonts\";\n@import \"./scss/vars\";\n@import \"./scss/mixin\";\n@import \"./scss/null.scss\";\n@import \"./scss/mixins/header\";\n@import \"./scss/mixins/navigation\";\n@import \"./scss/mixins/main\";\n@import \"./scss/mixins/brands\";\n@import \"./scss/mixins/repair-device\";\n@import \"./scss/mixins/prices\";\n@import \"./scss/mixins/footer\";\n@import \"./scss/mixins/navbar\";\n@import \"./scss/mixins/feetback\";\n@import \"./scss/mixins/repairbar\";\n@import \"./scss/mixins/navigation-desktop\";\n","@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Italic.eot\");\n    src: local(\"TT Lakes Italic\"), local(\"TTLakes-Italic\"),\n        url(\"fonts/TTLakes-Italic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Italic.woff\") format(\"woff\"), url(\"fonts/TTLakes-Italic.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-ExtraLight.eot\");\n    src: local(\"TT Lakes Condensed ExtraLight\"), local(\"TTLakesCondensed-ExtraLight\"),\n        url(\"fonts/TTLakesCondensed-ExtraLight.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-ExtraLight.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-ExtraLight.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Regular.eot\");\n    src: local(\"TT Lakes Compressed Regular\"), local(\"TTLakesCompressed-Regular\"),\n        url(\"fonts/TTLakesCompressed-Regular.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Regular.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Regular.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-ThinItalic.eot\");\n    src: local(\"TT Lakes Compressed Thin Italic\"), local(\"TTLakesCompressed-ThinItalic\"),\n        url(\"fonts/TTLakesCompressed-ThinItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-ThinItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-ThinItalic.ttf\") format(\"truetype\");\n    font-weight: 100;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Medium.eot\");\n    src: local(\"TT Lakes Condensed Medium\"), local(\"TTLakesCondensed-Medium\"),\n        url(\"fonts/TTLakesCondensed-Medium.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Medium.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Medium.ttf\") format(\"truetype\");\n    font-weight: 500;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-ExtraBoldItalic.eot\");\n    src: local(\"TT Lakes Compressed ExtraBold Italic\"), local(\"TTLakesCompressed-ExtraBoldItalic\"),\n        url(\"fonts/TTLakesCompressed-ExtraBoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-ExtraBoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-ExtraBoldItalic.ttf\") format(\"truetype\");\n    font-weight: 800;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-ExtraLightItalic.eot\");\n    src: local(\"TT Lakes ExtraLight Italic\"), local(\"TTLakes-ExtraLightItalic\"),\n        url(\"fonts/TTLakes-ExtraLightItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-ExtraLightItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakes-ExtraLightItalic.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-LightItalic.eot\");\n    src: local(\"TT Lakes Light Italic\"), local(\"TTLakes-LightItalic\"),\n        url(\"fonts/TTLakes-LightItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-LightItalic.woff\") format(\"woff\"), url(\"fonts/TTLakes-LightItalic.ttf\") format(\"truetype\");\n    font-weight: 300;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Thin.eot\");\n    src: local(\"TT Lakes Thin\"), local(\"TTLakes-Thin\"), url(\"fonts/TTLakes-Thin.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Thin.woff\") format(\"woff\"), url(\"fonts/TTLakes-Thin.ttf\") format(\"truetype\");\n    font-weight: 100;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-DemiBoldItalic.eot\");\n    src: local(\"TT Lakes DemiBold Italic\"), local(\"TTLakes-DemiBoldItalic\"),\n        url(\"fonts/TTLakes-DemiBoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-DemiBoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakes-DemiBoldItalic.ttf\") format(\"truetype\");\n    font-weight: 600;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Black.eot\");\n    src: local(\"TT Lakes Condensed Black\"), local(\"TTLakesCondensed-Black\"),\n        url(\"fonts/TTLakesCondensed-Black.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Black.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Black.ttf\") format(\"truetype\");\n    font-weight: 900;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-LightItalic.eot\");\n    src: local(\"TT Lakes Condensed Light Italic\"), local(\"TTLakesCondensed-LightItalic\"),\n        url(\"fonts/TTLakesCondensed-LightItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-LightItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-LightItalic.ttf\") format(\"truetype\");\n    font-weight: 300;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-DemiBold.eot\");\n    src: local(\"TT Lakes Condensed DemiBold\"), local(\"TTLakesCondensed-DemiBold\"),\n        url(\"fonts/TTLakesCondensed-DemiBold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-DemiBold.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-DemiBold.ttf\") format(\"truetype\");\n    font-weight: 600;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-ExtraBold.eot\");\n    src: local(\"TT Lakes Compressed ExtraBold\"), local(\"TTLakesCompressed-ExtraBold\"),\n        url(\"fonts/TTLakesCompressed-ExtraBold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-ExtraBold.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-ExtraBold.ttf\") format(\"truetype\");\n    font-weight: 800;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-ExtraBoldItalic.eot\");\n    src: local(\"TT Lakes ExtraBold Italic\"), local(\"TTLakes-ExtraBoldItalic\"),\n        url(\"fonts/TTLakes-ExtraBoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-ExtraBoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakes-ExtraBoldItalic.ttf\") format(\"truetype\");\n    font-weight: 800;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-ExtraLight.eot\");\n    src: local(\"TT Lakes ExtraLight\"), local(\"TTLakes-ExtraLight\"),\n        url(\"fonts/TTLakes-ExtraLight.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-ExtraLight.woff\") format(\"woff\"), url(\"fonts/TTLakes-ExtraLight.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Bold.eot\");\n    src: local(\"TT Lakes Condensed Bold\"), local(\"TTLakesCondensed-Bold\"),\n        url(\"fonts/TTLakesCondensed-Bold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Bold.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Bold.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-ThinItalic.eot\");\n    src: local(\"TT Lakes Condensed Thin Italic\"), local(\"TTLakesCondensed-ThinItalic\"),\n        url(\"fonts/TTLakesCondensed-ThinItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-ThinItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-ThinItalic.ttf\") format(\"truetype\");\n    font-weight: 100;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-ExtraBoldItalic.eot\");\n    src: local(\"TT Lakes Condensed ExtraBold Italic\"), local(\"TTLakesCondensed-ExtraBoldItalic\"),\n        url(\"fonts/TTLakesCondensed-ExtraBoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-ExtraBoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-ExtraBoldItalic.ttf\") format(\"truetype\");\n    font-weight: 800;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Medium.eot\");\n    src: local(\"TT Lakes Compressed Medium\"), local(\"TTLakesCompressed-Medium\"),\n        url(\"fonts/TTLakesCompressed-Medium.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Medium.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Medium.ttf\") format(\"truetype\");\n    font-weight: 500;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Thin.eot\");\n    src: local(\"TT Lakes Condensed Thin\"), local(\"TTLakesCondensed-Thin\"),\n        url(\"fonts/TTLakesCondensed-Thin.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Thin.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Thin.ttf\") format(\"truetype\");\n    font-weight: 100;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Italic.eot\");\n    src: local(\"TT Lakes Compressed Italic\"), local(\"TTLakesCompressed-Italic\"),\n        url(\"fonts/TTLakesCompressed-Italic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Italic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Italic.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Light.eot\");\n    src: local(\"TT Lakes Compressed Light\"), local(\"TTLakesCompressed-Light\"),\n        url(\"fonts/TTLakesCompressed-Light.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Light.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Light.ttf\") format(\"truetype\");\n    font-weight: 300;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-LightItalic.eot\");\n    src: local(\"TT Lakes Compressed Light Italic\"), local(\"TTLakesCompressed-LightItalic\"),\n        url(\"fonts/TTLakesCompressed-LightItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-LightItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-LightItalic.ttf\") format(\"truetype\");\n    font-weight: 300;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Regular.eot\");\n    src: local(\"TT Lakes Condensed Regular\"), local(\"TTLakesCondensed-Regular\"),\n        url(\"fonts/TTLakesCondensed-Regular.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Regular.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Regular.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Light.eot\");\n    src: local(\"TT Lakes Condensed Light\"), local(\"TTLakesCondensed-Light\"),\n        url(\"fonts/TTLakesCondensed-Light.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Light.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Light.ttf\") format(\"truetype\");\n    font-weight: 300;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Bold.eot\");\n    src: local(\"TT Lakes Bold\"), local(\"TTLakes-Bold\"), url(\"fonts/TTLakes-Bold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Bold.woff\") format(\"woff\"), url(\"fonts/TTLakes-Bold.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-DemiBold.eot\");\n    src: local(\"TT Lakes DemiBold\"), local(\"TTLakes-DemiBold\"),\n        url(\"fonts/TTLakes-DemiBold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-DemiBold.woff\") format(\"woff\"), url(\"fonts/TTLakes-DemiBold.ttf\") format(\"truetype\");\n    font-weight: 600;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Thin.eot\");\n    src: local(\"TT Lakes Compressed Thin\"), local(\"TTLakesCompressed-Thin\"),\n        url(\"fonts/TTLakesCompressed-Thin.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Thin.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Thin.ttf\") format(\"truetype\");\n    font-weight: 100;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Black.eot\");\n    src: local(\"TT Lakes Black\"), local(\"TTLakes-Black\"),\n        url(\"fonts/TTLakes-Black.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Black.woff\") format(\"woff\"), url(\"fonts/TTLakes-Black.ttf\") format(\"truetype\");\n    font-weight: 900;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-MediumItalic.eot\");\n    src: local(\"TT Lakes Medium Italic\"), local(\"TTLakes-MediumItalic\"),\n        url(\"fonts/TTLakes-MediumItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-MediumItalic.woff\") format(\"woff\"), url(\"fonts/TTLakes-MediumItalic.ttf\") format(\"truetype\");\n    font-weight: 500;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-ExtraBold.eot\");\n    src: local(\"TT Lakes Condensed ExtraBold\"), local(\"TTLakesCondensed-ExtraBold\"),\n        url(\"fonts/TTLakesCondensed-ExtraBold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-ExtraBold.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-ExtraBold.ttf\") format(\"truetype\");\n    font-weight: 800;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-ExtraLightItalic.eot\");\n    src: local(\"TT Lakes Condensed ExtraLight Italic\"), local(\"TTLakesCondensed-ExtraLightItalic\"),\n        url(\"fonts/TTLakesCondensed-ExtraLightItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-ExtraLightItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-ExtraLightItalic.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Medium.eot\");\n    src: local(\"TT Lakes Medium\"), local(\"TTLakes-Medium\"),\n        url(\"fonts/TTLakes-Medium.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Medium.woff\") format(\"woff\"), url(\"fonts/TTLakes-Medium.ttf\") format(\"truetype\");\n    font-weight: 500;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-DemiBoldItalic.eot\");\n    src: local(\"TT Lakes Condensed DemiBold Italic\"), local(\"TTLakesCondensed-DemiBoldItalic\"),\n        url(\"fonts/TTLakesCondensed-DemiBoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-DemiBoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-DemiBoldItalic.ttf\") format(\"truetype\");\n    font-weight: 600;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-BoldItalic.eot\");\n    src: local(\"TT Lakes Compressed Bold Italic\"), local(\"TTLakesCompressed-BoldItalic\"),\n        url(\"fonts/TTLakesCompressed-BoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-BoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-BoldItalic.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-ExtraLightItalic.eot\");\n    src: local(\"TT Lakes Compressed ExtraLight Italic\"), local(\"TTLakesCompressed-ExtraLightItalic\"),\n        url(\"fonts/TTLakesCompressed-ExtraLightItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-ExtraLightItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-ExtraLightItalic.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Regular.eot\");\n    src: local(\"TT Lakes Regular\"), local(\"TTLakes-Regular\"),\n        url(\"fonts/TTLakes-Regular.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Regular.woff\") format(\"woff\"), url(\"fonts/TTLakes-Regular.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-BoldItalic.eot\");\n    src: local(\"TT Lakes Bold Italic\"), local(\"TTLakes-BoldItalic\"),\n        url(\"fonts/TTLakes-BoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-BoldItalic.woff\") format(\"woff\"), url(\"fonts/TTLakes-BoldItalic.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-MediumItalic.eot\");\n    src: local(\"TT Lakes Condensed Medium Italic\"), local(\"TTLakesCondensed-MediumItalic\"),\n        url(\"fonts/TTLakesCondensed-MediumItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-MediumItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-MediumItalic.ttf\") format(\"truetype\");\n    font-weight: 500;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-Italic.eot\");\n    src: local(\"TT Lakes Condensed Italic\"), local(\"TTLakesCondensed-Italic\"),\n        url(\"fonts/TTLakesCondensed-Italic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-Italic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-Italic.ttf\") format(\"truetype\");\n    font-weight: normal;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-ThinItalic.eot\");\n    src: local(\"TT Lakes Thin Italic\"), local(\"TTLakes-ThinItalic\"),\n        url(\"fonts/TTLakes-ThinItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-ThinItalic.woff\") format(\"woff\"), url(\"fonts/TTLakes-ThinItalic.ttf\") format(\"truetype\");\n    font-weight: 100;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-DemiBold.eot\");\n    src: local(\"TT Lakes Compressed DemiBold\"), local(\"TTLakesCompressed-DemiBold\"),\n        url(\"fonts/TTLakesCompressed-DemiBold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-DemiBold.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-DemiBold.ttf\") format(\"truetype\");\n    font-weight: 600;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-BlackItalic.eot\");\n    src: local(\"TT Lakes Black Italic\"), local(\"TTLakes-BlackItalic\"),\n        url(\"fonts/TTLakes-BlackItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-BlackItalic.woff\") format(\"woff\"), url(\"fonts/TTLakes-BlackItalic.ttf\") format(\"truetype\");\n    font-weight: 900;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Bold.eot\");\n    src: local(\"TT Lakes Compressed Bold\"), local(\"TTLakesCompressed-Bold\"),\n        url(\"fonts/TTLakesCompressed-Bold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Bold.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Bold.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-BlackItalic.eot\");\n    src: local(\"TT Lakes Condensed Black Italic\"), local(\"TTLakesCondensed-BlackItalic\"),\n        url(\"fonts/TTLakesCondensed-BlackItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-BlackItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-BlackItalic.ttf\") format(\"truetype\");\n    font-weight: 900;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-MediumItalic.eot\");\n    src: local(\"TT Lakes Compressed Medium Italic\"), local(\"TTLakesCompressed-MediumItalic\"),\n        url(\"fonts/TTLakesCompressed-MediumItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-MediumItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-MediumItalic.ttf\") format(\"truetype\");\n    font-weight: 500;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Condensed\";\n    src: url(\"fonts/TTLakesCondensed-BoldItalic.eot\");\n    src: local(\"TT Lakes Condensed Bold Italic\"), local(\"TTLakesCondensed-BoldItalic\"),\n        url(\"fonts/TTLakesCondensed-BoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCondensed-BoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCondensed-BoldItalic.ttf\") format(\"truetype\");\n    font-weight: bold;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-ExtraLight.eot\");\n    src: local(\"TT Lakes Compressed ExtraLight\"), local(\"TTLakesCompressed-ExtraLight\"),\n        url(\"fonts/TTLakesCompressed-ExtraLight.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-ExtraLight.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-ExtraLight.ttf\") format(\"truetype\");\n    font-weight: 200;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-ExtraBold.eot\");\n    src: local(\"TT Lakes ExtraBold\"), local(\"TTLakes-ExtraBold\"),\n        url(\"fonts/TTLakes-ExtraBold.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-ExtraBold.woff\") format(\"woff\"), url(\"fonts/TTLakes-ExtraBold.ttf\") format(\"truetype\");\n    font-weight: 800;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-DemiBoldItalic.eot\");\n    src: local(\"TT Lakes Compressed DemiBold Italic\"), local(\"TTLakesCompressed-DemiBoldItalic\"),\n        url(\"fonts/TTLakesCompressed-DemiBoldItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-DemiBoldItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-DemiBoldItalic.ttf\") format(\"truetype\");\n    font-weight: 600;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-BlackItalic.eot\");\n    src: local(\"TT Lakes Compressed Black Italic\"), local(\"TTLakesCompressed-BlackItalic\"),\n        url(\"fonts/TTLakesCompressed-BlackItalic.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-BlackItalic.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-BlackItalic.ttf\") format(\"truetype\");\n    font-weight: 900;\n    font-style: italic;\n}\n\n@font-face {\n    font-family: \"TT Lakes\";\n    src: url(\"fonts/TTLakes-Light.eot\");\n    src: local(\"TT Lakes Light\"), local(\"TTLakes-Light\"),\n        url(\"fonts/TTLakes-Light.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakes-Light.woff\") format(\"woff\"), url(\"fonts/TTLakes-Light.ttf\") format(\"truetype\");\n    font-weight: 300;\n    font-style: normal;\n}\n\n@font-face {\n    font-family: \"TT Lakes Compressed\";\n    src: url(\"fonts/TTLakesCompressed-Black.eot\");\n    src: local(\"TT Lakes Compressed Black\"), local(\"TTLakesCompressed-Black\"),\n        url(\"fonts/TTLakesCompressed-Black.eot?#iefix\") format(\"embedded-opentype\"),\n        url(\"fonts/TTLakesCompressed-Black.woff\") format(\"woff\"),\n        url(\"fonts/TTLakesCompressed-Black.ttf\") format(\"truetype\");\n    font-weight: 900;\n    font-style: normal;\n}\n","body {\n    background-color: $bgbody;\n    position: relative;\n    overflow-x: hidden;\n    @media screen and (width >=1120px) {\n        display: grid;\n        grid-template-columns: 320px 1fr;\n    }\n}\n\nhtml {\n    overflow-x: hidden;\n}\n\n* {\n    font-family: \"TT Lakes\";\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n}\n\na {\n    text-decoration: none;\n    color: #000;\n}\n\nbutton {\n    display: block;\n    border: none;\n    background-color: transparent;\n}\n\nli {\n    list-style: none;\n}\n\ntextarea {\n    resize: none;\n}\n\n.title {\n    margin-top: 15px;\n    border-top: 1px solid $titleBorder;\n    height: 56px;\n    @include flexbleCenter(0, center);\n    background: linear-gradient(-270deg, #f8f8f8 0%, #ffffff 98.61%);\n    & p {\n        text-transform: uppercase;\n        font-size: 16px;\n        color: $titleColor;\n        padding-left: 16px;\n        line-height: 24px;\n    }\n}\n","@mixin flexbleCenter($justify, $align) {\n    display: flex;\n    justify-content: $justify;\n    align-items: $align;\n}\n\n@mixin borderMenu($height, $width) {\n    height: $height;\n    width: $width;\n}\n","//colors\n$bgbody: #f8f8f8;\n$colorText: #1b1c21;\n$border: #eaeaea;\n$titleBorder: #d9fff5;\n$titleColor: #7e7e82;\n$borderforMainText: #41f6d7;\n",".header {\n    @media screen and (width >=1120px) {\n        display: none !important;\n    }\n    @include flexbleCenter(space-between, center);\n    justify-content: space-between;\n    @media screen and (width >=768px) {\n        display: grid;\n        grid-template-columns: 80px 2px 130px 1fr;\n        align-items: center;\n    }\n    padding: 0 16px;\n    height: 88px;\n    background-color: #fff;\n    border-bottom: 1px solid $titleBorder;\n    &__right {\n        display: flex;\n        align-items: center;\n    }\n    &__options {\n        @include flexbleCenter(space-between, center);\n    }\n    &__border {\n        @include borderMenu(32px, 2px);\n        border-radius: 1px;\n        background-color: $border;\n    }\n    &__option-item:first-child {\n        margin-right: 27px;\n        @media screen and (width >=768px) {\n            margin: 0;\n        }\n    }\n    @media screen and (width <=350px) {\n        &__border {\n            margin-right: 13px !important;\n        }\n    }\n    &__none-mobile {\n        display: none;\n    }\n    &__border {\n        margin-right: 26px;\n    }\n    &__desktop-border {\n        display: none;\n    }\n    @media screen and (width >=768px) {\n        &__desktop-border {\n            display: block;\n        }\n        &__right {\n            justify-self: end;\n        }\n        &__border {\n            margin-right: 0;\n        }\n        &__none-mobile {\n            display: block;\n        }\n        &__burger {\n            justify-self: center;\n        }\n        &__logo {\n            justify-self: center;\n        }\n        &__option-item {\n            margin-left: 26px;\n        }\n        &__options {\n            margin-left: 26px;\n        }\n    }\n    &__headline {\n        margin: 24px 0;\n        @media screen and (width <=1120px) {\n            margin: 24px 0 12px 0;\n        }\n        display: flex;\n        &::before {\n            content: \" \";\n            background-color: $borderforMainText;\n            height: 40px;\n            width: 4px;\n            margin-right: 12px;\n            border-radius: 0 6px 6px 0;\n        }\n        & h2 {\n            font-size: 28px;\n        }\n    }\n}\n\n.desktop-header {\n    display: none;\n}\n\n@media screen and (width >=1120px) {\n    .desktop-header {\n        display: flex;\n        justify-content: space-between;\n    }\n    .open-feedback-btn {\n        cursor: pointer;\n        display: flex;\n        align-items: center;\n        &::before {\n            content: \"Оставить заявку\";\n            margin-right: 8px;\n        }\n    }\n    .open-repairbar-btn {\n        cursor: pointer;\n        display: flex;\n        align-items: center;\n        margin-right: 24px;\n        &::before {\n            content: \"Статус ремонта\";\n            margin-right: 8px;\n        }\n    }\n}\n\n.title-mobile {\n    display: none;\n}\n\n@media screen and (width <=1120px) {\n    .title-mobile {\n        display: flex;\n    }\n}\n",".navigation {\n    @media screen and (width >=1120px) {\n        display: none;\n    }\n    position: relative;\n    width: 100%;\n    overflow-x: scroll;\n    height: 60px;\n    @include flexbleCenter(0, center);\n    &__wrapper {\n        @include flexbleCenter(space-evenly, center);\n        width: 1700px;\n        margin-bottom: 10px;\n    }\n    &__item {\n        display: block;\n        text-align: center;\n        margin-left: 16px;\n        color: $titleColor;\n        border-radius: 6px;\n        padding: 10px;\n        width: 230px;\n        &:last-child {\n            margin-right: 10px;\n        }\n    }\n    &__item:active {\n        border: 2px solid #b8ffec;\n        background-color: #fff;\n    }\n    &__item:focus {\n        outline: none;\n        border: 2px solid #b8ffec;\n        background-color: #fff;\n    }\n}\n",".main {\n    display: flex;\n    flex-direction: column;\n    &__description {\n        width: 50%;\n        & p {\n            line-height: 18px;\n            padding: 16px;\n            color: $colorText;\n        }\n    }\n    &__decription-text-more {\n        display: none;\n    }\n    &__button {\n        margin-left: 10px;\n        cursor: pointer;\n        @include flexbleCenter(center, center);\n        margin-bottom: 15px;\n    }\n    &__service-img {\n        width: 100%;\n        height: auto;\n    }\n    @media screen and (width >=768px) {\n        flex-direction: row;\n        justify-content: space-between;\n    }\n    @media screen and (width <=768px) {\n        flex-direction: column;\n        justify-content: space-between;\n        &__description {\n            width: 100%;\n            & p {\n                line-height: 18px;\n                padding: 16px;\n                color: $colorText;\n            }\n        }\n    }\n}\n","@import \"https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css\";\n.brands-swiper {\n    width: 100%;\n    height: 120px;\n    display: flex;\n    align-items: center;\n}\n\n.swiper-wrapper {\n    @media screen and (width >=768px) {\n        display: none;\n    }\n}\n\n.brands {\n    height: 200px;\n    &__desktop-cards {\n        display: none;\n    }\n    &__button-show-item {\n        display: none;\n    }\n    @media screen and (width >=768px) {\n        &__button-show-item {\n            display: flex !important;\n            align-items: center;\n            margin-left: 24px;\n        }\n        height: auto;\n        &__none-item {\n            display: none !important;\n        }\n        &__wrapper-desktop-cards {\n            padding: 24px;\n        }\n        &__item:first-child {\n            margin-left: 0 !important;\n        }\n        &__item {\n            width: 100% !important;\n        }\n        &__desktop-cards {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));\n            gap: 20px;\n        }\n        &__slider {\n            display: none !important;\n        }\n    }\n    &__slider {\n        position: relative;\n        margin-top: 25px;\n        height: 100px;\n        display: flex;\n    }\n    &__wrapper-right-side {\n        position: absolute;\n        z-index: 11;\n        background: linear-gradient(270deg, #f8f8f8 16.84%, rgba(248, 248, 248, 0.0001) 100%);\n        height: 81px;\n        right: 0;\n        width: 30px;\n    }\n    &__item {\n        height: 300px;\n        text-align: center;\n        font-size: 18px;\n        background: #fff;\n        padding: 0 16px;\n        @include flexbleCenter(space-between, center);\n        border-radius: 6px;\n        width: 240px;\n        border: 1px solid $border;\n        height: 71px;\n        &:first-child {\n            margin-left: 16px;\n        }\n    }\n}\n",".repair-device {\n    &__desktop {\n        display: none;\n    }\n    &__slider {\n        height: 228px;\n        display: flex;\n        align-items: center;\n        @media screen and (width >=768px) {\n            display: none;\n        }\n    }\n    @media screen and (width >=768px) {\n        &__desktop {\n            display: block;\n            padding: 16px;\n        }\n        &__desktop-cards {\n            display: grid !important;\n            grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));\n            gap: 20px;\n        }\n        &__item:first-child {\n            margin: 0 !important;\n        }\n    }\n    &__item {\n        height: 160px;\n        width: 240px;\n        display: flex;\n        justify-content: space-between;\n        background-color: #fff;\n        border: 1px solid $border;\n        padding: 16px;\n        border-radius: 6px;\n        &:first-child {\n            margin-left: 16px;\n        }\n        &:last-child {\n            margin-right: 16px;\n        }\n    }\n    &__item-button {\n        cursor: pointer;\n        align-self: flex-end;\n    }\n    &__button-show-item {\n        display: flex;\n        align-items: center;\n        margin-top: 24px;\n    }\n    &__item-none {\n        display: none !important;\n    }\n    @media screen and (width >=1050px) {\n        &__none-item-other {\n            display: flex !important;\n        }\n    }\n    @media screen and (width >=1120px) {\n        &__none-item-other {\n            display: none !important;\n        }\n    }\n    @media screen and (width >=1320px) {\n        &__none-item-other {\n            display: flex !important;\n        }\n    }\n}\n",".prices {\n    &__item {\n        margin-top: 16px;\n        width: 260px;\n        font-size: 14px;\n        background: #fff;\n        display: flex;\n        flex-direction: column;\n        padding: 16px;\n        border-radius: 6px;\n        &:first-child {\n            margin-left: 16px;\n        }\n    }\n    &__conditions {\n        margin-bottom: 16px;\n    }\n    &__conditions-title {\n        color: $titleColor;\n        margin-bottom: 6px;\n    }\n    &__order {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n    }\n    &__order-button {\n        display: flex;\n        align-items: center;\n        background-color: #ff3e79;\n        color: #fff;\n        padding: 8px 12px;\n        border-radius: 16px;\n        cursor: pointer;\n    }\n    &__order-title {\n        margin-right: 17px;\n    }\n    &__descriptions {\n        padding: 16px;\n        margin-bottom: 16px;\n    }\n    &__descriptions-button {\n        text-align: left;\n    }\n    &__descriptions-text {\n        margin-bottom: 20px;\n        color: $colorText;\n        font-size: 14px;\n    }\n    &__descriptions-button-img {\n        margin-left: 5px;\n    }\n}\n\n.prices-desktop {\n    padding: 24px;\n    @media screen and (width <=768px) {\n        display: none !important;\n    }\n    &__column-items {\n        background: #fff;\n        border-radius: 6px;\n        padding: 0 10px;\n    }\n    &__column-item {\n        border-bottom: 1px solid $border;\n        padding: 0 20px;\n        display: grid;\n        grid-template-columns: 1fr 150px 150px 150px;\n        column-gap: 5px;\n        height: 60px;\n        align-items: center;\n        &:last-child {\n            border-bottom: none;\n        }\n    }\n    &__column-item-title {\n        padding: 0 20px;\n        display: grid;\n        grid-template-columns: 1fr 150px 150px 150px;\n        column-gap: 5px;\n        height: 60px;\n        align-items: center;\n        & p {\n            color: $titleColor;\n        }\n    }\n    &__button-order {\n        background-color: #ff3e79;\n        padding: 8px 12px;\n        border-radius: 16px;\n        & span {\n            margin-right: 10px;\n            color: #fff;\n            font-weight: 600;\n        }\n    }\n}\n",".footer {\n    padding: 16px;\n    border-top: 1px solid $titleBorder;\n    display: flex;\n    flex-direction: column;\n    & p {\n        color: $titleColor;\n        margin-bottom: 16px;\n        &:last-child {\n            margin-bottom: 0;\n        }\n        @media screen and (width <=450px) {\n            text-align: center;\n        }\n    }\n    @media screen and (width >=768px) {\n        flex-direction: row;\n        justify-content: space-between;\n        gap: 30px;\n    }\n}\n",".navbar {\n    z-index: 13;\n    overflow-y: auto;\n    width: 100%;\n    background: #fff;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    position: absolute;\n    top: 0;\n    left: -105%;\n    transition: 0.9s ease;\n    box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.2);\n    @media screen and (width >=400px) {\n        width: 350px;\n    }\n    &-active {\n        left: 0;\n        transition: 0.7s ease;\n    }\n    &__header {\n        justify-self: flex-start;\n        padding: 24px;\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        margin-bottom: 30px;\n    }\n    &__header-left {\n        display: flex;\n    }\n    &__close-btn {\n        margin-right: 16px;\n    }\n    &__nav-items {\n        display: flex;\n        flex-direction: column;\n        margin-bottom: 34px;\n    }\n    &__item {\n        display: flex;\n        align-items: center;\n        margin-bottom: 10px;\n        &::before {\n            margin-right: 16px;\n            content: \"\";\n            background-color: transparent;\n            height: 32px;\n            width: 4px;\n        }\n    }\n    &__active-item {\n        display: flex;\n        align-items: center;\n        margin-bottom: 20px;\n        & a {\n            color: $titleColor;\n        }\n        &::before {\n            border-radius: 0 50px 50px 0;\n            margin-right: 20px;\n            content: \"\";\n            background-color: $borderforMainText;\n            height: 32px;\n            width: 4px;\n        }\n    }\n    &__rows {\n        display: flex;\n        margin-left: 24px;\n        &-item {\n            margin-right: 10px;\n            cursor: pointer;\n        }\n        margin-bottom: 16px;\n    }\n    &__contacts {\n        margin-left: 24px;\n        & h3 {\n            font-size: 24px;\n            margin-bottom: 8px;\n            margin-top: 12px;\n        }\n    }\n    &__languages {\n        margin-left: 24px;\n        display: flex;\n        &-item {\n            margin-bottom: 12px;\n            margin-right: 7px;\n            color: $colorText;\n        }\n        &-item-selected {\n            color: $titleColor;\n        }\n    }\n    &__background-translucent {\n        background-color: #fff;\n        transition: 0.8s ease;\n        opacity: 0.1;\n        display: none;\n    }\n    &__background-translucent-active {\n        overflow-y: hidden;\n        opacity: 0.8;\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        width: 100%;\n        z-index: 12;\n        transition: 0.8s ease;\n        display: block !important;\n    }\n}\n\n//desktop\n.navbar-desktop {\n    display: none;\n}\n\n@media screen and (width >=1120px) {\n    .navbar-desktop {\n        width: 320px;\n        background: #fff;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        justify-content: space-between;\n        &-active {\n            left: 0;\n            transition: 0.7s ease;\n        }\n        &__header {\n            justify-self: flex-start;\n            padding: 24px;\n            display: flex;\n            align-items: center;\n            justify-content: space-between;\n            margin-bottom: 30px;\n        }\n        &__header-left {\n            display: flex;\n        }\n        &__close-btn {\n            display: none !important;\n        }\n        &__nav-items {\n            display: flex;\n            flex-direction: column;\n            margin-bottom: 34px;\n        }\n        &__item {\n            display: flex;\n            align-items: center;\n            margin-bottom: 10px;\n            &::before {\n                margin-right: 16px;\n                content: \"\";\n                background-color: transparent;\n                height: 32px;\n                width: 4px;\n            }\n        }\n        &__active-item {\n            display: flex;\n            align-items: center;\n            margin-bottom: 20px;\n            & a {\n                color: $titleColor;\n            }\n            &::before {\n                border-radius: 0 50px 50px 0;\n                margin-right: 20px;\n                content: \"\";\n                background-color: $borderforMainText;\n                height: 32px;\n                width: 4px;\n            }\n        }\n        &__rows {\n            display: flex;\n            margin-left: 24px;\n            &-item {\n                margin-right: 10px;\n                cursor: pointer;\n            }\n            margin-bottom: 16px;\n        }\n        &__contacts {\n            margin-left: 24px;\n            & h3 {\n                font-size: 24px;\n                margin-bottom: 8px;\n                margin-top: 12px;\n            }\n        }\n        &__languages {\n            margin-left: 24px;\n            display: flex;\n            &-item {\n                margin-bottom: 12px;\n                margin-right: 7px;\n                color: $colorText;\n            }\n            &-item-selected {\n                color: $titleColor;\n            }\n        }\n    }\n}\n",".feedback {\n    z-index: 13;\n    overflow-y: auto;\n    position: absolute;\n    padding-bottom: 79px;\n    right: -105%;\n    transition: 0.7s ease;\n    background-color: #fff;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    height: 100vh;\n    top: 0;\n    box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);\n    @media screen and (width >=450px) {\n        width: 450px;\n    }\n    &__close-btn {\n        display: flex;\n        & img {\n            margin: 24px 16px;\n            justify-self: flex-start;\n        }\n    }\n    &__title {\n        display: flex;\n        align-items: center;\n        &::before {\n            content: \"\";\n            display: block;\n            height: 40px;\n            width: 3px;\n            border-radius: 0 10px 10px 0;\n            background: $borderforMainText;\n            margin-right: 12px;\n        }\n        margin-bottom: 25px;\n    }\n    &__form {\n        margin: 0 16px;\n        display: flex;\n        flex-direction: column;\n        & input,\n        textarea {\n            border: 1px solid #eaeaea;\n            padding: 12px 16px;\n            border-radius: 8px;\n            margin-bottom: 16px;\n            &::placeholder {\n                color: #b5b6bc;\n            }\n        }\n    }\n    &__descr {\n        margin: 0 16px;\n        &-p {\n            color: $titleColor;\n        }\n        &-a {\n            color: #ff3e79;\n        }\n    }\n    &__button {\n        margin: 0 16px;\n        display: flex;\n        align-items: center;\n        justify-content: flex-end;\n        & span {\n            color: #fff;\n            margin-right: 12px;\n            font-size: 12px;\n            font-weight: 600;\n        }\n        &-btn {\n            padding: 6px 16px;\n            justify-self: flex-end;\n            border-radius: 16px;\n            background-color: #ff3e79;\n            margin-top: 27px;\n        }\n    }\n}\n\n.open-feedback {\n    right: 0;\n    transition: 0.7s ease;\n}\n",".repairbar {\n    overflow-y: auto;\n    z-index: 13;\n    position: absolute;\n    padding-bottom: 79px;\n    right: -105%;\n    height: 100vh;\n    transition: 0.7s ease;\n    background-color: #fff;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);\n    @media screen and (width >=450px) {\n        width: 450px;\n    }\n    &__close-btn {\n        display: flex;\n        & img {\n            margin: 24px 16px;\n            justify-self: flex-start;\n        }\n    }\n    &__title {\n        display: flex;\n        align-items: center;\n        &::before {\n            content: \"\";\n            display: block;\n            height: 40px;\n            width: 3px;\n            border-radius: 0 10px 10px 0;\n            background: $borderforMainText;\n            margin-right: 12px;\n        }\n        margin-bottom: 25px;\n    }\n    &__form {\n        margin: 0 16px;\n        & input {\n            width: 100%;\n            border: 1px solid #eaeaea;\n            padding: 12px 16px;\n            border-radius: 8px;\n            margin-bottom: 16px;\n            &::placeholder {\n                color: #b5b6bc;\n            }\n        }\n    }\n    &__descr {\n        margin: 0 16px;\n        &-p {\n            color: $titleColor;\n        }\n        &-a {\n            color: #ff3e79;\n        }\n    }\n    &__button {\n        margin: 0 16px;\n        display: flex;\n        align-items: center;\n        justify-content: flex-end;\n        & span {\n            color: #fff;\n            margin-right: 12px;\n            font-size: 12px;\n            font-weight: 600;\n        }\n        &-btn {\n            padding: 6px 16px;\n            justify-self: flex-end;\n            border-radius: 16px;\n            background-color: #ff3e79;\n            margin-top: 27px;\n        }\n    }\n}\n\n.open-repairbar {\n    right: 0;\n    transition: 0.7s ease;\n}\n",".nav-desktop {\n    @media screen and (width <=1120px) {\n        display: none;\n    }\n    overflow-x: auto !important;\n    margin: 10px;\n    display: flex;\n    align-items: center;\n    position: relative;\n    height: 70px;\n    &__links {\n        position: absolute;\n        top: 20px;\n        width: 1250px;\n        margin: 0 auto;\n        display: flex;\n        justify-content: space-evenly;\n        align-items: center;\n    }\n    &__link {\n        color: #7e7e82;\n        padding: 8px 26px;\n        font-size: 16px;\n        border-radius: 6px;\n    }\n    &__link:focus {\n        background-color: #fff;\n        color: #7e7e82;\n        margin-bottom: 20px;\n        padding: 8px 24px;\n        outline: none;\n        border: 2px solid #b8ffec;\n    }\n    &__link:active {\n        background-color: #fff;\n        color: #7e7e82;\n        margin-bottom: 20px;\n        padding: 8px 24px;\n        outline: none;\n        border: 2px solid #b8ffec;\n    }\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/lib/normalize.css":
+/*!*********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/lib/normalize.css ***!
+  \*********************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */\n\n/* Document\n   ========================================================================== */\n\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n */\n\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/* Sections\n   ========================================================================== */\n\n/**\n * Remove the margin in all browsers.\n */\n\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\n\nmain {\n  display: block;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Remove the gray background on active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove the border on images inside links in IE 10.\n */\n\nimg {\n  border-style: none;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * 1. Change the font styles in all browsers.\n * 2. Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: 1.15; /* 1 */\n  margin: 0; /* 2 */\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput { /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect { /* 1 */\n  text-transform: none;\n}\n\n/**\n * Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\n[type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * Correct the padding in Firefox.\n */\n\nfieldset {\n  padding: 0.35em 0.75em 0.625em;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10.\n * 2. Remove the padding in IE 10.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/* Interactive\n   ========================================================================== */\n\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\n\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\n\nsummary {\n  display: list-item;\n}\n\n/* Misc\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 10+.\n */\n\ntemplate {\n  display: none;\n}\n\n/**\n * Add the correct display in IE 10.\n */\n\n[hidden] {\n  display: none;\n}\n", "",{"version":3,"sources":["webpack://./src/lib/normalize.css"],"names":[],"mappings":"AAAA,2EAA2E;;AAE3E;+EAC+E;;AAE/E;;;EAGE;;AAEF;EACE,iBAAiB,EAAE,MAAM;EACzB,8BAA8B,EAAE,MAAM;AACxC;;AAEA;+EAC+E;;AAE/E;;EAEE;;AAEF;EACE,SAAS;AACX;;AAEA;;EAEE;;AAEF;EACE,cAAc;AAChB;;AAEA;;;EAGE;;AAEF;EACE,cAAc;EACd,gBAAgB;AAClB;;AAEA;+EAC+E;;AAE/E;;;EAGE;;AAEF;EACE,uBAAuB,EAAE,MAAM;EAC/B,SAAS,EAAE,MAAM;EACjB,iBAAiB,EAAE,MAAM;AAC3B;;AAEA;;;EAGE;;AAEF;EACE,iCAAiC,EAAE,MAAM;EACzC,cAAc,EAAE,MAAM;AACxB;;AAEA;+EAC+E;;AAE/E;;EAEE;;AAEF;EACE,6BAA6B;AAC/B;;AAEA;;;EAGE;;AAEF;EACE,mBAAmB,EAAE,MAAM;EAC3B,0BAA0B,EAAE,MAAM;EAClC,iCAAiC,EAAE,MAAM;AAC3C;;AAEA;;EAEE;;AAEF;;EAEE,mBAAmB;AACrB;;AAEA;;;EAGE;;AAEF;;;EAGE,iCAAiC,EAAE,MAAM;EACzC,cAAc,EAAE,MAAM;AACxB;;AAEA;;EAEE;;AAEF;EACE,cAAc;AAChB;;AAEA;;;EAGE;;AAEF;;EAEE,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,wBAAwB;AAC1B;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,WAAW;AACb;;AAEA;+EAC+E;;AAE/E;;EAEE;;AAEF;EACE,kBAAkB;AACpB;;AAEA;+EAC+E;;AAE/E;;;EAGE;;AAEF;;;;;EAKE,oBAAoB,EAAE,MAAM;EAC5B,eAAe,EAAE,MAAM;EACvB,iBAAiB,EAAE,MAAM;EACzB,SAAS,EAAE,MAAM;AACnB;;AAEA;;;EAGE;;AAEF;QACQ,MAAM;EACZ,iBAAiB;AACnB;;AAEA;;;EAGE;;AAEF;SACS,MAAM;EACb,oBAAoB;AACtB;;AAEA;;EAEE;;AAEF;;;;EAIE,0BAA0B;AAC5B;;AAEA;;EAEE;;AAEF;;;;EAIE,kBAAkB;EAClB,UAAU;AACZ;;AAEA;;EAEE;;AAEF;;;;EAIE,8BAA8B;AAChC;;AAEA;;EAEE;;AAEF;EACE,8BAA8B;AAChC;;AAEA;;;;;EAKE;;AAEF;EACE,sBAAsB,EAAE,MAAM;EAC9B,cAAc,EAAE,MAAM;EACtB,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,MAAM;EACvB,UAAU,EAAE,MAAM;EAClB,mBAAmB,EAAE,MAAM;AAC7B;;AAEA;;EAEE;;AAEF;EACE,wBAAwB;AAC1B;;AAEA;;EAEE;;AAEF;EACE,cAAc;AAChB;;AAEA;;;EAGE;;AAEF;;EAEE,sBAAsB,EAAE,MAAM;EAC9B,UAAU,EAAE,MAAM;AACpB;;AAEA;;EAEE;;AAEF;;EAEE,YAAY;AACd;;AAEA;;;EAGE;;AAEF;EACE,6BAA6B,EAAE,MAAM;EACrC,oBAAoB,EAAE,MAAM;AAC9B;;AAEA;;EAEE;;AAEF;EACE,wBAAwB;AAC1B;;AAEA;;;EAGE;;AAEF;EACE,0BAA0B,EAAE,MAAM;EAClC,aAAa,EAAE,MAAM;AACvB;;AAEA;+EAC+E;;AAE/E;;EAEE;;AAEF;EACE,cAAc;AAChB;;AAEA;;EAEE;;AAEF;EACE,kBAAkB;AACpB;;AAEA;+EAC+E;;AAE/E;;EAEE;;AAEF;EACE,aAAa;AACf;;AAEA;;EAEE;;AAEF;EACE,aAAa;AACf","sourcesContent":["/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */\n\n/* Document\n   ========================================================================== */\n\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n */\n\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n\n/* Sections\n   ========================================================================== */\n\n/**\n * Remove the margin in all browsers.\n */\n\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\n\nmain {\n  display: block;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * Remove the gray background on active links in IE 10.\n */\n\na {\n  background-color: transparent;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove the border on images inside links in IE 10.\n */\n\nimg {\n  border-style: none;\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * 1. Change the font styles in all browsers.\n * 2. Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: 1.15; /* 1 */\n  margin: 0; /* 2 */\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput { /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect { /* 1 */\n  text-transform: none;\n}\n\n/**\n * Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\n[type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * Correct the padding in Firefox.\n */\n\nfieldset {\n  padding: 0.35em 0.75em 0.625em;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10.\n * 2. Remove the padding in IE 10.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/* Interactive\n   ========================================================================== */\n\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\n\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\n\nsummary {\n  display: list-item;\n}\n\n/* Misc\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 10+.\n */\n\ntemplate {\n  display: none;\n}\n\n/**\n * Add the correct display in IE 10.\n */\n\n[hidden] {\n  display: none;\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+  url = String(url.__esModule ? url.default : url);
+
+  // If url is already wrapped in quotes, remove them
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+  if (options.hash) {
+    url += options.hash;
+  }
+
+  // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+  return url;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/sourceMaps.js":
+/*!************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
+  \************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (item) {
+  var content = item[1];
+  var cssMapping = item[3];
+  if (!cssMapping) {
+    return content;
+  }
+  if (typeof btoa === "function") {
+    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
+    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+    var sourceMapping = "/*# ".concat(data, " */");
+    return [content].concat([sourceMapping]).join("\n");
+  }
+  return [content].join("\n");
+};
 
 /***/ }),
 
@@ -9142,22 +9923,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
-var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./image/burger.png */ "./src/image/burger.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./image/across.png */ "./src/image/across.png"), __webpack_require__.b);
 var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Group.png */ "./src/image/Group.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(/*! ./image/setting.png */ "./src/image/setting.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(/*! ./image/checkstatus.png */ "./src/image/checkstatus.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_4___ = new URL(/* asset import */ __webpack_require__(/*! ./image/expand.png */ "./src/image/expand.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_5___ = new URL(/* asset import */ __webpack_require__(/*! ./image/service-img.jpg */ "./src/image/service-img.jpg"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_6___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap.png */ "./src/image/Bitmap.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_7___ = new URL(/* asset import */ __webpack_require__(/*! ./image/go.png */ "./src/image/go.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_8___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-1.png */ "./src/image/Bitmap-1.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_9___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-2.png */ "./src/image/Bitmap-2.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_10___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-3.png */ "./src/image/Bitmap-3.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_11___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-4.png */ "./src/image/Bitmap-4.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_12___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-5.png */ "./src/image/Bitmap-5.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_13___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-6.png */ "./src/image/Bitmap-6.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_14___ = new URL(/* asset import */ __webpack_require__(/*! ./image/dropdown.png */ "./src/image/dropdown.png"), __webpack_require__.b);
-var ___HTML_LOADER_IMPORT_15___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Line.png */ "./src/image/Line.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(/*! ./image/searcher.png */ "./src/image/searcher.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_3___ = new URL(/* asset import */ __webpack_require__(/*! ./image/call.png */ "./src/image/call.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_4___ = new URL(/* asset import */ __webpack_require__(/*! ./image/chat.png */ "./src/image/chat.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_5___ = new URL(/* asset import */ __webpack_require__(/*! ./image/profile.png */ "./src/image/profile.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_6___ = new URL(/* asset import */ __webpack_require__(/*! ./image/dropdown.png */ "./src/image/dropdown.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_7___ = new URL(/* asset import */ __webpack_require__(/*! ./image/burger.png */ "./src/image/burger.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_8___ = new URL(/* asset import */ __webpack_require__(/*! ./image/setting.png */ "./src/image/setting.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_9___ = new URL(/* asset import */ __webpack_require__(/*! ./image/checkstatus.png */ "./src/image/checkstatus.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_10___ = new URL(/* asset import */ __webpack_require__(/*! ./image/expand.png */ "./src/image/expand.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_11___ = new URL(/* asset import */ __webpack_require__(/*! ./image/service-img.jpg */ "./src/image/service-img.jpg"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_12___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap.png */ "./src/image/Bitmap.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_13___ = new URL(/* asset import */ __webpack_require__(/*! ./image/go.png */ "./src/image/go.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_14___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-1.png */ "./src/image/Bitmap-1.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_15___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-2.png */ "./src/image/Bitmap-2.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_16___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-3.png */ "./src/image/Bitmap-3.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_17___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-4.png */ "./src/image/Bitmap-4.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_18___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-5.png */ "./src/image/Bitmap-5.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_19___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Bitmap-6.png */ "./src/image/Bitmap-6.png"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_20___ = new URL(/* asset import */ __webpack_require__(/*! ./image/Line.png */ "./src/image/Line.png"), __webpack_require__.b);
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
 var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
@@ -9175,7 +9961,12 @@ var ___HTML_LOADER_REPLACEMENT_12___ = _node_modules_html_loader_dist_runtime_ge
 var ___HTML_LOADER_REPLACEMENT_13___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_13___);
 var ___HTML_LOADER_REPLACEMENT_14___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_14___);
 var ___HTML_LOADER_REPLACEMENT_15___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_15___);
-var code = "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <title>Document</title>\n</head>\n\n<body>\n    <aside class=\"navbar\"></aside>\n    <section class=\"mobile right-side\">\n        <header class=\"header moblie__header\">\n            <button class=\"header__burger\">\n          <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"burger\" />\n        </button>\n            <div class=\"header__logo\">\n                <img src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" alt=\"logotype\" />\n            </div>\n            <div class=\"header__border\"></div>\n            <div class=\"header__options\">\n                <button class=\"header__option-item\">\n            <img src=\"" + ___HTML_LOADER_REPLACEMENT_2___ + "\" alt=\"\" />\n          </button>\n                <button class=\"header__option-item\">\n            <img src=\"" + ___HTML_LOADER_REPLACEMENT_3___ + "\" alt=\"\" />\n          </button>\n            </div>\n        </header>\n        <div class=\"main-tex header__headline\">\n            <h2>Услуги и сервисы</h2>\n        </div>\n        <nav class=\"navigation\">\n            <ul class=\"navigation__wrapper\">\n                <li>\n                    <a class=\"navigation__item\" href=\"#\">Ремонтируемые бренды</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item\" href=\"#\">Дополнительные услуги</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item\" href=\"#\">Цены на услуги</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item\" href=\"#\">Адреса сервисных центров</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item\" href=\"#\">Специальные цены</a>\n                </li>\n            </ul>\n        </nav>\n        <main class=\"main-block main\">\n            <article class=\"main__description\">\n                <p>Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя. Мы успешно работаем с 1992 года и заслужили репутацию надежного партнера</p>\n                <button class=\"main__button\"><img src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\" alt=\"more\"><span>Читать далее</span></button>\n            </article>\n            <section class=\"main__service\">\n                <img class=\"main__service-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_5___ + "\" alt=\"service\">\n            </section>\n        </main>\n        <div class=\"brands\">\n            <div class=\"title brands__title\">\n                <p>Ремонт техники различных брендов</p>\n            </div>\n            <div class=\"brands__wrapper-right-side\">\n            </div>\n            <div class=\"brands__slider\">\n                <div class=\"brands-swiper swiper mySwiper\">\n                    <div class=\" brands__wrapper swiper-wrapper\">\n                        <div class=\"swiper-slide brands__item\">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_8___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_9___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_10___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_11___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_12___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item\">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_8___ + "\" alt=\"\">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"\"></button>\n                        </div>\n                    </div>\n                    <div class=\"swiper-pagination\"></div>\n                </div>\n            </div>\n        </div>\n        <div class=\"repair-device\">\n            <div class=\"title repair-device__title\">\n                <p>Ремонт различных видов техники</p>\n            </div>\n            <div class=\"repair-device__slider\">\n                <div class=\"repair-device__swiper swiper mySwiper\">\n                    <div class=\"repair-device__wrapper swiper-wrapper\">\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item\">\n                            <p class=\"repair-device__item-text\">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button\">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + "\" alt=\"to\">\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"swiper-pagination\"></div>\n                </div>\n            </div>\n        </div>\n        <div class=\"prices\">\n            <div class=\"title repair-device__title\">\n                <p>Цены на услуги</p>\n            </div>\n            <div class=\"prices__slider\">\n                <div class=\"prices__swiper swiper mySwiper\">\n                    <div class=\"prices__wrapper swiper-wrapper\">\n                        <div class=\"prices__item swiper-slide\">\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Ремонтные услуги</p>\n                                <p class=\"prices__condidtions-descr\">\n                                    Тестирование с выдачей технического заключения\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Цена</p>\n                                <p class=\"prices__condidtions-descr\">\n                                    Бесплатно\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Срок</p>\n                                <div class=\"prices__order\">\n                                    <p class=\"prices__condidtions-descr\">\n                                        30-120 мин\n                                    </p>\n                                    <button class=\"prices__order-button\">\n                                      <span class=\"prices__order-title\">Заказать</span>\n                                      <img  class=\"prices__order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + "\" alt=\"\">\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"prices__item swiper-slide\">\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Ремонтные услуги</p>\n                                <p class=\"prices__condidtions-descr\">\n                                    Тестирование с выдачей технического заключения\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Цена</p>\n                                <p class=\"prices__condidtions-descr\">\n                                    Бесплатно\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Срок</p>\n                                <div class=\"prices__order\">\n                                    <p class=\"prices__condidtions-descr\">\n                                        30-120 мин\n                                    </p>\n                                    <button class=\"prices__order-button\">\n                                    <span class=\"prices__order-title\">Заказать</span>\n                                    <img  class=\"prices__order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + "\" alt=\"\">\n                                  </button>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"prices__item swiper-slide\">\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Ремонтные услуги</p>\n                                <p class=\"prices__condidtions-descr\">\n                                    Тестирование с выдачей технического заключения\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Цена</p>\n                                <p class=\"prices__condidtions-descr\">\n                                    Бесплатно\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions\">\n                                <p class=\"prices__conditions-title\">Срок</p>\n                                <div class=\"prices__order\">\n                                    <p class=\"prices__condidtions-descr\">\n                                        30-120 мин\n                                    </p>\n                                    <button class=\"prices__order-button\">\n                                  <span class=\"prices__order-title\">Заказать</span>\n                                  <img  class=\"prices__order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + "\" alt=\"\">\n                                </button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"swiper-pagination\"></div>\n                </div>\n            </div>\n            <div class=\"prices__descriptions\">\n                <p class=\"prices__descriptions-text\">\n                    Все цены указаны с учетом НДС. Стоимость ремонта указана на единичную услугу. Для получения коммерческого предложения на постоянное обслуживание, оставьте заявку.\n                </p>\n                <button class=\"prices__descriptions-button\">\n                    <p class=\"prices__descriptions-button-text\"> Получить коммерческое предложение  <img class=\"prices__descriptions-button-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_15___ + "\" alt=\"to\"></p>\n                   \n\n                </button>\n            </div>\n        </div>\n        <footer class=\"footer mobile__footer\">\n            <p>© 2019 CPS Разработано командой Apesong </p>\n            <p>Политика конфиденциальности</p>\n            <p>Информация, размещенная на данной странице, не является публичной офертой</p>\n        </footer>\n</body>\n\n</html>";
+var ___HTML_LOADER_REPLACEMENT_16___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_16___);
+var ___HTML_LOADER_REPLACEMENT_17___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_17___);
+var ___HTML_LOADER_REPLACEMENT_18___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_18___);
+var ___HTML_LOADER_REPLACEMENT_19___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_19___);
+var ___HTML_LOADER_REPLACEMENT_20___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_20___);
+var code = "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <title>Document</title>\n</head>\n\n<body>\n    <!-- left side  -->\n    <aside class=\"navbar-desktop\">\n        <div class=\"navbar-desktop__header-nav\">\n            <header class=\"navbar-desktop__header\">\n                <div class=\"navbar-desktop__header-left\">\n                    <button class=\"navbar-desktop__close-btn\">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"close-navbar\">\n                    </button>\n                    <img class=\"navbar-desktop__logo\" src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" alt=\"logotype\">\n                </div>\n                <div class=\"navbar-desktop__header-right\">\n                    <button class=\"navbar-desktop__search-btn\">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_2___ + "\" alt=\"search\">\n                    </button>\n                </div>\n            </header>\n            <nav class=\"navbar-desktop__nav\">\n                <ul class=\"navbar-desktop__nav-items\">\n                    <li class=\"navbar-desktop__item navbar-desktop__active-item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Ремонт техники</a>\n                    </li>\n                    <li class=\"navbar-desktop__item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Услуги и сервисы</a>\n                    </li>\n                    <li class=\"navbar-desktop__item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Корпоративным клиентам</a>\n                    </li>\n                    <li class=\"navbar-desktop__item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Продавцам техники</a>\n                    </li>\n                    <li class=\"navbar-desktop__item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Производителям</a>\n                    </li>\n                    <li class=\"navbar-desktop__item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Наши сервисные центры</a>\n                    </li>\n                    <li class=\"navbar-desktop__item\">\n                        <a class=\"navbar-desktop__link\" href=\"#\">Контакты</a>\n                    </li>\n                </ul>\n            </nav>\n        </div>\n\n        <footer>\n            <div class=\"navbar__rows\">\n                <div class=\"navbar__rows-item\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_3___ + "\" alt=\"\">\n                </div>\n                <div class=\"navbar__rows-item\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\" alt=\"\">\n                </div>\n                <div class=\"navbar__rows-item\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_5___ + "\" alt=\"\">\n                </div>\n            </div>\n            <div class=\"navbar__contacts\">\n                <a class=\"navbar__contacts-mailto\" href=\"mailto:mail@cps.com\">mail@cps.com</a>\n                <h3><a href=\"tel:8 800 890 8900\">8 800 890 8900</a></h3>\n            </div>\n            <div class=\"navbar__languages\">\n                <p class=\"navbar__languages-item navbar__languages-item-selected\">RU</p>\n                <p class=\"navbar__languages-item\">EN</p>\n                <p class=\"navbar__languages-item\">CH</p>\n            </div>\n        </footer>\n    </aside>\n    <!-- left side  -->\n    <aside class=\"navbar\">\n        <div class=\"navbar__header-nav\">\n            <header class=\"navbar__header\">\n                <div class=\"navbar__header-left\">\n                    <button class=\"navbar__close-btn\">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"close-navbar\">\n                    </button>\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" alt=\"logotype\">\n                </div>\n                <div class=\"navbar__header-right\">\n                    <button class=\"navbar__search-btn\">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_2___ + "\" alt=\"search\">\n                    </button>\n                </div>\n            </header>\n            <nav class=\"navbar__nav\">\n                <ul class=\"navbar__nav-items\">\n                    <li class=\"navbar__item navbar__active-item\">\n                        <a class=\"navbar__link\" href=\"#\">Ремонт техники</a>\n                    </li>\n                    <li class=\"navbar__item\">\n                        <a class=\"navbar__link\" href=\"#\">Услуги и сервисы</a>\n                    </li>\n                    <li class=\"navbar__item\">\n                        <a class=\"navbar__link\" href=\"#\">Корпоративным клиентам</a>\n                    </li>\n                    <li class=\"navbar__item\">\n                        <a class=\"navbar__link\" href=\"#\">Продавцам техники</a>\n                    </li>\n                    <li class=\"navbar__item\">\n                        <a class=\"navbar__link\" href=\"#\">Производителям</a>\n                    </li>\n                    <li class=\"navbar__item\">\n                        <a class=\"navbar__link\" href=\"#\">Наши сервисные центры</a>\n                    </li>\n                    <li class=\"navbar__item\">\n                        <a class=\"navbar__link\" href=\"#\">Контакты</a>\n                    </li>\n                </ul>\n            </nav>\n        </div>\n\n        <footer>\n            <div class=\"navbar__rows\">\n                <div class=\"navbar__rows-item\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_3___ + "\" alt=\"\">\n                </div>\n                <div class=\"navbar__rows-item\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\" alt=\"\">\n                </div>\n                <div class=\"navbar__rows-item\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_5___ + "\" alt=\"\">\n                </div>\n            </div>\n            <div class=\"navbar__contacts\">\n                <a class=\"navbar__contacts-mailto\" href=\"mainto:mail@cps.com\">mail@cps.com</a>\n                <h3><a href=\"tel:8 800 890 8900\">8 800 890 8900</a></h3>\n            </div>\n            <div class=\"navbar__languages\">\n                <p class=\"navbar__languages-item navbar__languages-item-selected\">RU</p>\n                <p class=\"navbar__languages-item\">EN</p>\n                <p class=\"navbar__languages-item\">CH</p>\n            </div>\n        </footer>\n    </aside>\n    <aside class=\"feedback\">\n        <button class=\"feedback__close-btn\">\n            <img class=\"feedback__close-btn-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"close\">\n        </button>\n        <div class=\"feedback__title\">\n            <h2 class=\"feedback__title-text\">Обратная связь</h2>\n        </div>\n        <form class=\"feedback__form\">\n            <input type=\"text\" placeholder=\"Имя\">\n            <input type=\"text\" placeholder=\"Телефон\">\n            <input type=\"text\" placeholder=\"Электронная почта\">\n            <textarea cols=\"30\" rows=\"7\" placeholder=\"Сообщение\"></textarea>\n        </form>\n        <div class=\"feedback__descr\">\n            <p class=\"feedback__descr-p\">Нажимая “отправить”, вы даете согласие на <a class=\"feedback__descr-a\" href=\"#\">обработку персональных данных</a> и соглашаетесь с нашей <a class=\"feedback__descr-a\" href=\"#\">политикой конфиденциальности</a></p>\n        </div>\n        <div class=\"feedback__button\">\n            <button class=\"feedback__button-btn\"><span>ОТПРАВИТЬ</span><img src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"dropdown\"></button>\n        </div>\n    </aside>\n    <aside class=\"repairbar\">\n        <button class=\"repairbar__close-btn\">\n            <img class=\"repairbar__close-btn-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"close\">\n        </button>\n        <div class=\"repairbar__title\">\n            <h2 class=\"repairbar__title-text\">Заказать звонок</h2>\n        </div>\n        <div class=\"repairbar__form\">\n            <input type=\"text\" placeholder=\"Телефон\">\n        </div>\n        <div class=\"repairbar__descr\">\n            <p class=\"repairbar__descr-p\">Нажимая “отправить”, вы даете согласие на <a class=\"repairbar__descr-a\" href=\"#\">обработку персональных данных</a> и соглашаетесь с нашей <a class=\"repairbar__descr-a\" href=\"#\">политикой конфиденциальности</a></p>\n        </div>\n        <div class=\"repairbar__button\">\n            <button class=\"repairbar__button-btn\"><span>ОТПРАВИТЬ</span><img src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"dropdown\"></button>\n        </div>\n    </aside>\n    <div class=\"navbar__background-translucent\">\n    </div>\n    <section class=\"mobile right-side \">\n        <header class=\"header mobile__header \">\n            <button class=\"header__burger\">\n                <img src=\"" + ___HTML_LOADER_REPLACEMENT_7___ + " \" alt=\"burger \" />\n            </button>\n            <div class=\"header__border header__desktop-border\"></div>\n            <div class=\"header__logo \">\n                <img src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + " \" alt=\"logotype \" />\n            </div>\n            <div class=\"header__right\">\n                <button class=\"header__option-item header__none-mobile\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_3___ + "\" alt=\"call\" />\n                </button>\n                <button class=\"header__option-item header__none-mobile\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\" alt=\"chat\" />\n                </button>\n                <button class=\"header__option-item header__none-mobile\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_5___ + "\" alt=\"profile\" />\n                </button>\n                <div class=\"header__border header__option-item\"></div>\n                <div class=\"header__options \">\n                    <button class=\"header__option-item open-feedback-btn\">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_8___ + " \" alt=\" \" />\n                    </button>\n                    <button class=\"header__option-item open-repairbar-btn\">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_9___ + " \" alt=\" \" />\n                    </button>\n                </div>\n            </div>\n\n        </header>\n        <div class=\"main-tex header__headline title-mobile\">\n            <h2>Услуги и сервисы</h2>\n        </div>\n        <div class=\"desktop-header\">\n            <div class=\"main-tex header__headline \">\n                <h2>Услуги и сервисы</h2>\n            </div>\n            <div class=\"header__options \">\n                <button class=\"header__option-item open-feedback-btn\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_8___ + " \" alt=\" \" />\n                </button>\n                <button class=\"header__option-item open-repairbar-btn\">\n                    <img src=\"" + ___HTML_LOADER_REPLACEMENT_9___ + " \" alt=\" \" />\n                </button>\n            </div>\n        </div>\n        <div class=\"nav-desktop\">\n            <div class=\"nav-desktop__links\">\n                <li class=\"nav-desktop__item\">\n                    <a class=\"nav-desktop__link\" href=\"# \">Ремонтируемые бренды</a>\n                </li>\n                <li class=\"nav-desktop__item\">\n                    <a class=\"nav-desktop__link\" href=\"# \">Ремонтируемые бренды</a>\n                </li>\n                <li class=\"nav-desktop__item\">\n                    <a class=\"nav-desktop__link\" href=\"# \">Ремонтируемые бренды</a>\n                </li>\n                <li class=\"nav-desktop__item\">\n                    <a class=\"nav-desktop__link\" href=\"# \">Ремонтируемые бренды</a>\n                </li>\n                <li class=\"nav-desktop__item\">\n                    <a class=\"nav-desktop__link\" href=\"# \">Ремонтируемые бренды</a>\n                </li>\n            </div>\n        </div>\n        <nav class=\"navigation \">\n            <ul class=\"navigation__wrapper \">\n                <li>\n                    <a class=\"navigation__item \" href=\"# \">Ремонтируемые бренды</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item \" href=\"# \">Дополнительные услуги</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item \" href=\"# \">Цены на услуги</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item \" href=\"# \">Адреса сервисных центров</a>\n                </li>\n                <li>\n                    <a class=\"navigation__item \" href=\"# \">Специальные цены</a>\n                </li>\n            </ul>\n        </nav>\n        <main class=\"main-block main \">\n            <article class=\"main__description \">\n                <p class=\"main__description-text\">Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя. Мы успешно работаем с 1992 года и заслужили репутацию надежного партнера</p>\n                <p class=\"main__decription-text-more\">\n                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, dolor odio. Accusantium nobis ipsam voluptas blanditiis nemo magnam impedit unde dolorum repellendus. Dolores voluptatibus.\n                </p>\n                <button class=\"main__button \"><img  class=\"main__button-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_10___ + " \" alt=\"more \"><span class=\"main__button-text\">Читать далее</span></button>\n            </article>\n            <section class=\"main__service \">\n                <img class=\"main__service-img \" src=\"" + ___HTML_LOADER_REPLACEMENT_11___ + " \" alt=\"service \">\n            </section>\n        </main>\n        <div class=\"brands\">\n            <div class=\"title brands__title \">\n                <p>Ремонт техники различных брендов</p>\n            </div>\n            <div class=\"brands__wrapper-right-side \">\n            </div>\n            <div class=\"brands__wrapper-desktop-cards\">\n                <div class=\"brands__desktop-cards\">\n                    <div class=\"brands__item \">\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_12___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item \">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item \">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_15___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item \">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_16___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item \">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_17___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item \">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_18___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item brands__none-item\">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_19___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item brands__none-item\">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_12___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                    <div class=\"brands__item brands__none-item\">\n\n                        <img src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + " \" alt=\" \">\n                        <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                    </div>\n                </div>\n            </div>\n            <button class=\"brands__button-show-item\"><img class=\"brands__button-show-item-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_10___ + "\" alt=\"expand\"> <span class=\"brands__button-show-item-text\">Показать все</span></button>\n            <div class=\"brands__slider\">\n                <div class=\"brands-swiper swiper mySwiper \">\n                    <div class=\" brands__wrapper swiper-wrapper \">\n                        <div class=\"swiper-slide brands__item \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_12___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_15___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_16___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_17___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_18___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_19___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_12___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                        <div class=\"swiper-slide brands__item \">\n\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_14___ + " \" alt=\" \">\n                            <button><img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\" \"></button>\n                        </div>\n                    </div>\n                    <div class=\"swiper-pagination \"></div>\n                </div>\n            </div>\n        </div>\n        <div class=\"repair-device\">\n            <div class=\"title repair-device__title \">\n                <p>Ремонт различных видов техники</p>\n            </div>\n            <div class=\"repair-device__desktop\">\n                <div class=\"repair-device__desktop-cards\">\n                    <div class=\"repair-device__item \">\n                        <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                        <button class=\"repair-device__item-button \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                        </button>\n                    </div>\n                    <div class=\"repair-device__item \">\n                        <p class=\"repair-device__item-text \">Ремонт планшетов </p>\n                        <button class=\"repair-device__item-button \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                        </button>\n                    </div>\n                    <div class=\"repair-device__item \">\n                        <p class=\"repair-device__item-text \">Ремонт ПК </p>\n                        <button class=\"repair-device__item-button \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                        </button>\n                    </div>\n                    <div class=\"repair-device__item repair-device__item-none repair-device__none-item-other\">\n                        <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                        <button class=\"repair-device__item-button \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                        </button>\n                    </div>\n                    <div class=\"repair-device__item repair-device__item-none\">\n                        <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                        <button class=\"repair-device__item-button \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                        </button>\n                    </div>\n                    <div class=\"repair-device__item repair-device__item-none\">\n                        <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                        <button class=\"repair-device__item-button \">\n                            <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                        </button>\n                    </div>\n                </div>\n                <button class=\"repair-device__button-show-item\"><img class=\"repair-device__button-show-item-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_10___ + "\" alt=\"expand\"> <span class=\"repair-device__button-show-item-text\">Показать все</span></button>\n            </div>\n            <div class=\"repair-device__slider mobile\">\n                <div class=\" repair-device__swiper swiper mySwiper \">\n                    <div class=\"repair-device__wrapper swiper-wrapper \">\n                        <div class=\"swiper-slide repair-device__item \">\n                            <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button \">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item \">\n                            <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button \">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item \">\n                            <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button \">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item \">\n                            <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button \">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item \">\n                            <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button \">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                            </button>\n                        </div>\n                        <div class=\"swiper-slide repair-device__item \">\n                            <p class=\"repair-device__item-text \">Ремонт ноутбуков </p>\n                            <button class=\"repair-device__item-button \">\n                                <img src=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " \" alt=\"to \">\n                            </button>\n                        </div>\n\n                    </div>\n                    <div class=\"swiper-pagination \"></div>\n                </div>\n            </div>\n        </div>\n        <div class=\"prices \">\n            <div class=\"title repair-device__title \">\n                <p>Цены на услуги</p>\n            </div>\n            <div class=\"prices-desktop\">\n                <div class=\"title-price prices-desktop__column-item-title \">\n                    <p>Ремонтные услуги</p>\n                    <p>Цена</p>\n                    <p>Срок</p>\n                </div>\n                <div class=\"prices-desktop__column-items\">\n                    <div class=\"prices-desktop__column-item\">\n                        <p>Диагностика</p>\n                        <p>Бесплатно</p>\n                        <p>30 мин</p>\n                        <button class=\"prices-desktop__button-order\"><span class=\"prices-desktop__button-text\">Заказать</span><img class=\"prices-desktop__button-order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\"></button>\n                    </div>\n                    <div class=\"prices-desktop__column-item\">\n                        <p>Замена дисплея</p>\n                        <p>1 000 ₽</p>\n                        <p>30 мин</p>\n                        <button class=\"prices-desktop__button-order\"><span class=\"prices-desktop__button-text\">Заказать</span><img class=\"prices-desktop__button-order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\"></button>\n                    </div>\n                    <div class=\"prices-desktop__column-item\">\n                        <p>Замена полифонического динамика</p>\n                        <p>1 000 ₽</p>\n                        <p>30 мин</p>\n                        <button class=\"prices-desktop__button-order\"><span class=\"prices-desktop__button-text\">Заказать</span><img class=\"prices-desktop__button-order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\"></button>\n                    </div>\n                    <div class=\"prices-desktop__column-item\">\n                        <p>Тестирование с выдачей технического заключения</p>\n                        <p>1 000 ₽</p>\n                        <p>30-120 мин</p>\n                        <button class=\"prices-desktop__button-order\"><span class=\"prices-desktop__button-text\">Заказать</span><img class=\"prices-desktop__button-order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\"></button>\n                    </div>\n                    <div class=\"prices-desktop__column-item\">\n                        <p>Замена программного обеспечения</p>\n                        <p>1 000 ₽</p>\n                        <p>30 мин</p>\n                        <button class=\"prices-desktop__button-order\"><span class=\"prices-desktop__button-text\">Заказать</span><img class=\"prices-desktop__button-order-img\" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + "\" alt=\"\"></button>\n                    </div>\n                </div>\n            </div>\n            <div class=\"prices__slider \">\n                <div class=\"prices__swiper swiper mySwiper \">\n                    <div class=\"prices__wrapper swiper-wrapper \">\n                        <div class=\"prices__item swiper-slide \">\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Ремонтные услуги</p>\n                                <p class=\"prices__condidtions-descr \">\n                                    Тестирование с выдачей технического заключения\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Цена</p>\n                                <p class=\"prices__condidtions-descr \">\n                                    Бесплатно\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Срок</p>\n                                <div class=\"prices__order \">\n                                    <p class=\"prices__condidtions-descr \">\n                                        30-120 мин\n                                    </p>\n                                    <button class=\"prices__order-button \">\n                                      <span class=\"prices__order-title \">Заказать</span>\n                                      <img  class=\"prices__order-img \" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + " \" alt=\" \">\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"prices__item swiper-slide \">\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Ремонтные услуги</p>\n                                <p class=\"prices__condidtions-descr \">\n                                    Тестирование с выдачей технического заключения\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Цена</p>\n                                <p class=\"prices__condidtions-descr \">\n                                    Бесплатно\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Срок</p>\n                                <div class=\"prices__order \">\n                                    <p class=\"prices__condidtions-descr \">\n                                        30-120 мин\n                                    </p>\n                                    <button class=\"prices__order-button \">\n                                    <span class=\"prices__order-title \">Заказать</span>\n                                    <img  class=\"prices__order-img \" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + " \" alt=\" \">\n                                  </button>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"prices__item swiper-slide \">\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Ремонтные услуги</p>\n                                <p class=\"prices__condidtions-descr \">\n                                    Тестирование с выдачей технического заключения\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Цена</p>\n                                <p class=\"prices__condidtions-descr \">\n                                    Бесплатно\n                                </p>\n                            </div>\n                            <div class=\"prices__conditions \">\n                                <p class=\"prices__conditions-title \">Срок</p>\n                                <div class=\"prices__order \">\n                                    <p class=\"prices__condidtions-descr \">\n                                        30-120 мин\n                                    </p>\n                                    <button class=\"prices__order-button \">\n                                  <span class=\"prices__order-title \">Заказать</span>\n                                  <img  class=\"prices__order-img \" src=\"" + ___HTML_LOADER_REPLACEMENT_6___ + " \" alt=\" \">\n                                </button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"swiper-pagination \"></div>\n                </div>\n            </div>\n            <div class=\"prices__descriptions \">\n                <p class=\"prices__descriptions-text \">\n                    Все цены указаны с учетом НДС. Стоимость ремонта указана на единичную услугу. Для получения коммерческого предложения на постоянное обслуживание, оставьте заявку.\n                </p>\n                <button class=\"prices__descriptions-button \">\n                    <p class=\"prices__descriptions-button-text \"> Получить коммерческое предложение  <img class=\"prices__descriptions-button-img \" src=\"" + ___HTML_LOADER_REPLACEMENT_20___ + " \" alt=\"to \"></p>\n                   \n\n                </button>\n            </div>\n        </div>\n        <footer class=\"footer mobile__footer \">\n            <p><span>© 2019 CPS</span> Разработано командой Apesong </p>\n            <p>Политика конфиденциальности</p>\n            <p>Информация, размещенная на данной странице, не является публичной офертой</p>\n        </footer>\n</body>\n\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -10012,10 +10803,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js!../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!../node_modules/sass-loader/dist/cjs.js!./index.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss");
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
       
       
@@ -10037,12 +10824,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()((_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6___default()), options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6___default()) && (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6___default().locals) ? (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6___default().locals) : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_node_modules_sass_loader_dist_cjs_js_index_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -10458,6 +11245,17 @@ module.exports = __webpack_require__.p + "assets/e4f57283e9027a406c2d.png";
 
 /***/ }),
 
+/***/ "./src/image/across.png":
+/*!******************************!*\
+  !*** ./src/image/across.png ***!
+  \******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/dbd24bcdd2aac343096b.png";
+
+/***/ }),
+
 /***/ "./src/image/burger.png":
 /*!******************************!*\
   !*** ./src/image/burger.png ***!
@@ -10466,6 +11264,28 @@ module.exports = __webpack_require__.p + "assets/e4f57283e9027a406c2d.png";
 
 "use strict";
 module.exports = __webpack_require__.p + "assets/e431d0dc949ba3cc7c1a.png";
+
+/***/ }),
+
+/***/ "./src/image/call.png":
+/*!****************************!*\
+  !*** ./src/image/call.png ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/2f8c5df2f9313e689158.png";
+
+/***/ }),
+
+/***/ "./src/image/chat.png":
+/*!****************************!*\
+  !*** ./src/image/chat.png ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/88c3f75188251073520d.png";
 
 /***/ }),
 
@@ -10513,6 +11333,28 @@ module.exports = __webpack_require__.p + "assets/50241c4e982f3b1a508b.png";
 
 /***/ }),
 
+/***/ "./src/image/profile.png":
+/*!*******************************!*\
+  !*** ./src/image/profile.png ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/3dbcf76d186fb3caddc4.png";
+
+/***/ }),
+
+/***/ "./src/image/searcher.png":
+/*!********************************!*\
+  !*** ./src/image/searcher.png ***!
+  \********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/dece43808960ebf96d08.png";
+
+/***/ }),
+
 /***/ "./src/image/service-img.jpg":
 /*!***********************************!*\
   !*** ./src/image/service-img.jpg ***!
@@ -10532,6 +11374,1788 @@ module.exports = __webpack_require__.p + "assets/05afa9f321925f901204.jpg";
 
 "use strict";
 module.exports = __webpack_require__.p + "assets/541f41785180565da655.png";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Black.eot":
+/*!*************************************!*\
+  !*** ./src/fonts/TTLakes-Black.eot ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Black..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Black.ttf":
+/*!*************************************!*\
+  !*** ./src/fonts/TTLakes-Black.ttf ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Black..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Black.woff":
+/*!**************************************!*\
+  !*** ./src/fonts/TTLakes-Black.woff ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Black..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-BlackItalic.eot":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-BlackItalic.eot ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-BlackItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-BlackItalic.ttf":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-BlackItalic.ttf ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-BlackItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-BlackItalic.woff":
+/*!********************************************!*\
+  !*** ./src/fonts/TTLakes-BlackItalic.woff ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-BlackItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Bold.eot":
+/*!************************************!*\
+  !*** ./src/fonts/TTLakes-Bold.eot ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Bold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Bold.ttf":
+/*!************************************!*\
+  !*** ./src/fonts/TTLakes-Bold.ttf ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Bold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Bold.woff":
+/*!*************************************!*\
+  !*** ./src/fonts/TTLakes-Bold.woff ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Bold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-BoldItalic.eot":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-BoldItalic.eot ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-BoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-BoldItalic.ttf":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-BoldItalic.ttf ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-BoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-BoldItalic.woff":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-BoldItalic.woff ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-BoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-DemiBold.eot":
+/*!****************************************!*\
+  !*** ./src/fonts/TTLakes-DemiBold.eot ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-DemiBold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-DemiBold.ttf":
+/*!****************************************!*\
+  !*** ./src/fonts/TTLakes-DemiBold.ttf ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-DemiBold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-DemiBold.woff":
+/*!*****************************************!*\
+  !*** ./src/fonts/TTLakes-DemiBold.woff ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-DemiBold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-DemiBoldItalic.eot":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakes-DemiBoldItalic.eot ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-DemiBoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-DemiBoldItalic.ttf":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakes-DemiBoldItalic.ttf ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-DemiBoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-DemiBoldItalic.woff":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakes-DemiBoldItalic.woff ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-DemiBoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraBold.eot":
+/*!*****************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraBold.eot ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraBold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraBold.ttf":
+/*!*****************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraBold.ttf ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraBold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraBold.woff":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraBold.woff ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraBold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraBoldItalic.eot":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraBoldItalic.eot ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraBoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraBoldItalic.ttf":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraBoldItalic.ttf ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraBoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraBoldItalic.woff":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraBoldItalic.woff ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraBoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraLight.eot":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraLight.eot ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraLight..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraLight.ttf":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraLight.ttf ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraLight..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraLight.woff":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraLight.woff ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraLight..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraLightItalic.eot":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraLightItalic.eot ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraLightItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraLightItalic.ttf":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraLightItalic.ttf ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraLightItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ExtraLightItalic.woff":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakes-ExtraLightItalic.woff ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ExtraLightItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Italic.eot":
+/*!**************************************!*\
+  !*** ./src/fonts/TTLakes-Italic.eot ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Italic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Italic.ttf":
+/*!**************************************!*\
+  !*** ./src/fonts/TTLakes-Italic.ttf ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Italic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Italic.woff":
+/*!***************************************!*\
+  !*** ./src/fonts/TTLakes-Italic.woff ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Italic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Light.eot":
+/*!*************************************!*\
+  !*** ./src/fonts/TTLakes-Light.eot ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Light..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Light.ttf":
+/*!*************************************!*\
+  !*** ./src/fonts/TTLakes-Light.ttf ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Light..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Light.woff":
+/*!**************************************!*\
+  !*** ./src/fonts/TTLakes-Light.woff ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Light..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-LightItalic.eot":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-LightItalic.eot ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-LightItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-LightItalic.ttf":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-LightItalic.ttf ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-LightItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-LightItalic.woff":
+/*!********************************************!*\
+  !*** ./src/fonts/TTLakes-LightItalic.woff ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-LightItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Medium.eot":
+/*!**************************************!*\
+  !*** ./src/fonts/TTLakes-Medium.eot ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Medium..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Medium.ttf":
+/*!**************************************!*\
+  !*** ./src/fonts/TTLakes-Medium.ttf ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Medium..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Medium.woff":
+/*!***************************************!*\
+  !*** ./src/fonts/TTLakes-Medium.woff ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Medium..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-MediumItalic.eot":
+/*!********************************************!*\
+  !*** ./src/fonts/TTLakes-MediumItalic.eot ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-MediumItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-MediumItalic.ttf":
+/*!********************************************!*\
+  !*** ./src/fonts/TTLakes-MediumItalic.ttf ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-MediumItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-MediumItalic.woff":
+/*!*********************************************!*\
+  !*** ./src/fonts/TTLakes-MediumItalic.woff ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-MediumItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Regular.eot":
+/*!***************************************!*\
+  !*** ./src/fonts/TTLakes-Regular.eot ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Regular..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Regular.ttf":
+/*!***************************************!*\
+  !*** ./src/fonts/TTLakes-Regular.ttf ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Regular..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Regular.woff":
+/*!****************************************!*\
+  !*** ./src/fonts/TTLakes-Regular.woff ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Regular..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Thin.eot":
+/*!************************************!*\
+  !*** ./src/fonts/TTLakes-Thin.eot ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Thin..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Thin.ttf":
+/*!************************************!*\
+  !*** ./src/fonts/TTLakes-Thin.ttf ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Thin..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-Thin.woff":
+/*!*************************************!*\
+  !*** ./src/fonts/TTLakes-Thin.woff ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-Thin..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ThinItalic.eot":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-ThinItalic.eot ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ThinItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ThinItalic.ttf":
+/*!******************************************!*\
+  !*** ./src/fonts/TTLakes-ThinItalic.ttf ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ThinItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakes-ThinItalic.woff":
+/*!*******************************************!*\
+  !*** ./src/fonts/TTLakes-ThinItalic.woff ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakes-ThinItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Black.eot":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Black.eot ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Black..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Black.ttf":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Black.ttf ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Black..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Black.woff":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Black.woff ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Black..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-BlackItalic.eot":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-BlackItalic.eot ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-BlackItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-BlackItalic.ttf":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-BlackItalic.ttf ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-BlackItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-BlackItalic.woff":
+/*!******************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-BlackItalic.woff ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-BlackItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Bold.eot":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Bold.eot ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Bold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Bold.ttf":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Bold.ttf ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Bold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Bold.woff":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Bold.woff ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Bold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-BoldItalic.eot":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-BoldItalic.eot ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-BoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-BoldItalic.ttf":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-BoldItalic.ttf ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-BoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-BoldItalic.woff":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-BoldItalic.woff ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-BoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-DemiBold.eot":
+/*!**************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-DemiBold.eot ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-DemiBold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-DemiBold.ttf":
+/*!**************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-DemiBold.ttf ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-DemiBold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-DemiBold.woff":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-DemiBold.woff ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-DemiBold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-DemiBoldItalic.eot":
+/*!********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-DemiBoldItalic.eot ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-DemiBoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-DemiBoldItalic.ttf":
+/*!********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-DemiBoldItalic.ttf ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-DemiBoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-DemiBoldItalic.woff":
+/*!*********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-DemiBoldItalic.woff ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-DemiBoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraBold.eot":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraBold.eot ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraBold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraBold.ttf":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraBold.ttf ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraBold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraBold.woff":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraBold.woff ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraBold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraBoldItalic.eot":
+/*!*********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraBoldItalic.eot ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraBoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraBoldItalic.ttf":
+/*!*********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraBoldItalic.ttf ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraBoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraBoldItalic.woff":
+/*!**********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraBoldItalic.woff ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraBoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraLight.eot":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraLight.eot ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraLight..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraLight.ttf":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraLight.ttf ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraLight..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraLight.woff":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraLight.woff ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraLight..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraLightItalic.eot":
+/*!**********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraLightItalic.eot ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraLightItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraLightItalic.ttf":
+/*!**********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraLightItalic.ttf ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraLightItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ExtraLightItalic.woff":
+/*!***********************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ExtraLightItalic.woff ***!
+  \***********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ExtraLightItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Italic.eot":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Italic.eot ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Italic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Italic.ttf":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Italic.ttf ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Italic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Italic.woff":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Italic.woff ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Italic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Light.eot":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Light.eot ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Light..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Light.ttf":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Light.ttf ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Light..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Light.woff":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Light.woff ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Light..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-LightItalic.eot":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-LightItalic.eot ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-LightItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-LightItalic.ttf":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-LightItalic.ttf ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-LightItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-LightItalic.woff":
+/*!******************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-LightItalic.woff ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-LightItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Medium.eot":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Medium.eot ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Medium..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Medium.ttf":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Medium.ttf ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Medium..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Medium.woff":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Medium.woff ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Medium..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-MediumItalic.eot":
+/*!******************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-MediumItalic.eot ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-MediumItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-MediumItalic.ttf":
+/*!******************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-MediumItalic.ttf ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-MediumItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-MediumItalic.woff":
+/*!*******************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-MediumItalic.woff ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-MediumItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Regular.eot":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Regular.eot ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Regular..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Regular.ttf":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Regular.ttf ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Regular..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Regular.woff":
+/*!**************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Regular.woff ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Regular..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Thin.eot":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Thin.eot ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Thin..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Thin.ttf":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Thin.ttf ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Thin..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-Thin.woff":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-Thin.woff ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-Thin..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ThinItalic.eot":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ThinItalic.eot ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ThinItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ThinItalic.ttf":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ThinItalic.ttf ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ThinItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCompressed-ThinItalic.woff":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCompressed-ThinItalic.woff ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCompressed-ThinItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Black.eot":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Black.eot ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Black..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Black.ttf":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Black.ttf ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Black..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Black.woff":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Black.woff ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Black..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-BlackItalic.eot":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-BlackItalic.eot ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-BlackItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-BlackItalic.ttf":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-BlackItalic.ttf ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-BlackItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-BlackItalic.woff":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-BlackItalic.woff ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-BlackItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Bold.eot":
+/*!*********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Bold.eot ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Bold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Bold.ttf":
+/*!*********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Bold.ttf ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Bold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Bold.woff":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Bold.woff ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Bold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-BoldItalic.eot":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-BoldItalic.eot ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-BoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-BoldItalic.ttf":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-BoldItalic.ttf ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-BoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-BoldItalic.woff":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-BoldItalic.woff ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-BoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-DemiBold.eot":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-DemiBold.eot ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-DemiBold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-DemiBold.ttf":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-DemiBold.ttf ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-DemiBold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-DemiBold.woff":
+/*!**************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-DemiBold.woff ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-DemiBold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-DemiBoldItalic.eot":
+/*!*******************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-DemiBoldItalic.eot ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-DemiBoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-DemiBoldItalic.ttf":
+/*!*******************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-DemiBoldItalic.ttf ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-DemiBoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-DemiBoldItalic.woff":
+/*!********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-DemiBoldItalic.woff ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-DemiBoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraBold.eot":
+/*!**************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraBold.eot ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraBold..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraBold.ttf":
+/*!**************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraBold.ttf ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraBold..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraBold.woff":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraBold.woff ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraBold..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraBoldItalic.eot":
+/*!********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraBoldItalic.eot ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraBoldItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraBoldItalic.ttf":
+/*!********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraBoldItalic.ttf ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraBoldItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraBoldItalic.woff":
+/*!*********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraBoldItalic.woff ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraBoldItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraLight.eot":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraLight.eot ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraLight..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraLight.ttf":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraLight.ttf ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraLight..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraLight.woff":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraLight.woff ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraLight..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraLightItalic.eot":
+/*!*********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraLightItalic.eot ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraLightItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraLightItalic.ttf":
+/*!*********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraLightItalic.ttf ***!
+  \*********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraLightItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ExtraLightItalic.woff":
+/*!**********************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ExtraLightItalic.woff ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ExtraLightItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Italic.eot":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Italic.eot ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Italic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Italic.ttf":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Italic.ttf ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Italic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Italic.woff":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Italic.woff ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Italic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Light.eot":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Light.eot ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Light..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Light.ttf":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Light.ttf ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Light..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Light.woff":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Light.woff ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Light..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-LightItalic.eot":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-LightItalic.eot ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-LightItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-LightItalic.ttf":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-LightItalic.ttf ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-LightItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-LightItalic.woff":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-LightItalic.woff ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-LightItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Medium.eot":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Medium.eot ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Medium..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Medium.ttf":
+/*!***********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Medium.ttf ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Medium..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Medium.woff":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Medium.woff ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Medium..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-MediumItalic.eot":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-MediumItalic.eot ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-MediumItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-MediumItalic.ttf":
+/*!*****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-MediumItalic.ttf ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-MediumItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-MediumItalic.woff":
+/*!******************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-MediumItalic.woff ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-MediumItalic..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Regular.eot":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Regular.eot ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Regular..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Regular.ttf":
+/*!************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Regular.ttf ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Regular..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Regular.woff":
+/*!*************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Regular.woff ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Regular..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Thin.eot":
+/*!*********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Thin.eot ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Thin..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Thin.ttf":
+/*!*********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Thin.ttf ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Thin..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-Thin.woff":
+/*!**********************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-Thin.woff ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-Thin..woff";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ThinItalic.eot":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ThinItalic.eot ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ThinItalic..eot";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ThinItalic.ttf":
+/*!***************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ThinItalic.ttf ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ThinItalic..ttf";
+
+/***/ }),
+
+/***/ "./src/fonts/TTLakesCondensed-ThinItalic.woff":
+/*!****************************************************!*\
+  !*** ./src/fonts/TTLakesCondensed-ThinItalic.woff ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "fonts/TTLakesCondensed-ThinItalic..woff";
 
 /***/ }),
 
@@ -20983,7 +23607,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
+/******/ 			id: moduleId,
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
@@ -21134,12 +23758,27 @@ _global["default"]._babelPolyfill = true;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.html */ "./src/index.html");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/index.scss");
-/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ "./src/modules/slider.js");
+/* harmony import */ var _modules_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/script */ "./src/modules/script.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/slider */ "./src/modules/slider.js");
+/* harmony import */ var _modules_brands__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/brands */ "./src/modules/brands.js");
+/* harmony import */ var _modules_brands__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_brands__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _modules_repairCards__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/repairCards */ "./src/modules/repairCards.js");
+/* harmony import */ var _modules_repairCards__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_repairCards__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _modules_descriptionShower__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/descriptionShower */ "./src/modules/descriptionShower.js");
+/* harmony import */ var _modules_descriptionShower__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_modules_descriptionShower__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
+
+
+
+
+(0,_modules_script__WEBPACK_IMPORTED_MODULE_2__.burgerMenu)();
+(0,_modules_script__WEBPACK_IMPORTED_MODULE_2__.feedback)();
+(0,_modules_script__WEBPACK_IMPORTED_MODULE_2__.repairbar)();
+(0,_modules_script__WEBPACK_IMPORTED_MODULE_2__.closeAllBar)();
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.a59c621244e30dd02954.js.map
+//# sourceMappingURL=main.d4fe11bfafc6ad669cc5.js.map

@@ -52,4 +52,19 @@
     &__item-none {
         display: none !important;
     }
+    @media screen and (width >=1050px) {
+        &__none-item-other {
+            display: flex !important;
+        }
+    }
+    @media screen and (width >=1120px) {
+        &__none-item-other {
+            display: none !important;
+        }
+    }
+    @media screen and (width >=1320px) {
+        &__none-item-other {
+            display: flex !important;
+        }
+    }
 }

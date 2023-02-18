@@ -9,7 +9,11 @@
             color: $colorText;
         }
     }
+    &__decription-text-more {
+        display: none;
+    }
     &__button {
+        margin-left: 10px;
         cursor: pointer;
         @include flexbleCenter(center, center);
         margin-bottom: 15px;
